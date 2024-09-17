@@ -1,0 +1,124 @@
+html,body{
+    margin:0;
+    padding:0;
+    overflow-x:hidden;
+    overflow-y:hidden;
+    scroll-behavior: smooth;
+    
+  }
+  body:not(.hero){
+    background-color: black;
+    color: #fff;
+  }
+  body.light-mode:not(.hero){
+    background-color: #fff;
+    color:black;
+  }
+  #background-video {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; 
+    z-index: -1; 
+  }
+  .hero {
+    width: 100%;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+  }
+  .nav-container {
+    max-width: 100%;
+    height: 20px;
+    padding: 15px 15px; 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.227);
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 99;
+}
+
+.nav-miniLogo{
+    width: 40px;
+    height: 40px;
+}
+
+.nav-links {
+    min-width: 30%;
+    padding: 0 40px;
+}
+
+.nav-links ul {
+    display: flex;
+    justify-content: space-around;
+    list-style-type: none;
+  
+}
+
+.nav-links ul li {
+    padding: 0px 20px;
+    
+}
+
+
+.nav-links ul li a {
+    text-decoration: none;
+    color: white;
+    font-size: 12px;
+    flex-wrap: nowrap;
+    transition: color .4s ease;
+
+}
+
+.nav-links ul li a:hover {
+    color: rgba(61, 61, 61, 0.703);
+}
+
+  
+  .content {
+    text-align: center;
+  }
+
+  .content .logo{
+    width:350px;
+    height:350px;
+  }    
+  .content h1 {
+    font-size: 80px;
+    font-family:"Bodoni Moda SC", serif;
+    color: #fff;
+    font-weight:bold;
+    margin-top: -30px;
+  }
+    
+  .content .slogan {
+    font-size: 23px;
+    font-family:"Bodoni Moda SC", serif;
+    color: #fff;
+    margin-top: -75px;
+  }
+  
+  .content a {
+      text-decoration: none;
+      display: inline-block;
+      color: #fff;
+      margin-top: 45px;
+      font-size: 15px;
+      border: 2px solid #fff;
+      padding: 15px 35px;
+      border-radius: 25px;
+      margin-top: 10px;
+      transition: color 0.5s ease, border-color 0.5s ease;
+  }
+  
+  .content a:hover {
+      color: gray;
+      border-color: gray;
+  }
+  
+  
+  

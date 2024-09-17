@@ -14,30 +14,31 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('../img/1.png'); /* Replace with your image path */
+    background-image: url('../img/1.png'); 
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    filter: blur(10px); /* Adjust the blur intensity as needed */
-    z-index: -1; /* Sends the background behind the content */
-    opacity: 0.7; /* Optional: Add opacity to darken the background */
+    filter: blur(10px); 
+    z-index: -1; 
+    opacity: 0.7; 
 }
 
 /* Nav Section */
 .nav-container {
     max-width: 100%;
-    height: 50px;
+    height: 20px;
+    padding: 15px 15px; 
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: rgba(0, 0, 0, 0.227);
     box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
+    z-index: 99;
 }
 
-.logo-text {
-    color: white;
-    padding: 0 40px;
-    font-size: 24px;
+.nav-miniLogo{
+    width: 40px;
+    height: 40px;
 }
 
 .nav-links {
@@ -63,10 +64,12 @@ body::before {
     color: white;
     font-size: 12px;
     flex-wrap: nowrap;
+    transition: color .4s ease;
+
 }
 
 .nav-links ul li a:hover {
-    color: rgba(255, 255, 255, 0.703);
+    color: rgba(61, 61, 61, 0.703);
 }
 
 hr {
