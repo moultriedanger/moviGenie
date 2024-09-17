@@ -30,14 +30,25 @@ html,body{
     justify-content: center;
   }
   nav {
-    width: 100%;
+    /* width: 100%;
     position: fixed;
     top: 0;
     right: 0;
     padding: 20px 8%;
     display: flex;
+    background-color: red; */
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    width: 100%;
+    padding: 20px 20px;
+    z-index: 999;
+    background-color: rgba(128, 128, 128, 0.217);
+    box-shadow: 10px 5px 5px rgba(255, 0, 0, 0.227);
   }
-  
+  .logo-text{
+    color: white;
+  }
 
   nav ul {
     display: flex; 
@@ -55,7 +66,7 @@ html,body{
     color: #fff;
     font-size: 10px;
     padding: 10px 30px;
-    transition: color .4s ease
+    transition: color .4s ease;
   }
   
   nav ul li a img.miniLogo{
@@ -63,8 +74,10 @@ html,body{
     height:30px;
   }
 
-  nav ul li a:hover{
+  nav div ul li a:hover{
     color:gray;
+    cursor: pointer;
+
   }
   
   
