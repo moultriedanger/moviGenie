@@ -25,15 +25,18 @@ body::before {
 
 /* Nav Section */
 .nav-container {
-    max-width: 100%;
-    height: 20px;
+    top: 0%;
+    position: absolute;
+    width: 100%;
+    height: 15px;
     padding: 15px 15px; 
     display: flex;
     justify-content: space-between;
+    font-family:"Bodoni Moda SC", serif;
     align-items: center;
-    background-color: rgba(0, 0, 0, 0.227);
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-    z-index: 99;
+    background-color: rgba(101, 99, 99, 0.253);
+    box-shadow: 5px 5px 15px rgba(90, 90, 90, 0.4);
+    z-index: 100;
 }
 
 .nav-miniLogo{
@@ -44,17 +47,19 @@ body::before {
 .nav-links {
     min-width: 30%;
     padding: 0 40px;
+    
 }
 
 .nav-links ul {
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
     list-style-type: none;
-  
+    
 }
 
-.nav-links ul li {
-    padding: 0px 20px;
+
+.nav-links ul li{
+    
     
 }
 
@@ -63,13 +68,16 @@ body::before {
     text-decoration: none;
     color: white;
     font-size: 12px;
+    padding: 17px 20px;
     flex-wrap: nowrap;
-    transition: color .4s ease;
-
+    transition: color .4s ease, background-color .4s ease;
+  
 }
 
 .nav-links ul li a:hover {
-    color: rgba(61, 61, 61, 0.703);
+  background-color: rgb(32, 32, 32);
+  color: #6a6a6a;
+
 }
 
 hr {
