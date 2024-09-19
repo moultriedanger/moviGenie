@@ -69,13 +69,13 @@ html,body{
     background: white;
     position:absolute;
     transition: width 0.5s;
-    
+    z-index: 10000;
    
 }
 
 .nav-links ul li a .search-container.active{
     width: 200px;
-    left: -200px;
+    
 }
 .nav-links ul li a .search-container .search-icon{
     position:absolute;
@@ -101,12 +101,19 @@ html,body{
 .nav-links ul li a .search-container .input input{
   position:absolute;
   top:0;
-  width:100%;
+  
   height: 100%;
   font:10px;
   outline: none;
-  justify-content: center;
-  align-items: center;
   left: -200px;
    
 }
+.nav-links ul li a .search-container .input .clear{
+    position:absolute;
+    right: -25px;
+    top:0;
+    left: -20px;
+    transform: translate(-50%,-50%);
+    color: black;
+}
+
