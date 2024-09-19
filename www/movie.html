@@ -18,35 +18,38 @@
       </div>
       <div class="nav-links">
         <ul>
-          <li>
-            <a href="#">
-            <div class="search-container">
-               <div class ="search-icon">
-                  <i class ="search fa fa-search"></i>
-               </div>
-               <div class="input">
-                   <input type="text" placeholder="Search movie..." id="search">
-                   <i class ="search fa fa-times"></i>
-               </div>
-        </div>
-      </a>
-      </li>
+      
       <li><a href="random.html">RANDOM MOVIE</a></li>
       <li><a href="about.html">ABOUT US</a></li>
       <li><a href="contact.html">CONTACT</a></li>     
+      <li class="search-container">
+        <i class="fa fa-search" id="search-icon"></i>
+        <input type="text" placeholder="Search for movie..." id="search-input" class="expanded">
+    </li>
         </ul>
       </div>
   </nav>
     <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchIcon = document.getElementById('search-icon');
+        const searchInput = document.getElementById('search-input');
     
-      let searchIcon = document.querySelector(".search-icon");
-  
-      searchIcon.onclick = function() {
-        let searchContainer = document.querySelector(".search-container");
-        searchContainer.classList.toggle("active");
-      }
+        searchIcon.addEventListener('click', function() {
+            searchInput.classList.toggle('expanded');
+            
+        });
     
-  </script>
+        searchInput.addEventListener('focus', function() {
+            this.placeholder = '';
+        });
+    
+        searchInput.addEventListener('blur', function() {
+            if (this.value === '') {
+                this.placeholder = 'Search for movie...';
+            }
+        });
+    });
+    </script>
   
   </body>
   

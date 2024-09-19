@@ -1,27 +1,26 @@
-html,body{
-    margin:0;
-    padding:0;
-    overflow-x:hidden;
+html, body {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
     background-color: black;
     scroll-behavior: smooth;
-    
-    
-  }
-  .nav-container {
+}
+
+.nav-container {
     top: 0%;
     position: absolute;
     width: 100%;
     height: 15px;
-    padding: 15px 15px; 
+    padding: 15px 15px;
     display: flex;
     justify-content: space-between;
     align-items: center;
     background-color: rgba(101, 99, 99, 0.253);
     box-shadow: 5px 5px 15px rgba(90, 90, 90, 0.4);
-    z-index: 999;
+    z-index: 50;
 }
 
-.nav-miniLogo{
+.nav-miniLogo {
     width: 110px;
     height: 50px;
 }
@@ -29,91 +28,89 @@ html,body{
 .nav-links {
     min-width: 30%;
     padding: 0 40px;
-    
 }
 
 .nav-links ul {
     display: flex;
     justify-content: center;
+    align-items: center;
     list-style-type: none;
-    
 }
 
-
-.nav-links ul li{
-    
-    
+.nav-links ul li {
+    display: flex;
+    align-items: center;
 }
-
 
 .nav-links ul li a {
     text-decoration: none;
     color: white;
     font-size: 12px;
-    padding: 17px 20px;
-
+    padding: 20px 20px;
     flex-wrap: nowrap;
     transition: color .4s ease, background-color .4s ease;
     align-items: center;
+    justify-content: center;
 }
-
 .nav-links ul li a:hover {
-  background-color: rgb(32, 32, 32);
-  color: #6a6a6a;
-
+    background-color: rgb(32, 32, 32);
+    color: #6a6a6a;
 }
-.nav-links ul li a .search-container{
-    width: 30px;
-    height: 30px;
-    border-radius: 25px;
-    background: white;
-    position:absolute;
-    transition: width 0.5s;
-    z-index: 10000;
+
+.nav-links ul li input[type=text] {
+    float: right;
+    padding: 6px;
+    border: none;
+    color: white;
+    background-color: rgba(87, 87, 87, 0.333);
+    font-size: 17px;
    
+    border-radius: 20px;
+    outline: none;
 }
 
-.nav-links ul li a .search-container.active{
-    width: 200px;
-    
-}
-.nav-links ul li a .search-container .search-icon{
-    position:absolute;
-    left:12px;
-    top: 13px;
-    transform: translate(-50%, -50%);
-}
-.nav-links ul li a .search-container .search-icon .search{
-    font-size: 15px;
-    cursor:pointer;
-    color: black;
-    
-}
-.nav-links ul li a .search-container .input{
-    position:relative;
-    width: 200px;
-    height: 25px;
+.nav-links ul li .fa-search {
+    position: relative;
     left: 10px;
-    display: flex;
-    align-items: center;
-    justify-content:center;
-}
-.nav-links ul li a .search-container .input input{
-  position:absolute;
-  top:0;
-  
-  height: 100%;
-  font:10px;
-  outline: none;
-  left: -200px;
-   
-}
-.nav-links ul li a .search-container .input .clear{
-    position:absolute;
-    right: -25px;
-    top:0;
-    left: -20px;
-    transform: translate(-50%,-50%);
-    color: black;
+    transform: translateY(-50%);
 }
 
+
+
+.nav-links ul li.search-container {
+    position: relative;
+    
+    flex-grow: 1;
+}
+
+.nav-links ul li #search-icon {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.1s ease;
+}
+
+.nav-links ul li #search-icon.active {
+    color: #000;
+}
+
+.nav-links ul li #search-input {
+    float: right;
+    padding: 6px;
+    border: none;
+    margin-right: 16px;
+    font-size: 17px;
+    border-radius: 20px;
+
+    width: 0;
+    opacity: 0;
+    transition: width 0.4s ease, opacity 0.4s ease;
+}
+
+.nav-links ul li #search-input.expanded {
+    width: 350px; 
+    opacity: 1;
+}
