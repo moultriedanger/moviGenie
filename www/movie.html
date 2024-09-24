@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./static/css/movie.css">
+    <link rel="stylesheet" href="./static/css/nav.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <nav class="nav-container">
+        <div class="logo-text">logo</div>
+        <div class="nav-links">
+            <ul>
+                <li><a href="random.html">RANDOM MOVIE</a></li>
+                <li><a href="about.html">ABOUT US</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <button id="navToggleBtn" class="open-btn" onclick="toggleNav()">☰</button>
+
+    <nav id="sideNav" class="side-nav">
+        <div class="logo-text">logo</div>
+        <div class="side-nav-links">
+            <ul>
+                <li><a href="index.html">RANDOM MOVIE</a></li>
+                <li><a href="about.html">ABOUT US</a></li>
+                <li><a href="contact.html">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="movie-main">
+        <div class="movie-header">
+            <h1>Movie Genie</h1>
+
+        </div>
+        <div class="movie-section">
+            <h1 class="movie-sec-trend">TRENDING NOW</h1>
+            <div class="movie-cards">
+                <div class="movie_card">
+                </div>
+                <div class="movie_card">
+                </div>
+                <div class="movie_card">
+                </div>
+                <div class="movie_card">
+                </div>
+                <div class="movie_card">
+                </div>
+                <div class="movie_card">
+                </div>
+                <div class="movie_card">
+                </div>
+                <div class="movie_card">
+                </div>
+            </div>
+        </div>
+    </main>
+    <footer class="footer-container">
+        footer
+    </footer>
+    <script>
+        function toggleNav() {
+            const sideNav = document.getElementById("sideNav");
+            const navToggleBtn = document.getElementById("navToggleBtn");
+
+            if (sideNav.style.width === "200px") {
+                sideNav.style.width = "0";
+                navToggleBtn.innerHTML = "☰";
+            } else {
+                sideNav.style.width = "200px";
+                navToggleBtn.innerHTML = "x";
+            }
+            navToggleBtn.classList.toggle('open-btn');
+            navToggleBtn.classList.toggle('close-btn');
+        }
+    </script>
+</body>
+
+</html>

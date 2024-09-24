@@ -23,126 +23,6 @@ body::before {
     opacity: 0.7; /* Optional: Add opacity to darken the background */
 }
 
-/* Nav Section */
-.nav-container {
-    max-width: 100%;
-    height: 50px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(0, 0, 0, 0.227);
-    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.3);
-}
-
-.logo-text {
-    color: white;
-    padding: 0 40px;
-    font-size: 24px;
-}
-
-.nav-links {
-    min-width: 30%;
-    padding: 0 40px;
-}
-
-.nav-links ul {
-    display: flex;
-    justify-content: space-around;
-    list-style-type: none;
-  
-}
-
-.nav-links ul li {
-    padding: 0px 20px;
-    
-}
-
-
-.nav-links ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 12px;
-    flex-wrap: nowrap;
-}
-
-.nav-links ul li a:hover {
-    color: rgba(255, 255, 255, 0.703);
-}
-
-hr {
-    background-color: rgba(141, 141, 141, 0.347); 
-    height: 1px; 
-    border: 0;
-    margin-top: 0;
-}
-
-/* Side nav */
-.open-btn {
-    display: none;
-    font-size: 30px;
-    color: white;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    position: fixed;
-    top: 15px;
-    left: 15px;
-    z-index: 100;
-}
-
-/* Button styles for closing the side nav */
-.close-btn {
-    font-size: 30px;
-    color: white;
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-    position: fixed;
-    top: 15px;
-    left: 150px;
-    z-index: 100;
-}
-
-.side-nav {
-    height: 100%;
-    width: 0;
-    position: fixed;
-    top: 0;
-    left: 0;
-    background-color: rgba(0, 0, 0, 0.955);
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 80px;
-}
-
-.side-nav .logo-text {
-    color: white;
-    font-size: 24px;
-    font-weight: bold;
-    padding-left: 20px;
-    margin-bottom: 20px;
-}
-
-.side-nav-links ul {
-    list-style-type: none;
-    padding-left: 0;
-    
-}
-
-.side-nav-links ul li {
-    padding: 15px 20px;
-}
-
-.side-nav-links ul li a {
-    color: rgba(255, 255, 255, 0.836);
-    text-decoration: none;
-    font-size: 16px;
-    display: block;
-}
-
-.side-nav-links ul li a:hover {
-    background-color: rgba(255, 255, 255, 0.2);
-}
 
 /* About Section */
 .about_container {
@@ -251,6 +131,11 @@ hr {
     .team_card {
         width: 80%;
         margin-bottom: 20px;
+    }
+    .nav-links ul li a {
+        font-size: 11px;
+  
+        
     }
 }
 
