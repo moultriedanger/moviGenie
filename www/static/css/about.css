@@ -14,13 +14,13 @@ body::before {
     left: 0;
     right: 0;
     bottom: 0;
-    background-image: url('../img/1.png'); 
+    background-image: url('../img/1.png');
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    filter: blur(10px); 
-    z-index: -1; 
-    opacity: 0.7; 
+    filter: blur(10px);
+    z-index: -1;
+    opacity: 0.7;
 }
 
 /* Nav Section */
@@ -29,17 +29,17 @@ body::before {
     position: absolute;
     width: 100%;
     height: 15px;
-    padding: 15px 15px; 
+    padding: 15px 15px;
     display: flex;
     justify-content: space-between;
-    font-family:"Bodoni Moda SC", serif;
+    font-family: "Bodoni Moda SC", serif;
     align-items: center;
     background-color: rgba(101, 99, 99, 0.253);
     box-shadow: 5px 5px 15px rgba(90, 90, 90, 0.4);
     z-index: 100;
 }
 
-.nav-miniLogo{
+.nav-miniLogo {
     width: 110px;
     height: 50px;
 }
@@ -47,21 +47,18 @@ body::before {
 .nav-links {
     min-width: 30%;
     padding: 0 40px;
-    
+
 }
 
 .nav-links ul {
     display: flex;
     justify-content: center;
     list-style-type: none;
-    
+
 }
 
 
-.nav-links ul li{
-    
-    
-}
+.nav-links ul li {}
 
 
 .nav-links ul li a {
@@ -71,18 +68,18 @@ body::before {
     padding: 17px 20px;
     flex-wrap: nowrap;
     transition: color .4s ease, background-color .4s ease;
-  
+
 }
 
 .nav-links ul li a:hover {
-  background-color: rgb(32, 32, 32);
-  color: #6a6a6a;
+    background-color: rgb(32, 32, 32);
+    color: #6a6a6a;
 
 }
 
 hr {
-    background-color: rgba(141, 141, 141, 0.347); 
-    height: 1px; 
+    background-color: rgba(141, 141, 141, 0.347);
+    height: 1px;
     border: 0;
     margin-top: 0;
 }
@@ -137,7 +134,7 @@ hr {
 .side-nav-links ul {
     list-style-type: none;
     padding-left: 0;
-    
+
 }
 
 .side-nav-links ul li {
@@ -177,10 +174,14 @@ p {
 }
 
 hr {
-    border: none;    /* Removes the default border */
-    height: 1px;     /* You can adjust the height */
-    background: none; /* Ensures no background color */
-    margin: 0;       /* Adjusts spacing around the hr if needed */
+    border: none;
+    /* Removes the default border */
+    height: 1px;
+    /* You can adjust the height */
+    background: none;
+    /* Ensures no background color */
+    margin: 0;
+    /* Adjusts spacing around the hr if needed */
 }
 
 /* Team Section */
@@ -216,8 +217,8 @@ hr {
     padding: 20px;
     box-shadow: 4px 4px 8px rgba(255, 255, 255, 0.3);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-   
-    
+
+
 }
 
 .team_card:hover {
@@ -226,7 +227,8 @@ hr {
 }
 
 .avatar {
-    font-size: 100px; /* Adjust size for the avatar */
+    font-size: 100px;
+    /* Adjust size for the avatar */
     color: rgba(255, 255, 255, 0.7);
     margin-bottom: 20px;
 }
@@ -248,8 +250,8 @@ hr {
 .team_bio {
     font-size: 12px;
     color: rgba(255, 255, 255, 0.7);
-    overflow-wrap:  break-word;
-    
+    overflow-wrap: break-word;
+
 }
 
 /* Responsive for small screens */
@@ -262,6 +264,12 @@ hr {
     .team_card {
         width: 80%;
         margin-bottom: 20px;
+    }
+
+    .nav-links ul li a {
+        font-size: 11px;
+
+
     }
 }
 
@@ -303,7 +311,8 @@ label {
     color: white;
 }
 
-input, textarea {
+input,
+textarea {
     width: 100%;
     padding: 10px;
     border: 1px solid #ddd;
@@ -331,7 +340,8 @@ input, textarea {
     .nav-container {
         display: none;
     }
-    .open-btn{
+
+    .open-btn {
         display: block;
     }
 
