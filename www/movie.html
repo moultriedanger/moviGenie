@@ -24,13 +24,13 @@
         </div>
         <div class="nav-links">
             <ul>
-
                 <li><a href="random.html">RANDOM MOVIE</a></li>
                 <li><a href="about.html">ABOUT US</a></li>
                 <li><a href="contact.html">CONTACT</a></li>
                 <li class="search-container">
                     <i class="fa fa-search" id="search-icon"></i>
-                    <input type="text" placeholder="Search for movie..." id="search-input" class="expanded">
+                    <input type="text" placeholder="Search for movie..." id="search-input">
+
                 </li>
             </ul>
         </div>
@@ -83,7 +83,7 @@
         function toggleNav() {
             const sideNav = document.getElementById("sideNav");
             const navToggleBtn = document.getElementById("navToggleBtn");
-
+            // use class name rather than fixed width number.
             if (sideNav.style.width === "200px") {
                 sideNav.style.width = "0";
                 navToggleBtn.innerHTML = "☰";

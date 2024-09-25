@@ -127,7 +127,7 @@ body {
 
 .nav-links ul li input[type=text] {
     float: right;
-    padding: 6px;
+    padding: 10px;
     border: none;
     color: white;
     background-color: rgba(87, 87, 87, 0.333);
@@ -137,7 +137,7 @@ body {
     outline: none;
 }
 
-.nav-links ul li .fa-search {
+.fa-search {
     position: relative;
     left: 10px;
     transform: translateY(-50%);
@@ -145,13 +145,13 @@ body {
 
 
 
-.nav-links ul li.search-container {
+.search-container {
     position: relative;
-
     flex-grow: 1;
 }
 
-.nav-links ul li #search-icon {
+
+#search-icon {
     position: absolute;
     left: 10px;
     top: 50%;
@@ -161,24 +161,25 @@ body {
     transition: color 0.1s ease;
 }
 
-.nav-links ul li #search-icon.active {
+#search-icon.active {
     color: #000;
 }
 
-.nav-links ul li #search-input {
-    float: right;
+#search-input {
+    float: left;
     padding: 6px;
     border: none;
     margin-right: 16px;
     font-size: 17px;
     border-radius: 20px;
-
     width: 0;
     opacity: 0;
     transition: width 0.4s ease, opacity 0.4s ease;
 }
 
-.nav-links ul li #search-input.expanded {
+
+#search-input.expanded {
     width: 350px;
     opacity: 1;
+    padding: 6px 36px;
 }
