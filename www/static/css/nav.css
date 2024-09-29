@@ -58,11 +58,10 @@
     color: white;
     background-color: rgba(87, 87, 87, 0.333);
     font-size: 17px;
-
     border-radius: 20px;
     outline: none;
 }
-
+/* Search in nav bar*/
 .fa-search {
     position: relative;
     left: 10px;

@@ -18,6 +18,7 @@
 </head>
 
 <body>
+    <!-- Nav bar -->
     <nav class="nav-container">
         <div class="nav-miniLogo">
             <a href="landing.html"><img src="static/img/navLogo.png" class="nav-miniLogo" alt="logo"></a>
@@ -26,7 +27,7 @@
             <ul>
                 <li><a href="random.html">RANDOM MOVIE</a></li>
                 <li><a href="about.html">ABOUT US</a></li>
-                <li><a href="contact.html">CONTACT</a></li>
+                <li><a href="about.html#contactID">CONTACT</a></li>
                 <li class="search-container">
                     <i class="fa fa-search" id="search-icon"></i>
                     <input type="text" placeholder="Search for movie..." id="search-input">
@@ -35,7 +36,7 @@
             </ul>
         </div>
     </nav>
-
+    <!-- Nav bar mobile -->
     <button id="navToggleBtn" class="open-btn" onclick="toggleNav()">☰</button>
 
     <nav id="sideNav" class="side-nav">
@@ -44,16 +45,29 @@
             <ul>
                 <li><a href="index.html">RANDOM MOVIE</a></li>
                 <li><a href="about.html">ABOUT US</a></li>
-                <li><a href="contact.html">CONTACT</a></li>
+                <li><a href="about.html#contactID">CONTACT</a></li>
             </ul>
         </div>
     </nav>
-
+    <!-- Logo -->
     <main class="movie-main">
         <div class="movie-header">
-            <h1>Movie Genie</h1>
-
+            <img class="logo" src="static/img/logo.png">
         </div>
+        <p class="slogan">Consult the Genie...</p>
+
+       
+       <!-- Consult the Genie section -->
+        <div class="consult-genie-section">
+            <div class="consult-genie-text">Consult the Genie...</div>
+            <div class="gpt-input">
+                <textarea class="gpt-input-textarea" placeholder="Type your question here..."></textarea>
+                <button class="submit-arrow"><i class="fas fa-arrow-right"></i></button>
+            </div>
+        </div>
+        <hr>
+
+        <!-- Trending movies -->
         <div class="movie-section">
             <h1 class="movie-sec-trend">TRENDING NOW</h1>
             <div class="movie-cards">
@@ -76,14 +90,17 @@
             </div>
         </div>
     </main>
+    <!-- Footer -->
     <footer class="footer-container">
-        footer
+        MovieGenie.com · 2024 ·  <a href="about.html#contactID"> CONTACT US</a>
     </footer>
+    <!-- JS -->
+        
     <script>
+        //JS for mobile nav bar
         function toggleNav() {
             const sideNav = document.getElementById("sideNav");
             const navToggleBtn = document.getElementById("navToggleBtn");
-            // use class name rather than fixed width number.
             if (sideNav.style.width === "200px") {
                 sideNav.style.width = "0";
                 navToggleBtn.innerHTML = "☰";
@@ -94,6 +111,7 @@
             navToggleBtn.classList.toggle('open-btn');
             navToggleBtn.classList.toggle('close-btn');
         }
+        //JS for search bar animation
         document.addEventListener('DOMContentLoaded', function () {
             const searchIcon = document.getElementById('search-icon');
             const searchInput = document.getElementById('search-input');
@@ -113,6 +131,14 @@
                 }
             });
         });
+        document.addEventListener('DOMContentLoaded', function() {
+             const textarea = document.querySelector('.gpt-input-textarea');
+
+             textarea.addEventListener('input', function() {
+             this.style.height = 'auto'; // Reset the height
+             this.style.height = (this.scrollHeight) + 'px'; // Set the height to the scroll height
+    });
+});
     </script>
 </body>
 
