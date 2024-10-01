@@ -40,11 +40,11 @@
                 <li><a href="index.html">RANDOM MOVIE</a></li>
                 <li><a href="about.html">ABOUT US</a></li>
                 <li><a href="#contactID">CONTACT</a></li>
-                <li class="search-container">
-                    <i class="fa fa-search" id="search-icon"></i>
-                    <input type="text" placeholder="Search for movie..." id="search-input">
+                <li class="bar-search-container">
+                    <i class="fa fa-search" id="bar-search-icon" ></i>
+                    <input type="text" placeholder="Search for movie..." id="bar-search-input">
         
-                </li>       
+                </li>      
                  </ul>
         </div>
     </nav>
@@ -156,9 +156,14 @@
     document.addEventListener('DOMContentLoaded', function () {
             const searchIcon = document.getElementById('search-icon');
             const searchInput = document.getElementById('search-input');
-
+            const barSearchIcon = document.getElementById('bar-search-icon');
+            const barSearchInput = document.getElementById('bar-search-input');
             searchIcon.addEventListener('click', function () {
                 searchInput.classList.toggle('expanded');
+
+            });
+            barSearchIcon.addEventListener('click', function () {
+                barSearchInput.classList.toggle('expanded');
 
             });
 
@@ -166,7 +171,15 @@
                 this.placeholder = '';
             });
 
+            barSearchInput.addEventListener('focus', function () {
+                this.placeholder = '';
+            });
             searchInput.addEventListener('blur', function () {
+                if (this.value === '') {
+                    this.placeholder = 'Search for movie...';
+                }
+            });
+            barSearchInput.addEventListener('blur', function () {
                 if (this.value === '') {
                     this.placeholder = 'Search for movie...';
                 }

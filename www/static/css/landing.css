@@ -9,7 +9,7 @@ html,body{
     
   }
   
-*:not(html,body,input,#search-icon ){
+*:not(html,body,input,#search-icon,#bar-search-icon ){
   animation:transitionIn 1.50s;
 }
 @keyframes transitionIn{
@@ -89,7 +89,7 @@ html,body{
   
   
   
-
+  /* Correct dimensions for mobile */
   @media (max-width: 480px) {
     .content .logo {
         width: 300px; 
@@ -105,7 +105,5 @@ html,body{
       font-size: 18px;
       margin-top: 2px; 
     }
-    .content a{
-
-    }
+    
 }

@@ -18,7 +18,7 @@ body::before{
     z-index: -1;
 }
 
-*:not(html,body,input,#search-icon ){
+*:not(html,body,input,#search-icon,#bar-search-icon){
     animation:transitionIn 1.50s;
 }
 @keyframes transitionIn{
@@ -37,8 +37,6 @@ body::before{
     width: 400px;
     height: 400px;
 }
-/*Consult the Genie*/
-/* Consult the Genie section styles */
 /* Consult the Genie section styles */
 .consult-genie-section {
     text-align: center;

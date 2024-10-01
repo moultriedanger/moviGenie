@@ -7,7 +7,7 @@ body {
     position: relative;
 }
 
-*:not(html,body,input,#search-icon ){
+*:not(html,body,input,#search-icon,#bar-search-icon){
     animation:transitionIn 1.50s;
 }
 @keyframes transitionIn{
