@@ -5,11 +5,16 @@ body {
     padding: 0;
     background-color: black;
     position: relative;
+   
+}
+html,body{
+    overflow-x: hidden;
 }
 
 *:not(html,body,input,#search-icon,#bar-search-icon){
     animation:transitionIn 1.50s;
 }
+
 @keyframes transitionIn{
     from{
         opacity: 0;
@@ -20,6 +25,7 @@ body {
         transform: rotateX(0);
     }
 }
+
 body::before{
     content: "";
     position: fixed;
@@ -119,15 +125,16 @@ hr {
 
 .about_backplate{
     background-color: rgba(255, 255, 255, 0.034);
-    width: 600px;
+    width: 100%;
     height: 300px;
-    border-radius: 40px;
+    border-radius: 20px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 .about_title {
+    margin-top: -5px;
     color: white;
     font-weight: bold;
     flex-direction: column;
@@ -217,24 +224,6 @@ hr {
 
 }
 
-/* Responsive for small screens */
-@media screen and (max-width: 768px) {
-    .team_members {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .team_card {
-        width: 80%;
-        margin-bottom: 20px;
-    }
-
-    .nav-links ul li a {
-        font-size: 11px;
-
-
-    }
-}
 
 
 
@@ -319,7 +308,7 @@ textarea {
     
 }
 
-
+/* Responsive for small screens */
 @media screen and (max-width: 480px) {
     .nav-container {
         display: none;
@@ -333,5 +322,23 @@ textarea {
         color: white;
         max-width: 350px;
         text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .team_members {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team_card {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .nav-links ul li a {
+        font-size: 11px;
+
+
     }
 }

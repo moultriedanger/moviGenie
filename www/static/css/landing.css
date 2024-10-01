@@ -12,6 +12,7 @@ html,body{
 *:not(html,body,input,#search-icon,#bar-search-icon ){
   animation:transitionIn 1.50s;
 }
+
 @keyframes transitionIn{
   from{
       opacity: 0;
@@ -22,10 +23,12 @@ html,body{
       transform: rotateX(0);
   }
 }
+
   body:not(.hero){
     background-color: black;
     color: #fff;
   }
+
   /* Background video on landing page */
   #background-video {
     position: absolute;
@@ -57,7 +60,7 @@ html,body{
   .content h1 {
     font-size: 80px;
     font-family:"Bodoni Moda SC", serif;
-    color: #fff;
+    color: #ffffff;
     font-weight:bold;
     margin-top: -30px;
   }

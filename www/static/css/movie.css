@@ -6,6 +6,7 @@ body {
     overflow-x: hidden;
     scroll-behavior: smooth;
 }
+
 body::before{
     content: "";
     position: fixed;
@@ -18,9 +19,10 @@ body::before{
     z-index: -1;
 }
 
-*:not(html,body,input,#search-icon,#bar-search-icon){
+*:not(html,body,input,#search-icon,#bar-search-icon,.lamp){
     animation:transitionIn 1.50s;
 }
+
 @keyframes transitionIn{
     from{
         opacity: 0;
@@ -31,25 +33,44 @@ body::before{
         transform: rotateX(0);
     }
 }
-/* Main logo */
-.logo{
-    margin-top: 10%;
-    width: 400px;
-    height: 400px;
-}
-/* Consult the Genie section styles */
-.consult-genie-section {
-    text-align: center;
-    margin: 20px 0;
+
+
+/* Consult the Genie section */
+
+
+.consult-genie-container {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
 }
 
 .consult-genie-text {
-    
-    margin-top: 4%;
-    font-size: 1.5em;
+    margin-top: 7%;
+    font-size: 30px;
     color: white;
 }
 
+@keyframes animate {
+    from {
+        bottom: 0px;
+    }
+    to {
+        bottom: 30px;
+    }
+}
+
+.lamp {
+    margin-left: 40px;
+    width: 300px;
+    height: 200px;
+    position: relative; 
+    animation: animate 3s alternate infinite;
+    cursor:pointer;
+}
+.shadow {
+    width: 300px;
+    height: 200px;
+}
 .gpt-input {
     position: relative;
     display: inline-block;
@@ -173,6 +194,7 @@ hr{
     height: 20px;
     background-color: rgba(82, 82, 82, 0.248);
 }
+
 .footer-container a {
     text-decoration: underline;
     color:rgb(87, 87, 87);
