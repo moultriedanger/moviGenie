@@ -90,3 +90,22 @@ html,body{
   
   
 
+  @media (max-width: 480px) {
+    .content .logo {
+        width: 300px; 
+        height: 300px; 
+    }
+
+    .content h1 {
+      margin-top: 6px; 
+
+        font-size: 40px; 
+    }
+    .content .slogan{
+      font-size: 18px;
+      margin-top: 2px; 
+    }
+    .content a{
+
+    }
+}
