@@ -19,6 +19,7 @@
       </div>
       <div class="nav-links">
         <ul>
+          <li><a href="movie.html">FIND MOVIE</a></li>
           <li><a href="random.html">RANDOM MOVIE</a></li>
           <li><a href="about.html">ABOUT US</a></li>
           <li><a href="about.html#contactID">CONTACT</a></li>
@@ -30,6 +31,24 @@
         </ul>
       </div>
   </nav>
+  <button id="navToggleBtn" class="open-btn" onclick="toggleNav()">☰</button>
+
+    <nav id="sideNav" class="side-nav">
+        <div class="side-nav-links">
+            <ul>
+                <a href="landing.html"><img src="static/img/logo.png" class="logo" alt="logo"></a>
+                <li><a href="movie.html">FIND MOVIE</a></li>
+                <li><a href="index.html">RANDOM MOVIE</a></li>
+                <li><a href="about.html">ABOUT US</a></li>
+                <li><a href="#contactID">CONTACT</a></li>
+                <li class="search-container">
+                    <i class="fa fa-search" id="search-icon"></i>
+                    <input type="text" placeholder="Search for movie..." id="search-input">
+        
+                </li>       
+                 </ul>
+        </div>
+    </nav>
     <!-- Background video loop -->
     <div class="hero">
       <video autoplay loop muted playsinline id="background-video">
@@ -64,7 +83,21 @@
                 }
             });
         });
+    //Trigger function for mobile
+    function toggleNav() {
+            const sideNav = document.getElementById("sideNav");
+            const navToggleBtn = document.getElementById("navToggleBtn");
     
+            if (sideNav.style.width === "200px") {
+                sideNav.style.width = "0";
+                navToggleBtn.innerHTML = "☰";
+            } else {
+                sideNav.style.width = "200px";
+                navToggleBtn.innerHTML = "x";
+            }
+            navToggleBtn.classList.toggle('open-btn');
+            navToggleBtn.classList.toggle('close-btn');
+          }
     </script>
   </body>
 </html>

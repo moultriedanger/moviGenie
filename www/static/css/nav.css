@@ -133,7 +133,7 @@
     position: fixed;
     top: 15px;
     left: 150px;
-    z-index: 100;
+    z-index: 101;
 }
 
 .side-nav {
@@ -146,6 +146,7 @@
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 80px;
+    z-index: 100;
 }
 
 .side-nav .logo-text {
@@ -156,6 +157,10 @@
     margin-bottom: 20px;
 }
 
+.side-nav .logo{
+    width: 60px;
+    height: 60px;
+}
 .side-nav-links ul {
     list-style-type: none;
     padding-left: 0;
