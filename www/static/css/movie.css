@@ -19,7 +19,7 @@ body::before{
     z-index: -1;
 }
 
-*:not(html,body,input,#search-icon,#bar-search-icon,#lamp,){
+*:not(html,body,input,#search-icon,#bar-search-icon,#lamp,#shadow,#consult-genie-text,#smoke,textarea,h1){
     animation:transitionIn 1.50s;
 }
 
@@ -91,20 +91,20 @@ body::before{
 }
 
 
-#smoke {
+.smoke {
     position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
+    width: 100px;
+    height: 100px;
+    background: url('smoke.png') no-repeat center center;
+    background-size: cover;
     opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease-out;
 }
-#smoke.activated{
-    animation: smokeFade 3s;
+
+.smoke.active {
     opacity: 1;
 }
-
-
 
 
 /* Animations for lamp */
@@ -128,16 +128,17 @@ body::before{
 }
 
 /* Input after animation for Genie */
-.gpt-input {
+/*.gpt-input {
     position: relative;
     display: inline-block;
     width: 80%;
     max-width: 600px;
 }
-
-.gpt-input textarea {
+*/
+#gptInput {
+    position: absolute;
     width: 100%;
-    height: 20px;
+    height: 60px;
     padding: 15px;
     border: 2px solid rgba(121, 121, 121, 0.548);
     border-radius: 40px;
@@ -147,14 +148,32 @@ body::before{
     resize: none;
     outline: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    overflow: hidden;
-   
+    opacity: 0;
+    transition: opacity 5s;
+
+}
+#gptInput.activated{
+    opacity: 1;
 }
 
-.gpt-input textarea::placeholder {
+
+#textarea::placeholder {
     color: rgba(255, 255, 255, 0.7);
 }
 
+#gptHeader{
+    color: white;
+    opacity: 0;
+    position: absolute;
+    margin-top: -20%;
+    transition: opacity 5s;
+    color: rgba(255, 255, 255, 0.7);
+
+}
+#gptHeader.activated{
+    opacity: 1;
+}
+/*
 .gpt-input .submit-arrow {
     position: absolute;
     right: 50%;
@@ -174,7 +193,7 @@ body::before{
     background-color: rgba(112, 112, 112, 0.642);
 
 }
-
+*/
 
 hr{
     width: 90%;

@@ -62,10 +62,11 @@
             <div id="consult-genie-text">Click to consult the Genie...</div>
             <img id="lamp" src="static/img/lamp.png" alt="lamp">
             <img id="shadow" src="static/img/shadow.png" alt="shadow">
+            <textarea id="gptInput" placeholder="Type your request to the Genie..."></textarea>
+            <h1 id="gptHeader">Our Genie is AI powered, so speak to it as you would a friend and let the Genie do the rest.</h1>
+
         </div>
-
-             <img id="smoke" src= "static/img/smoke.png" alt="smoke">
-
+          
         <hr>
 
         <!-- Trending movies -->
@@ -157,16 +158,25 @@
             const lampIcon = document.getElementById('lamp');
             const shadow = document.getElementById('shadow');
             const genieText = document.getElementById('consult-genie-text');
-            const smoke = document.getElementsByClassName('smoke');
+            const textBox = document.getElementById("gptInput")
+            const header = document.getElementById("gptHeader")
 
             lampIcon.addEventListener('click', function () {
                 lampIcon.classList.toggle('activated');
                 shadow.classList.toggle('activated');
                 genieText.classList.toggle('activated');
-                smoke.classList.toggle('activated');
+                textBox.classList.toggle('activated');  
+                header.classList.toggle('activated');        
             });
         });
 
+        document.getElementById('lamp').addEventListener('click', function() {
+            const smoke = document.getElementById('smoke');
+            smoke.classList.add('active');
+            setTimeout(() => {
+                smoke.classList.remove('active');
+            }, 2000); 
+        });
     </script>
 </body>
 
