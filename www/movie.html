@@ -58,22 +58,14 @@
         </div>
     </nav>
     <!-- Consult the Genie section -->
-    <main class="movie-main">
         <div class="consult-genie-container">
             <div id="consult-genie-text">Click to consult the Genie...</div>
+            <img id="lamp" src="static/img/lamp.png" alt="lamp">
+            <img id="shadow" src="static/img/shadow.png" alt="shadow">
         </div>
-        <div class="movie-header">
-            <img id="lamp" src="static/img/lamp.png">
-        </div>
-        <img id="shadow" src="static/img/shadow.png">
-        
-        <div class = "clouds">
-            <img src= "static/img/cloud1.png" style= "--i:1;">
-            <img src= "static/img/cloud2.png" style= "--i:1;">
-            <img src= "static/img/cloud3.png" style= "--i:1;">
-            <img src= "static/img/cloud4.png" style= "--i:1;">
-            <img src= "static/img/cloud5.png" style= "--i:1;">
-        </div>
+
+             <img id="smoke" src= "static/img/smoke.png" alt="smoke">
+
         <hr>
 
         <!-- Trending movies -->
@@ -163,20 +155,15 @@
 });
         document.addEventListener('DOMContentLoaded', function () {
             const lampIcon = document.getElementById('lamp');
-            const clouds = document.getElementsByClassName('cloud'); 
             const shadow = document.getElementById('shadow');
             const genieText = document.getElementById('consult-genie-text');
+            const smoke = document.getElementsByClassName('smoke');
 
-        
             lampIcon.addEventListener('click', function () {
                 lampIcon.classList.toggle('activated');
-        
-                for (let i = 0; i < clouds.length; i++) {
-                    clouds[i].classList.toggle('activated');
-                }
-        
                 shadow.classList.toggle('activated');
                 genieText.classList.toggle('activated');
+                smoke.classList.toggle('activated');
             });
         });
 
