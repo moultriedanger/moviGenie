@@ -15,11 +15,11 @@ body::before{
     width: 100%;
     height: 100%;
     background: rgb(0,0,0);
-    background: linear-gradient(132deg, rgba(0,0,0,1) 20%, rgba(30,30,30,1) 51%, rgba(36,36,36,1) 100%);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(44,44,44,1) 100%);
     z-index: -1;
 }
 
-*:not(html,body,input,#search-icon,#bar-search-icon,.lamp){
+*:not(html,body,input,#search-icon,#bar-search-icon,#lamp,){
     animation:transitionIn 1.50s;
 }
 
@@ -44,32 +44,92 @@ body::before{
     align-items: center; 
 }
 
-.consult-genie-text {
+#consult-genie-text {
     margin-top: 7%;
     font-size: 30px;
     color: white;
 }
+#consult-genie-text.activated {
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
 
 @keyframes animate {
     from {
-        bottom: 0px;
+        bottom: -20px;
     }
     to {
         bottom: 30px;
     }
 }
 
-.lamp {
+#lamp {
     margin-left: 40px;
     width: 300px;
     height: 200px;
     position: relative; 
+    margin-top: -5%;
     animation: animate 3s alternate infinite;
     cursor:pointer;
+    z-index: 5;
+    opacity: 1;
 }
-.shadow {
+#lamp.activated{
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+
+    cursor:default;
+}
+#shadow {
+    position: relative; 
     width: 300px;
     height: 200px;
+    margin-top: -10%;
+    margin-left: 39.5%;
+    z-index: 1;
+    opacity: 1;
+}
+#shadow.activated{
+    opacity: 0;
+    transition: opacity 0.4s ease;
+
+    pointer-events: none;
+}
+
+.clouds{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+.clouds img{
+    opacity: 0; 
+    transition: opacity 0.4s ease;
+
+}
+
+.clouds.activated{
+    opacity: 1;
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    width: 100%;
+    animation: clouds 2s linear infinite;
+}
+
+@keyframes clouds{
+    0%{
+        transform: translateX(-100%);
+
+    }
+    100%{
+        transform: translateX(100%);
+        
+    }
 }
 .gpt-input {
     position: relative;
