@@ -62,6 +62,7 @@
             <div id="consult-genie-text">Click to consult the Genie...</div>
             <img id="lamp" src="static/img/lamp.png" alt="lamp">
             <img id="shadow" src="static/img/shadow.png" alt="shadow">
+            <img id="gptLogo" src="static/img/logo.png" alt="logo">
             <textarea id="gptInput" placeholder="Type your request to the Genie..."></textarea>
             <h1 id="gptHeader">Our Genie is AI powered, so speak to it as you would a friend and let the Genie do the rest.</h1>
 
@@ -160,13 +161,15 @@
             const genieText = document.getElementById('consult-genie-text');
             const textBox = document.getElementById("gptInput")
             const header = document.getElementById("gptHeader")
+            const logo = document.getElementById("gptLogo")
 
             lampIcon.addEventListener('click', function () {
                 lampIcon.classList.toggle('activated');
                 shadow.classList.toggle('activated');
                 genieText.classList.toggle('activated');
                 textBox.classList.toggle('activated');  
-                header.classList.toggle('activated');        
+                header.classList.toggle('activated');    
+                logo.classList.toggle('activated');       
             });
         });
 
