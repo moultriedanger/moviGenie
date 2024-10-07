@@ -261,3 +261,15 @@ hr{
     text-decoration: underline;
     color:rgb(87, 87, 87);
 }
+
+  /* Correct dimensions for mobile */
+  @media (max-width: 480px) {
+  
+    #gptHeader{
+        width: 450px;
+    }
+    #consult-genie-text{
+        width: 330px;
+    }
+    
+}
