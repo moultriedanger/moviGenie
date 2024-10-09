@@ -1,0 +1,144 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html,
+body {
+    height: 100%;
+    background-color: black;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+.movie-info {
+    margin-top: 60px;
+    flex: 1;
+}
+
+.image-container {
+    position: relative;
+    width: 100%;
+    height: auto;
+}
+
+.image-container img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.overlay {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(to left, rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.1));
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    padding-right: 20px;
+    color: white;
+}
+
+.movie-details {
+    max-width: 250px;
+    text-align: right;
+}
+
+h2 {
+    font-size: 48px;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 16px;
+}
+
+
+
+.related-movies h2 {
+    color: white;
+}
+
+.list-container {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.list-related-movies {
+    width: 80%;
+    display: flex;
+    overflow-x: auto;
+    /* Allow horizontal scrolling */
+    white-space: nowrap;
+    /* Prevent wrapping */
+    gap: 10px;
+    padding: 10px;
+}
+
+.list-related-movies img {
+    width: 300px;
+    height: auto;
+    display: inline-block;
+}
+
+.reviews-section {
+    color: white;
+}
+
+.reviews-section {
+    margin: 40px 0;
+    padding: 20px;
+    background-color: #1a1a1a;
+    color: white;
+}
+
+.reviews-section h2 {
+    font-size: 32px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.review-item {
+    background-color: #333;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.user-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.user-info h3 {
+    font-size: 20px;
+    margin: 0;
+}
+
+.star-rating {
+    font-size: 18px;
+    color: #FFD700;
+    /* Gold star color */
+}
+
+.review-item p {
+    margin: 10px 0 0;
+    font-size: 16px;
+    line-height: 1.5;
+}
