@@ -1,80 +1,41 @@
+/*Body settings and animation for page load */
 body {
     min-height: 100vh;
     margin: 0;
     padding: 0;
-    font-family: Arial, sans-serif;
     background-color: black;
     position: relative;
+   
+}
+html,body{
+    overflow-x: hidden;
 }
 
-body::before {
+*:not(html,body,input,#search-icon,#bar-search-icon){
+    animation:transitionIn 1.50s;
+}
+
+@keyframes transitionIn{
+    from{
+        opacity: 0;
+        transform: rotateX(-10deg);
+    }
+    to{
+        opacity: 1;
+        transform: rotateX(0);
+    }
+}
+
+body::before{
     content: "";
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url('../img/1.png');
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    filter: blur(10px);
-    z-index: -1;
-    opacity: 0.7;
-}
-
-/* Nav Section */
-.nav-container {
-    top: 0%;
-    position: absolute;
     width: 100%;
-    height: 15px;
-    padding: 15px 15px;
-    display: flex;
-    justify-content: space-between;
-    font-family: "Bodoni Moda SC", serif;
-    align-items: center;
-    background-color: rgba(101, 99, 99, 0.253);
-    box-shadow: 5px 5px 15px rgba(90, 90, 90, 0.4);
-    z-index: 100;
-}
-
-.nav-miniLogo {
-    width: 110px;
-    height: 50px;
-}
-
-.nav-links {
-    min-width: 30%;
-    padding: 0 40px;
-
-}
-
-.nav-links ul {
-    display: flex;
-    justify-content: center;
-    list-style-type: none;
-
-}
-
-
-.nav-links ul li {}
-
-
-.nav-links ul li a {
-    text-decoration: none;
-    color: white;
-    font-size: 12px;
-    padding: 17px 20px;
-    flex-wrap: nowrap;
-    transition: color .4s ease, background-color .4s ease;
-
-}
-
-.nav-links ul li a:hover {
-    background-color: rgb(32, 32, 32);
-    color: #6a6a6a;
-
+    height: 100%;
+    background: rgb(2,0,36);
+    background: linear-gradient(112deg, rgba(2,0,36,1) 0%, rgba(5,4,48,1) 0%, rgba(6,6,55,1) 13%, rgba(0,68,81,1) 100%);
+    z-index: -1;
 }
 
 hr {
@@ -162,9 +123,23 @@ hr {
     margin: auto;
 }
 
+.about_backplate{
+    background-color: rgba(255, 255, 255, 0.034);
+    width: 100%;
+    height: 300px;
+    border-radius: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
 .about_title {
+    margin-top: -5px;
     color: white;
     font-weight: bold;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 p {
@@ -175,13 +150,9 @@ p {
 
 hr {
     border: none;
-    /* Removes the default border */
     height: 1px;
-    /* You can adjust the height */
     background: none;
-    /* Ensures no background color */
     margin: 0;
-    /* Adjusts spacing around the hr if needed */
 }
 
 /* Team Section */
@@ -228,7 +199,6 @@ hr {
 
 .avatar {
     font-size: 100px;
-    /* Adjust size for the avatar */
     color: rgba(255, 255, 255, 0.7);
     margin-bottom: 20px;
 }
@@ -254,24 +224,6 @@ hr {
 
 }
 
-/* Responsive for small screens */
-@media screen and (max-width: 768px) {
-    .team_members {
-        flex-direction: column;
-        align-items: center;
-    }
-
-    .team_card {
-        width: 80%;
-        margin-bottom: 20px;
-    }
-
-    .nav-links ul li a {
-        font-size: 11px;
-
-
-    }
-}
 
 
 
@@ -315,27 +267,48 @@ input,
 textarea {
     width: 100%;
     padding: 10px;
+    background-color:transparent;
+    color: white;
     border: 1px solid #ddd;
     border-radius: 5px;
     font-size: 14px;
+    resize: none;
 }
 
 .submit_btn {
-    background-color: #007BFF;
+    display: block; 
+    justify-content: center;
+    align-items: center;
+    background-color: transparent;
+    border: 1px solid #ffffff;
     color: white;
+    width: 150px; 
+    height: 50px; 
     padding: 10px;
-    border: none;
-    border-radius: 5px;
+    margin: 0 auto; 
+    border-radius: 25px; 
     cursor: pointer;
     font-size: 16px;
+    text-align: center; 
+    line-height: 30px; 
 }
 
 .submit_btn:hover {
+    transition: 1s;
     background-color: #0056b3;
+    border: 1px solid #0056b3;
+}
+.footer-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(87, 87, 87);
+    height: 20px;
+    background-color: rgba(82, 82, 82, 0.248);
+    
 }
 
-
-/* Media Query */
+/* Responsive for small screens */
 @media screen and (max-width: 480px) {
     .nav-container {
         display: none;
@@ -349,5 +322,23 @@ textarea {
         color: white;
         max-width: 350px;
         text-align: center;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .team_members {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .team_card {
+        width: 80%;
+        margin-bottom: 20px;
+    }
+
+    .nav-links ul li a {
+        font-size: 11px;
+
+
     }
 }

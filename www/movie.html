@@ -18,15 +18,17 @@
 </head>
 
 <body>
+    <!-- Nav bar -->
     <nav class="nav-container">
         <div class="nav-miniLogo">
             <a href="landing.html"><img src="static/img/navLogo.png" class="nav-miniLogo" alt="logo"></a>
         </div>
         <div class="nav-links">
             <ul>
+                <li><a href="movie.html" style="color: gray; background-color: rgb(32, 32, 32);">FIND MOVIE</a></li>
                 <li><a href="random.html">RANDOM MOVIE</a></li>
                 <li><a href="about.html">ABOUT US</a></li>
-                <li><a href="contact.html">CONTACT</a></li>
+                <li><a href="about.html#contactID">CONTACT</a></li>
                 <li class="search-container">
                     <i class="fa fa-search" id="search-icon"></i>
                     <input type="text" placeholder="Search for movie..." id="search-input">
@@ -35,25 +37,40 @@
             </ul>
         </div>
     </nav>
-
+    <!-- Nav bar mobile -->
     <button id="navToggleBtn" class="open-btn" onclick="toggleNav()">☰</button>
 
     <nav id="sideNav" class="side-nav">
-        <div class="logo-text">logo</div>
         <div class="side-nav-links">
             <ul>
-                <li><a href="index.html">RANDOM MOVIE</a></li>
+                <a href="landing.html"><img src="static/img/logo.png" class="logo" alt="logo"></a>
+
+                <li><a href="movie.html">FIND MOVIE</a></li>
+                <li><a href="random.html">RANDOM MOVIE</a></li>
                 <li><a href="about.html">ABOUT US</a></li>
-                <li><a href="contact.html">CONTACT</a></li>
+                <li><a href="about.html#contactID">CONTACT</a></li>
+                <li class="bar-search-container">
+                    <i class="fa fa-search" id="bar-search-icon" ></i>
+                    <input type="text" placeholder="Search for movie..." id="bar-search-input">
+        
+                </li>  
             </ul>
         </div>
     </nav>
-
-    <main class="movie-main">
-        <div class="movie-header">
-            <h1>Movie Genie</h1>
+    <!-- Consult the Genie section -->
+        <div class="consult-genie-container">
+            <div id="consult-genie-text">Click to consult the Genie...</div>
+            <img id="lamp" src="static/img/lamp.png" alt="lamp">
+            <img id="shadow" src="static/img/shadow.png" alt="shadow">
+            <img id="gptLogo" src="static/img/logo.png" alt="logo">
+            <textarea id="gptInput" placeholder="Type your request to the Genie..."></textarea>
+            <h1 id="gptHeader">Our Genie is AI powered, so speak to it as you would a friend and let the Genie do the rest.</h1>
 
         </div>
+          
+        <hr>
+
+        <!-- Trending movies -->
         <div class="movie-section">
             <h1 class="movie-sec-trend">TRENDING NOW</h1>
             <div class="movie-cards">
@@ -76,14 +93,17 @@
             </div>
         </div>
     </main>
+    <!-- Footer -->
     <footer class="footer-container">
-        footer
+        MovieGenie.com · 2024 ·  <a href="about.html#contactID"> CONTACT US</a>
     </footer>
+    <!-- JS -->
+        
     <script>
+        //JS for mobile nav bar
         function toggleNav() {
             const sideNav = document.getElementById("sideNav");
             const navToggleBtn = document.getElementById("navToggleBtn");
-            // use class name rather than fixed width number.
             if (sideNav.style.width === "200px") {
                 sideNav.style.width = "0";
                 navToggleBtn.innerHTML = "☰";
@@ -94,12 +114,18 @@
             navToggleBtn.classList.toggle('open-btn');
             navToggleBtn.classList.toggle('close-btn');
         }
+        //JS for search bar animation
         document.addEventListener('DOMContentLoaded', function () {
             const searchIcon = document.getElementById('search-icon');
             const searchInput = document.getElementById('search-input');
-
+            const barSearchIcon = document.getElementById('bar-search-icon');
+            const barSearchInput = document.getElementById('bar-search-input');
             searchIcon.addEventListener('click', function () {
                 searchInput.classList.toggle('expanded');
+
+            });
+            barSearchIcon.addEventListener('click', function () {
+                barSearchInput.classList.toggle('expanded');
 
             });
 
@@ -107,11 +133,52 @@
                 this.placeholder = '';
             });
 
+            barSearchInput.addEventListener('focus', function () {
+                this.placeholder = '';
+            });
             searchInput.addEventListener('blur', function () {
                 if (this.value === '') {
                     this.placeholder = 'Search for movie...';
                 }
             });
+            barSearchInput.addEventListener('blur', function () {
+                if (this.value === '') {
+                    this.placeholder = 'Search for movie...';
+                }
+            });
+        });
+        document.addEventListener('DOMContentLoaded', function() {
+             const textarea = document.querySelector('.gpt-input-textarea');
+
+             textarea.addEventListener('input', function() {
+             this.style.height = 'auto'; 
+             this.style.height = (this.scrollHeight) + 'px'; 
+    });
+});
+        document.addEventListener('DOMContentLoaded', function () {
+            const lampIcon = document.getElementById('lamp');
+            const shadow = document.getElementById('shadow');
+            const genieText = document.getElementById('consult-genie-text');
+            const textBox = document.getElementById("gptInput")
+            const header = document.getElementById("gptHeader")
+            const logo = document.getElementById("gptLogo")
+
+            lampIcon.addEventListener('click', function () {
+                lampIcon.classList.toggle('activated');
+                shadow.classList.toggle('activated');
+                genieText.classList.toggle('activated');
+                textBox.classList.toggle('activated');  
+                header.classList.toggle('activated');    
+                logo.classList.toggle('activated');       
+            });
+        });
+
+        document.getElementById('lamp').addEventListener('click', function() {
+            const smoke = document.getElementById('smoke');
+            smoke.classList.add('active');
+            setTimeout(() => {
+                smoke.classList.remove('active');
+            }, 2000); 
         });
     </script>
 </body>

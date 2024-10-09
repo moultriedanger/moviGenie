@@ -1,12 +1,193 @@
+/*Body settings and animation for page load */
 html,
 body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    background-color: black;
     scroll-behavior: smooth;
 }
 
+body::before{
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgb(0,0,0);
+    background: linear-gradient(0deg, rgba(0,0,0,1) 0%, rgba(44,44,44,1) 100%);
+    z-index: -1;
+}
+
+*:not(html,body,input,#search-icon,#bar-search-icon,#lamp,#shadow,#consult-genie-text,#smoke,#gptInput,#gptLogo,#gptHeader){
+    animation:transitionIn 1.50s;
+}
+
+@keyframes transitionIn{
+    from{
+        opacity: 0;
+        transform: rotateX(-10deg);
+    }
+    to{
+        opacity: 1;
+        transform: rotateX(0);
+    }
+}
+
+
+/* Consult the Genie section + animation */
+
+
+.consult-genie-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin: 250px;
+}
+
+#consult-genie-text {  
+    
+    top: -170px;  
+    position: absolute;
+    font-size: 30px;
+    color: white;
+}
+#consult-genie-text.activated {
+    opacity: 0;
+    transition: opacity 2s ease;
+    pointer-events: none;
+}
+#lamp {
+    position: absolute; 
+    width: 300px;
+    height: 200px;
+    cursor:pointer;
+    z-index: 5;
+    opacity: 1;
+    top: -90px;
+    margin-left: 60px;
+    animation: animate 3s alternate infinite;
+
+}
+#lamp.activated{
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 2s ease;
+    cursor:default;
+}
+#shadow {
+    bottom: -250px;
+    position: absolute; 
+    width: 300px;
+    height: 200px;
+    z-index: 1;
+    opacity: 1;
+}
+#shadow.activated{
+    opacity: 0;
+    transition: opacity 2s ease;
+    pointer-events: none;
+}
+
+
+.smoke {
+    position: absolute;
+    width: 100px;
+    height: 100px;
+    background: url('smoke.png') no-repeat center center;
+    background-size: cover;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 1s ease-out;
+}
+
+.smoke.active {
+    opacity: 1;
+}
+
+
+/* Animations for lamp */
+
+@keyframes animate {
+    from {
+        transform: translateY(10px);
+    }
+    to {
+        transform: translateY(-20px);
+    }
+}
+@keyframes smokeFade {
+    0% {
+        opacity: 0; 
+    }
+  
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Input after animation for Genie */
+
+#gptInput {
+    margin-top: 20%;
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    padding: 15px;
+    border: 2px solid rgba(121, 121, 121, 0.548);
+    border-radius: 40px;
+    background-color:transparent;
+    color: white;
+    font-size: 1em;
+    resize: none;
+    outline: none;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    opacity: 0;
+    transition: opacity 5s;
+
+}
+#gptInput.activated{
+    opacity: 1;
+}
+
+
+#textarea::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+#gptHeader{
+    color: white;
+    opacity: 0;
+    position: absolute;
+    margin-top: 40%;
+    transition: opacity 5s;
+    color: rgba(255, 255, 255, 0.7);
+
+}
+#gptHeader.activated{
+    opacity: 1;
+}
+#gptLogo{
+    margin-top: -15%;
+    width: 250px;
+    height:250px;
+    opacity: 0;
+    transition: opacity 5s;
+    position: absolute;
+}
+#gptLogo.activated{
+    opacity: 1;
+}
+
+
+hr{
+    width: 90%;
+    margin: 20px auto;
+    border: 1px solid #ccc; 
+}
+
+/* Movie cards for trending movie*/
 .movie-main {
     margin-bottom: 100px;
 }
@@ -14,7 +195,6 @@ body {
 .movie-header {
     color: white;
     height: 50vh;
-    background-color: darkolivegreen;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -40,13 +220,14 @@ body {
 }
 
 .movie-cards {
-    width: 90%;
+    width: 100%;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
 .movie_card {
+    cursor: pointer;
     width: 250px;
     height: 350px;
     display: flex;
@@ -68,7 +249,27 @@ body {
 }
 
 .footer-container {
-    color: white;
-    height: 200px;
-    background-color: rgb(82, 82, 82);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgb(87, 87, 87);
+    height: 20px;
+    background-color: rgba(82, 82, 82, 0.248);
+}
+
+.footer-container a {
+    text-decoration: underline;
+    color:rgb(87, 87, 87);
+}
+
+  /* Correct dimensions for mobile */
+  @media (max-width: 480px) {
+  
+    #gptHeader{
+        width: 450px;
+    }
+    #consult-genie-text{
+        width: 330px;
+    }
+    
 }
