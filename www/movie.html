@@ -50,55 +50,63 @@
                 <li><a href="about.html">ABOUT US</a></li>
                 <li><a href="about.html#contactID">CONTACT</a></li>
                 <li class="bar-search-container">
-                    <i class="fa fa-search" id="bar-search-icon" ></i>
+                    <i class="fa fa-search" id="bar-search-icon"></i>
                     <input type="text" placeholder="Search for movie..." id="bar-search-input">
-        
-                </li>  
+
+                </li>
             </ul>
         </div>
     </nav>
     <!-- Consult the Genie section -->
-        <div class="consult-genie-container">
+    <div class="consult-genie-container">
+        <div class="pre-animation">
             <div id="consult-genie-text">Click to consult the Genie...</div>
             <img id="lamp" src="static/img/lamp.png" alt="lamp">
             <img id="shadow" src="static/img/shadow.png" alt="shadow">
+        </div>
+
+        <div class="post-animation">
             <img id="gptLogo" src="static/img/logo.png" alt="logo">
             <textarea id="gptInput" placeholder="Type your request to the Genie..."></textarea>
-            <h1 id="gptHeader">Our Genie is AI powered, so speak to it as you would a friend and let the Genie do the rest.</h1>
-
+            <h1 id="gptHeader">Our Genie is AI powered, so speak to it as you would a friend and let the Genie do the
+                rest.
         </div>
-          
-        <hr>
 
-        <!-- Trending movies -->
-        <div class="movie-section">
-            <h1 class="movie-sec-trend">TRENDING NOW</h1>
-            <div class="movie-cards">
-                <div class="movie_card">
-                </div>
-                <div class="movie_card">
-                </div>
-                <div class="movie_card">
-                </div>
-                <div class="movie_card">
-                </div>
-                <div class="movie_card">
-                </div>
-                <div class="movie_card">
-                </div>
-                <div class="movie_card">
-                </div>
-                <div class="movie_card">
-                </div>
+        </h1>
+
+    </div>
+
+    <hr>
+
+    <!-- Trending movies -->
+    <div class="movie-section">
+        <h1 class="movie-sec-trend">TRENDING NOW</h1>
+        <div class="movie-cards">
+            <div class="movie_card">
+            </div>
+            <div class="movie_card">
+            </div>
+            <div class="movie_card">
+            </div>
+            <div class="movie_card">
+            </div>
+            <div class="movie_card">
+            </div>
+            <div class="movie_card">
+            </div>
+            <div class="movie_card">
+            </div>
+            <div class="movie_card">
             </div>
         </div>
+    </div>
     </main>
     <!-- Footer -->
     <footer class="footer-container">
-        MovieGenie.com · 2024 ·  <a href="about.html#contactID"> CONTACT US</a>
+        MovieGenie.com · 2024 · <a href="about.html#contactID"> CONTACT US</a>
     </footer>
     <!-- JS -->
-        
+
     <script>
         //JS for mobile nav bar
         function toggleNav() {
@@ -147,14 +155,14 @@
                 }
             });
         });
-        document.addEventListener('DOMContentLoaded', function() {
-             const textarea = document.querySelector('.gpt-input-textarea');
+        document.addEventListener('DOMContentLoaded', function () {
+            const textarea = document.querySelector('.gpt-input-textarea');
 
-             textarea.addEventListener('input', function() {
-             this.style.height = 'auto'; 
-             this.style.height = (this.scrollHeight) + 'px'; 
-    });
-});
+            textarea.addEventListener('input', function () {
+                this.style.height = 'auto';
+                this.style.height = (this.scrollHeight) + 'px';
+            });
+        });
         document.addEventListener('DOMContentLoaded', function () {
             const lampIcon = document.getElementById('lamp');
             const shadow = document.getElementById('shadow');
@@ -167,18 +175,18 @@
                 lampIcon.classList.toggle('activated');
                 shadow.classList.toggle('activated');
                 genieText.classList.toggle('activated');
-                textBox.classList.toggle('activated');  
-                header.classList.toggle('activated');    
-                logo.classList.toggle('activated');       
+                textBox.classList.toggle('activated');
+                header.classList.toggle('activated');
+                logo.classList.toggle('activated');
             });
         });
 
-        document.getElementById('lamp').addEventListener('click', function() {
+        document.getElementById('lamp').addEventListener('click', function () {
             const smoke = document.getElementById('smoke');
             smoke.classList.add('active');
             setTimeout(() => {
                 smoke.classList.remove('active');
-            }, 2000); 
+            }, 2000);
         });
     </script>
 </body>
