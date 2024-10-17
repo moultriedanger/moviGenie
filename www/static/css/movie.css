@@ -1,4 +1,3 @@
-/*Body settings and animation for page load */
 html,
 body {
     margin: 0;
@@ -279,25 +278,118 @@ hr {
 
 .movie_card {
     cursor: pointer;
-    width: 250px;
+    width: 260px;
+    /* Width of the movie card */
     height: 350px;
+    /* Height of the movie card */
     display: flex;
     justify-content: center;
+    align-items: flex-end;
+    /* Align the overlay to the bottom */
+    position: relative;
+    /* For the overlay to be positioned over the image */
     background-color: rgba(121, 121, 121, 0.517);
+    /* Base background color */
     border-radius: 10px;
     overflow: hidden;
-    padding: 20px;
-    box-shadow: 4px 4px 8px rgb(255, 255, 255);
+    /* Prevent overflow of content */
+    box-shadow: 4px 4px 8px rgba(255, 255, 255, 0.2);
+    /* Light shadow */
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+    /* Smooth transitions */
     margin: 10px 20px;
-
-
+    /* Margin around the card */
 }
 
 .movie_card:hover {
     transform: scale(1.05);
+    /* Slightly enlarge on hover */
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+    /* Darker shadow on hover */
 }
+
+.movie_card img {
+    width: 100%;
+    /* Full width of the card */
+    height: 100%;
+    /* Full height of the card */
+    object-fit: cover;
+    /* Cover the area without distortion */
+}
+
+/* Overlay for the details */
+.movie_card .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(16px) saturate(120%);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 20px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.movie_card:hover .overlay {
+    opacity: 1;
+    /* Show overlay on hover */
+}
+
+.movie_card .overlay h1 {
+    margin: 0 0 10px 0;
+    /* Space below the title */
+    font-size: 1.5em;
+    /* Title size */
+    font-weight: bold;
+    /* Title weight */
+}
+
+.movie_card .overlay h2 {
+    margin: 5px 0;
+    /* Space between rating and release date */
+    font-size: 1em;
+    /* Rating and date size */
+    opacity: 0.8;
+    /* Slightly faded for distinction */
+}
+
+.movie_card .overlay .rating {
+    display: flex;
+    /* Flexbox for stars */
+    gap: 0.25em;
+    /* Space between stars */
+    margin-bottom: 10px;
+    /* Space below rating */
+}
+
+.movie_card .overlay .rating i {
+    color: #e3c414;
+    /* Color for filled stars */
+}
+
+.movie_card .overlay .rating span {
+    margin-left: 0.25em;
+    /* Space before rating text */
+}
+
+.movie_card .overlay .desc {
+    line-height: 1.5;
+    /* Line height for readability */
+    margin-bottom: 1em;
+    /* Space below description */
+    font-size: 0.9em;
+    /* Description size */
+}
+
+
+
 
 .footer-container {
     display: flex;
