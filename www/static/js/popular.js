@@ -1,44 +1,41 @@
-async function get_json(){
+//ajax teplate taken from https://medium.com/@JavaScript-World/mastering-ajax-in-javascript-a-beginners-guide-with-examples-6111aa53e690
+const xhr = new XMLHttpRequest();
 
-    let response = await fetch('data.json');
-    console.log('no error');
-
-    let movies = await response.json();
-
-    for (movie of movies){
-        let movie_card = document.createElement("div");
-    movie_card.className = "movie-card";
-
-    //title
-    let title = document.createElement('h1')
-    title.textContent = movie.original_title
-    movie_card.appendChild(title)
-
-    //poster
-    let poster = document.createElement('img')
-    // popularity.textContent = "Rating: " + movie.vote_average
-    movie_card.appendChild(poster)
-
-    // img.src = 'https://example.com/image.jpg'; 
-    // img.alt = 'An example image';              
-    // img.width = 100;                           
-    // mg.height = 100; 
-
-    //description
-    let release_date = document.createElement('h2')
-    release_date.textContent = "Release date: " + movie.release_date
-    movie_card.appendChild(release_date)
-
-    //Rating
-    let popularity= document.createElement('h2')
-    popularity.textContent = "Rating: " + movie.vote_average
-    movie_card.appendChild(popularity)
-    
-    let movie_div = document.getElementById("movie-collection");
-
-    movie_div.appendChild(movie_card);
-
+xhr.onreadystatechange = function() {
+    if (xhr.readyState === 4 && xhr.status === 200) {
+      const movies = JSON.parse(xhr.responseText);
+      display_movies(movies);
     }
+  };
+  xhr.open("GET", "http://127.0.0.1:5000/movies", true);
+  xhr.send();
 
+function display_movies(movies){
+
+    const movieContainer = document.querySelector('.movie-cards');
+
+    for (let i = 0; i < 10; i++){
+        let movieCard = document.createElement('div');
+        movieCard.classList.add('movie_card');
+
+        //Poster
+        let posterLink = movies[i]['poster_path'];
+        let moviePoster = document.createElement('img')
+        moviePoster.src = posterLink;
+
+        //Title
+        // let title = document.createElement('p')
+        // title.textContent = movies[i]['title']
+        // movieCard.appendChild(title)
+
+        // // //Rating
+        // let popularity= document.createElement('p')
+        // popularity.textContent = "Rating: " + movies[i]['vote_average']
+        // movieCard.appendChild(popularity)
+
+
+        movieCard.appendChild(moviePoster)
+
+        movieContainer.appendChild(movieCard);
+    }
 }
-get_json();
