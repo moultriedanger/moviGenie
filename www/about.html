@@ -113,7 +113,7 @@
      <div id="contactID"></div>
     <div class="contact_container">
         <h2 class="contact_title">Contact Us</h2>
-        <form action="/submit-form" method="POST" class="contact_form">
+        <form id="contactForm" action="http://127.0.0.1:5000/contact" method="POST" class="contact_form">
             <div class="form_group">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required>
@@ -136,6 +136,46 @@
     <!-- JS Functions -->
         
     <script>
+        document.querySelector('.submit_btn').addEventListener('click', function(event) {
+            event.preventDefault();
+        
+            const form = document.getElementById('contactForm');
+            const formData = new FormData(form);
+            const data = {
+                name: formData.get('name'),
+                email: formData.get('email'),
+                comment: formData.get('message')  
+            };
+        
+            fetch('http://127.0.0.1:5000/contact', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            })
+            .then(response => response.text())
+            .then(data => {
+                alert('Email sent successfully');
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Failed to send email');
+            });
+        });
+        // function contactSubmit() {
+        //     const submit = document.getElementsByClassName("submit_btn")[0];
+        //     const email = document.getElementById("email");
+        //     const name = document.getElementById("name");
+        //     const message = document.getElementById("message");
+
+        //     submit.addEventListener('click', function() {
+
+        //         email.value = '';
+        //         name.value = '';
+        //         message.value = '';
+        //     });
+        // }
         //Trigger function for mobile
         function toggleNav() {
             const sideNav = document.getElementById("sideNav");
@@ -154,6 +194,7 @@
     }      
     //Search bar animation       
     document.addEventListener('DOMContentLoaded', function () {
+            contactSubmit();
             const searchIcon = document.getElementById('search-icon');
             const searchInput = document.getElementById('search-input');
             const barSearchIcon = document.getElementById('bar-search-icon');
