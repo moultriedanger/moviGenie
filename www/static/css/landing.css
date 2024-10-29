@@ -5,8 +5,8 @@ html,body{
     overflow-x:hidden;
     overflow-y:hidden;
     scroll-behavior: smooth;
-    font-family: 'Bodoni Moda SC';
-    font-weight: 400;
+    font-family: "Bodoni Moda SC", serif;
+
    }
   
 *:not(html,body,input,#search-icon,#bar-search-icon ){
