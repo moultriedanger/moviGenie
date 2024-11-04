@@ -4,11 +4,10 @@ const xhr = new XMLHttpRequest();
 xhr.onreadystatechange = function () {
   if (xhr.readyState === 4 && xhr.status === 200) {
     const movies = JSON.parse(xhr.responseText);
-    console.log(movies)
     display_movies(movies);
   }
 };
-xhr.open("GET", "http://127.0.0.1:5000/movies", true);
+xhr.open("GET", "http://127.0.0.1/movies", true);
 xhr.send();
 
 function display_movies(movies) {
@@ -20,6 +19,11 @@ function display_movies(movies) {
   for (let i = 0; i < Math.min(movies.length, 10); i++) { // Ensure not to exceed the number of available movies
     let movieCard = document.createElement('div');
     movieCard.classList.add('movie_card');
+
+     // Set up click event to navigate to landingmovie.html
+     movieCard.addEventListener('click', () => {
+      window.location.href = `landingmovie.html?id=${movies[i]['id']}`;
+    });
 
     // Poster
     let posterLink = movies[i]['poster_path'];
@@ -86,3 +90,4 @@ function display_movies(movies) {
     movieContainer.appendChild(movieCard);
   }
 }
+

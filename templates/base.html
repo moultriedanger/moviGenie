@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Base Title{% endblock %}</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/overlay.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/landingmovie.css') }}">
+</head>
+
+<body>
+    <nav class="nav-container">
+        <div class="nav-miniLogo">
+            <a href="{{ url_for('landing') }}"><img src="{{ url_for('static', filename='img/navLogo.png') }}" class="nav-miniLogo" alt="logo"></a>
+        </div>
+        <div class="nav-links">
+            <ul>
+                <li><a href="{{ url_for('random') }}">RANDOM MOVIE</a></li>
+                <li><a href="{{ url_for('about') }}">ABOUT US</a></li>
+                <li><a href="{{ url_for('contact') }}">CONTACT</a></li>
+                <li class="search-container">
+                    <i class="fa fa-search" id="search-icon"></i>
+                    <input type="text" placeholder="Search for movie..." id="search-input">
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Nav bar mobile -->
+    <button id="navToggleBtn" class="open-btn" onclick="toggleNav()">☰</button>
+
+    <nav id="sideNav" class="side-nav">
+        <div class="side-nav-links">
+            <ul>
+                <a href="{{ url_for('landing') }}"><img src="{{ url_for('static', filename='img/logo.png') }}" class="logo" alt="logo"></a>
+                <li><a href="{{ url_for('movie') }}">FIND MOVIE</a></li>
+                <li><a href="{{ url_for('random') }}">RANDOM MOVIE</a></li>
+                <li><a href="{{ url_for('about') }}">ABOUT US</a></li>
+                <li><a href="{{ url_for('contact') }}#contactID">CONTACT</a></li>
+                <li class="bar-search-container">
+                    <i class="fa fa-search" id="bar-search-icon"></i>
+                    <input type="text" placeholder="Search for movie..." id="bar-search-input">
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+    {% block content %}{% endblock %}
+
+    <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
+</body>
+
+</html>
