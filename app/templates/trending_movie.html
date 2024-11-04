@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <title>Movie Section</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/landingmovie.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/nav.css') }}"
+    />
+  </head>
+
+  <body>
+    y>
+    <!-- Nav bar -->
+    <nav class="nav-container">
+      <div class="nav-miniLogo">
+        <a href="landing.html">
+          <img
+            src="{{ url_for('static', filename='img/navLogo.png') }}"
+            class="nav-miniLogo"
+            alt="logo"
+          />
+        </a>
+      </div>
+      <div class="nav-links">
+        <ul>
+          <li>
+            <a
+              href="movie.html"
+              style="color: gray; background-color: rgb(32, 32, 32)"
+              >FIND MOVIE</a
+            >
+          </li>
+          <li><a href="random.html">RANDOM MOVIE</a></li>
+          <li><a href="about.html">ABOUT US</a></li>
+          <li><a href="about.html#contactID">CONTACT</a></li>
+          <li class="search-container">
+            <i class="fa fa-search" id="search-icon"></i>
+            <input
+              type="text"
+              placeholder="Search for movie..."
+              id="search-input"
+            />
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <div class="movie-info">
+      <div class="image-container">
+        <img src="{{backdrop_path}}" alt="Movie Poster" />
+        <div class="overlay">
+          <div class="movie-details">
+            <h2>{{movie_title}}</h2>
+            <p>{{movie_description}}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="related-movies">
+      <h2>Related:</h2>
+      <div class="list-container">
+        <div class="list-related-movies">
+          <img src="{{backdrop_path}}" alt="Movie Poster" />
+          <img src="{{backdrop_path}}" alt="Movie Poster" />
+          <img src="{{backdrop_path}}" alt="Movie Poster" />
+          <img src="{{backdrop_path}}" alt="Movie Poster" />
+          <img src="{{backdrop_path}}" alt="Movie Poster" />
+          <img src="{{backdrop_path}}" alt="Movie Poster" />
+          <img src="{{backdrop_path}}" alt="Movie Poster" />
+          <img src="{{backdrop_path}}" alt="Movie Poster" />
+          <img src="{{backdrop_path}}" alt="Movie Poster" />
+        </div>
+      </div>
+    </div>
+
+    <div class="reviews-section">
+      <h2>Reviews:</h2>
+      <div class="reviews-list">
+        <div class="review-item">
+          <div class="user-info">
+            <h3>John Doe</h3>
+            <div class="star-rating">★★★★☆</div>
+          </div>
+          <p>
+            This movie was fantastic! The story was compelling, and the acting
+            was top-notch.
+          </p>
+        </div>
+
+        <div class="review-item">
+          <div class="user-info">
+            <h3>Jane Smith</h3>
+            <div class="star-rating">★★★☆☆</div>
+          </div>
+          <p>Great visual effects, but the plot could have been stronger.</p>
+        </div>
+
+        <div class="review-item">
+          <div class="user-info">
+            <h3>Chris Lee</h3>
+            <div class="star-rating">★★★★★</div>
+          </div>
+          <p>Amazing movie! It had everything I love in a blockbuster.</p>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    //JS for search bar animation
+    document.addEventListener("DOMContentLoaded", function () {
+      const searchIcon = document.getElementById("search-icon");
+      const searchInput = document.getElementById("search-input");
+      const barSearchIcon = document.getElementById("bar-search-icon");
+      const barSearchInput = document.getElementById("bar-search-input");
+      searchIcon.addEventListener("click", function () {
+        searchInput.classList.toggle("expanded");
+      });
+      barSearchIcon.addEventListener("click", function () {
+        barSearchInput.classList.toggle("expanded");
+      });
+
+      searchInput.addEventListener("focus", function () {
+        this.placeholder = "";
+      });
+
+      barSearchInput.addEventListener("focus", function () {
+        this.placeholder = "";
+      });
+      searchInput.addEventListener("blur", function () {
+        if (this.value === "") {
+          this.placeholder = "Search for movie...";
+        }
+      });
+      barSearchInput.addEventListener("blur", function () {
+        if (this.value === "") {
+          this.placeholder = "Search for movie...";
+        }
+      });
+    });
+  </script>
+</html>

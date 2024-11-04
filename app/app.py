@@ -1,4 +1,4 @@
-from flask import Flask, jsonify, request
+from flask import Flask, render_template, jsonify, request
 import json
 from flask_mail import Mail, Message
 from flask_cors import CORS
@@ -24,23 +24,46 @@ def movies():
     
     return jsonify(data)  
 
-@app.route('/contact', methods=['POST'])
-def contact_form():
-    try:
-        data = request.get_json()
-        name = data.get("name")
-        email = data.get("email")
-        message = data.get("comment")
+@app.route('/trending_movie/<int:movie_id>')
+def make_movie_page(movie_id):
 
-        msg = Message(subject="Contact Form Submission",
-                      sender=app.config['MAIL_USERNAME'],
-                      recipients=['MovieGenie4@gmail.com']) 
-        msg.body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
-        mail.send(msg)
-        return "Email sent successfully", 200
+    #open the file
+    with open('../www/data.json', 'r') as file:
+        movies = json.load(file)
+
+    movie = next((m for m in movies if m["id"] == movie_id), None)
+
+    movie_title = movie["title"]
+    movie_description = movie["overview"]
+
+    first = 'https://image.tmdb.org/t/p/w1280'
     
-    except Exception as e:
-        return str(e), 500
+    backdrop_path = first + movie.get("backdrop_path", "")
+   
+    #render template
+    return render_template('trending_movie.html',
+                           movie_title = movie_title,
+                           movie_description= movie_description,
+                           backdrop_path = backdrop_path)
+
+
+# @app.route('/contact', methods=['POST'])
+# def contact_form():
+#     try:
+#         data = request.get_json()
+#         name = data.get("name")
+#         email = data.get("email")
+#         message = data.get("comment")
+
+#         msg = Message(subject="Contact Form Submission",
+#                       sender=app.config['MAIL_USERNAME'],
+#                       recipients=['MovieGenie4@gmail.com']) 
+#         msg.body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
+#         mail.send(msg)
+#         return "Email sent successfully", 200
+    
+#     except Exception as e:
+#         return str(e), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
