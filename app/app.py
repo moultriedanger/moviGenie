@@ -27,7 +27,7 @@ def landing():
 
 @app.route('/lan')
 def lan():
-    return render_template('lan.html')
+    return render_template('.html')
 
 @app.route('/movies')
 def movies():
@@ -62,6 +62,7 @@ def make_movie_page(movie_id):
                            movie_title = movie_title,
                            movie_description= movie_description,
                            backdrop_path = backdrop_path, other_movies = other_movies)
+
 
 
 
