@@ -1,11 +1,23 @@
-from flask import Flask, jsonify, render_template
+from flask import Flask, render_template, jsonify, request
 import json
-
+from flask_mail import Mail, Message 
 from flask_cors import CORS
+
 app = Flask(__name__)
-app = Flask(__name__, template_folder='../templates')
+# app = Flask(__name__, template_folder='../templates')
 
 cors = CORS(app)
+mail = Mail(app)
+
+app.config['MAIL_USE_SSL']=True
+app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+app.config['MAIL_PORT'] = 465
+app.config['MAIL_USERNAME'] = 'MovieGenie4@gmail.com'
+app.config['MAIL_PASSWORD'] = 'mmes ewxe hueo jtpe'
+app.config['MAIL_USE_TLS'] = False
+
+mail = Mail(app)
+
 # http://127.0.0.1/landing
 
 @app.route('/landing')
@@ -18,25 +30,57 @@ def lan():
 
 @app.route('/movies')
 def movies():
-
     with open('../www/data.json', 'r') as file:
-        data = json.load(file)  # Load JSON data into a Python object
+        data = json.load(file) 
     
-    return jsonify(data)   # Return the JSON response
+    return jsonify(data)  
 
-@app.route('/movies/<int:movie_id>')
-def get_movie(movie_id):
+@app.route('/trending_movie/<int:movie_id>')
+def make_movie_page(movie_id):
+
+    #open the file
     with open('../www/data.json', 'r') as file:
-        data = json.load(file)  # Load JSON data into a Python object
+        movies = json.load(file)
 
-    # Find the movie by ID
-    movie = next((movie for movie in data if movie['id'] == movie_id), None)
+    movie = next((m for m in movies if m["id"] == movie_id), None)
+
+    other_movies = [movie for movie in movies if movie["id"] != movie_id]
     
-    if movie:
-        return jsonify(movie)  # Return the JSON response for the specific movie
-    else:
-        return jsonify({'error': 'Movie not found'}), 404  # Return an error if movie not found
+    other_movie_posters = [movie["poster_path"] for movie in movies if movie["id"] != movie_id]
 
+
+    movie_title = movie["title"]
+    movie_description = movie["overview"]
+
+    first = 'https://image.tmdb.org/t/p/w1280'
+    
+    backdrop_path = first + movie.get("backdrop_path", "")
+   
+    #render template
+    return render_template('trending_movie.html',
+                           movie_title = movie_title,
+                           movie_description= movie_description,
+                           backdrop_path = backdrop_path, other_movies = other_movies)
+
+
+
+# @app.route('/contact', methods=['POST'])
+# def contact_form():
+#     try:
+#         data = request.get_json()
+#         name = data.get("name")
+#         email = data.get("email")
+#         message = data.get("comment")
+
+#         msg = Message(subject="Contact Form Submission",
+#                       sender=app.config['MAIL_USERNAME'],
+#                       recipients=['MovieGenie4@gmail.com']) 
+#         msg.body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
+#         mail.send(msg)
+#         return "Email sent successfully", 200
+    
+#     except Exception as e:
+#         return str(e), 500
 
 if __name__ == '__main__':
     app.run(debug=True)

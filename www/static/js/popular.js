@@ -8,7 +8,12 @@ xhr.onreadystatechange = function () {
   }
 };
 xhr.open("GET", "http://127.0.0.1/movies", true);
+xhr.open("GET", "/movies", true);
 xhr.send();
+
+// Without gunicorn:
+// xhr.open("GET", "http://127.0.0.1:5000/movies", true);
+// xhr.send();
 
 function display_movies(movies) {
   const movieContainer = document.querySelector('.movie-cards');
@@ -20,11 +25,12 @@ function display_movies(movies) {
     let movieCard = document.createElement('div');
     movieCard.classList.add('movie_card');
 
-     // Set up click event to navigate to landingmovie.html
-     movieCard.addEventListener('click', () => {
-      window.location.href = `landingmovie.html?id=${movies[i]['id']}`;
-    });
-
+    //Get poster id and add onclidk to the movieCard
+    let posterId = movies[i]['id']
+    
+    let link = document.createElement('a');
+    link.href = `/trending_movie/${posterId}`;
+    
     // Poster
     let posterLink = movies[i]['poster_path'];
     let moviePoster = document.createElement('img');
@@ -69,7 +75,7 @@ function display_movies(movies) {
     // Description (assuming you have a description field)
     let description = document.createElement('p');
     description.classList.add('desc'); // Add class for styling
-
+   
     // Limit the description length to 100 characters
     const maxLength = 100;
     let overview = movies[i]['overview'] || 'No description available.';
@@ -81,13 +87,14 @@ function display_movies(movies) {
     description.textContent = overview; // Set the limited description
     overlay.appendChild(description);
 
-
     // Append poster and overlay to movie card
     movieCard.appendChild(moviePoster);
     movieCard.appendChild(overlay);
 
+    link.appendChild(movieCard);
+
     // Append the movie card to the container
-    movieContainer.appendChild(movieCard);
+    movieContainer.appendChild(link);
   }
 }
 

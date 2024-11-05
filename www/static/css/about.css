@@ -5,6 +5,9 @@ body {
     padding: 0;
     background-color: black;
     position: relative;
+    font-family: "Arsenal SC", sans-serif;
+    font-weight: 400;
+    font-size: 13px;
    
 }
 html,body{
@@ -134,12 +137,11 @@ hr {
     align-items: center;
 }
 .about_title {
-    margin-top: -5px;
     color: white;
-    font-weight: bold;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-size: 20px;
 }
 
 p {
