@@ -14,8 +14,9 @@ html,body{
     overflow-x: hidden;
 }
 
-*:not(html,body,input,#search-icon,#bar-search-icon){
+body{
     animation:transitionIn 1.50s;
+
 }
 
 @keyframes transitionIn{
@@ -342,7 +343,16 @@ textarea {
     .nav-container {
         display: none;
     }
-
+    .contact_container{
+        width: 100%;
+    }
+    #contactForm{
+        width: 100%;
+    }
+    input,
+    textarea {
+        width: 100%;
+    }
     .open-btn {
         display: block;
     }

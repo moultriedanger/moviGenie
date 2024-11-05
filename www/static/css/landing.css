@@ -9,8 +9,9 @@ html,body{
 
    }
   
-*:not(html,body,input,#search-icon,#bar-search-icon ){
-  animation:transitionIn 1.50s;
+   body{
+    animation:transitionIn 1.50s;
+
 }
 
 @keyframes transitionIn{
