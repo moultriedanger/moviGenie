@@ -61,7 +61,7 @@ def contact_form():
         
          msg = Message(subject="Contact Form Submission",
                        sender=app.config['MAIL_USERNAME'],
-                       recipients=['MovieGenie4@gmail.com']) 
+                       recipients=[config.MAIL_USERNAME]) 
          msg.body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
          mail.send(msg)
          return "Email sent successfully", 200
