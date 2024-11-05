@@ -35,123 +35,153 @@
   </head>
 
   <body>
-
     <!-- Nav bar -->
     <nav class="nav-container">
       <div class="nav-miniLogo">
-          <a href="landing.html"><img src="{{ url_for('static', filename='img/navLogo.png') }}" class="nav-miniLogo" alt="logo"></a>
+        <a href="landing.html"
+          ><img
+            src="{{ url_for('static', filename='img/navLogo.png') }}"
+            class="nav-miniLogo"
+            alt="logo"
+        /></a>
       </div>
       <div class="nav-links">
-          <ul>
-              <li><a href="{{  url_for('landing') }}" style="color: gray; background-color: rgb(32, 32, 32);">FIND MOVIE</a></li>
-              <li><a href="random.html">RANDOM MOVIE</a></li>
-              <li><a href="about.html">ABOUT US</a></li>
-              <li><a href="about.html#contactID">CONTACT</a></li>
-              <li class="search-container">
-                  <i class="fa fa-search" id="search-icon"></i>
-                  <input type="text" placeholder="Search for movie..." id="search-input">
-
-              </li>
-          </ul>
+        <ul>
+          <li>
+            <a
+              href="{{  url_for('landing') }}"
+              style="color: gray; background-color: rgb(32, 32, 32)"
+              >FIND MOVIE</a
+            >
+          </li>
+          <li><a href="random.html">RANDOM MOVIE</a></li>
+          <li><a href="about.html">ABOUT US</a></li>
+          <li><a href="about.html#contactID">CONTACT</a></li>
+          <li class="search-container">
+            <i class="fa fa-search" id="search-icon"></i>
+            <input
+              type="text"
+              placeholder="Search for movie..."
+              id="search-input"
+            />
+          </li>
+        </ul>
       </div>
-  </nav>
-  <!-- Nav bar mobile -->
-  <button id="navToggleBtn" class="open-btn" onclick="toggleNav()">☰</button>
+    </nav>
+    <!-- Nav bar mobile -->
+    <button id="navToggleBtn" class="open-btn" onclick="toggleNav()">☰</button>
 
-  <nav id="sideNav" class="side-nav">
+    <nav id="sideNav" class="side-nav">
       <div class="side-nav-links">
-          <ul>
-              <a href="landing.html"><img src="{{ url_for('static', filename='img/navLogo.png') }}" class="logo" alt="logo"></a>
+        <ul>
+          <a href="landing.html"
+            ><img
+              src="{{ url_for('static', filename='img/navLogo.png') }}"
+              class="logo"
+              alt="logo"
+          /></a>
 
-              <li><a href="movie.html">FIND MOVIE</a></li>
-              <li><a href="random.html">RANDOM MOVIE</a></li>
-              <li><a href="about.html">ABOUT US</a></li>
-              <li><a href="about.html#contactID">CONTACT</a></li>
-              <li class="bar-search-container">
-                  <i class="fa fa-search" id="bar-search-icon"></i>
-                  <input type="text" placeholder="Search for movie..." id="bar-search-input">
-
-              </li>
-          </ul>
+          <li><a href="movie.html">FIND MOVIE</a></li>
+          <li><a href="random.html">RANDOM MOVIE</a></li>
+          <li><a href="about.html">ABOUT US</a></li>
+          <li><a href="about.html#contactID">CONTACT</a></li>
+          <li class="bar-search-container">
+            <i class="fa fa-search" id="bar-search-icon"></i>
+            <input
+              type="text"
+              placeholder="Search for movie..."
+              id="bar-search-input"
+            />
+          </li>
+        </ul>
       </div>
-  </nav>
+    </nav>
 
-
-
-    
-    
     <div class="movie-info">
       <div class="image-container">
         <img src="{{backdrop_path}}" alt="Movie Poster" />
-          <div class="overlay">
-              <div class="movie-details">
-                  <h1>{{movie_title}}</h1>
-                  <div class="movie-info-span">
-                      <span class="info-item">2024</span> | 
-                      <span class="info-item age-res">18+</span> | 
-                      <span class="info-item">120 min</span> | 
-                      <span class="info-item">Action, Adventure</span>
-                  </div>
-                  <p>{{movie_description}}</p>
-                  <div class="button-container">
-                      <button class="play-button"><i class="fa-solid fa-play"></i> Play Movie</button>
-                      <button class="add-to-my-list"><i class="fa-solid fa-plus"></i></button>
-                      <button class="trailer-btn"><i class="fa-solid fa-film"></i></button>
-                  </div>
-              </div>
+        <div class="overlay">
+          <div class="movie-details">
+            <h1>{{movie_title}}</h1>
+            <div class="movie-info-span">
+              <span class="info-item">2024</span> |
+              <span class="info-item age-res">18+</span> |
+              <span class="info-item">120 min</span> |
+              <span class="info-item">Action, Adventure</span>
+            </div>
+            <p>{{movie_description}}</p>
+            <div class="button-container">
+              <button class="play-button">
+                <i class="fa-solid fa-play"></i> Play Movie
+              </button>
+              <button class="add-to-my-list">
+                <i class="fa-solid fa-plus"></i>
+              </button>
+              <button class="trailer-btn">
+                <i class="fa-solid fa-film"></i>
+              </button>
+            </div>
           </div>
+        </div>
       </div>
-  </div>
+    </div>
 
-
-<div class="related-movies">
-  <h2>Related:</h2>
-  <div class="list-container">
+    <div class="related-movies">
+      <h2>Related:</h2>
       <div class="list-container">
+        <div class="list-container">
           <div class="list-container">
-              <div class="list-related-movies" id="scroll-container">
-                  <button class="scroll-button left" onclick="scrollLeftMovies()">&#10094;</button>
+            <div class="list-related-movies" id="scroll-container">
+              <button class="scroll-button left" onclick="scrollLeftMovies()">
+                &#10094;
+              </button>
 
-                  <div id="movie-scroll-area" class="movie-cards">
-                    {% for movie in other_movies %}
-                    <div class="movie_card"  onclick="window.location.href='{{ movie.id }}'">
-                      <img src="https://image.tmdb.org/t/p/w1280{{ movie.poster_path }}" alt="Movie Poster" />
-                    
-                      <div class="overlay">
-                        <h1>{{ movie.title }}</h1>
-                        <h2>Rating: {{ movie.vote_average}}</h2>
-                        <div class="rating">
-                          {% set userRating = (movie.vote_average / 2) | round(0, 'floor') %}
-                          {% for star in range(1, 6) %}
-                            <i class="{{ 'fas fa-star' if star <= userRating else 'far fa-star' }}"></i>
-                          {% endfor %}
-                          <span>{{ userRating }}/5</span>
-                        
-                      </div>
-                      <p>Release Date: {{ movie.release_date }}  </p>
-                        <!-- Description -->
-                        <p class="desc">
-                          {% set maxLength = 100 %}
-                          {% if movie.overview and movie.overview | length > maxLength %}
-                            {{ movie.overview[:maxLength] }}...
-                          {% else %}
-                            {{ movie.overview or 'No description available.' }}
-                          {% endif %}
-                        </p>  
-                      </div>
-                    </div>
-                        
+              <div id="movie-scroll-area" class="movie-cards">
+                {% for movie in other_movies %}
+                <div
+                  class="movie_card"
+                  onclick="window.location.href='{{ movie.id }}'"
+                >
+                  <img
+                    src="https://image.tmdb.org/t/p/w1280{{ movie.poster_path }}"
+                    alt="Movie Poster"
+                  />
+
+                  <div class="overlay">
+                    <h1>{{ movie.title }}</h1>
+                    <h2>Rating: {{ movie.vote_average}}</h2>
+                    <div class="rating">
+                      {% set userRating = (movie.vote_average / 2) | round(0,
+                      'floor') %} {% for star in range(1, 6) %}
+                      <i
+                        class="{{ 'fas fa-star' if star <= userRating else 'far fa-star' }}"
+                      ></i>
                       {% endfor %}
-                      
+                      <span>{{ userRating }}/5</span>
+                    </div>
+                    <p>Release Date: {{ movie.release_date }}</p>
+                    <!-- Description -->
+                    <p class="desc">
+                      {% set maxLength = 100 %} {% if movie.overview and
+                      movie.overview | length > maxLength %} {{
+                      movie.overview[:maxLength] }}... {% else %} {{
+                      movie.overview or 'No description available.' }} {% endif
+                      %}
+                    </p>
                   </div>
+                </div>
 
-                  <button class="scroll-button right" onclick="scrollRightMovies()">&#10095;</button>
+                {% endfor %}
               </div>
-          </div>
-      </div>
-  </div>
-</div>
 
+              <button class="scroll-button right" onclick="scrollRightMovies()">
+                &#10095;
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
 
     <div class="reviews-section">
       <h2>Reviews:</h2>
@@ -185,109 +215,104 @@
       </div>
     </div>
 
-
     <script>
-      const scrollContainer = document.getElementById('movie-scroll-area');
+      const scrollContainer = document.getElementById("movie-scroll-area");
 
       function scrollLeftMovies() {
-          scrollContainer.scrollBy({ left: -300, behavior: 'smooth' });
+        scrollContainer.scrollBy({ left: -300, behavior: "smooth" });
       }
 
       function scrollRightMovies() {
-          scrollContainer.scrollBy({ left: 300, behavior: 'smooth' });
+        scrollContainer.scrollBy({ left: 300, behavior: "smooth" });
       }
 
       function toggleNav() {
-          const sideNav = document.getElementById("sideNav");
-          const navToggleBtn = document.getElementById("navToggleBtn");
-          if (sideNav.style.width === "200px") {
-              sideNav.style.width = "0";
-              navToggleBtn.innerHTML = "☰";
-          } else {
-              sideNav.style.width = "200px";
-              navToggleBtn.innerHTML = "x";
-          }
-          navToggleBtn.classList.toggle('open-btn');
-          navToggleBtn.classList.toggle('close-btn');
+        const sideNav = document.getElementById("sideNav");
+        const navToggleBtn = document.getElementById("navToggleBtn");
+        if (sideNav.style.width === "200px") {
+          sideNav.style.width = "0";
+          navToggleBtn.innerHTML = "☰";
+        } else {
+          sideNav.style.width = "200px";
+          navToggleBtn.innerHTML = "x";
+        }
+        navToggleBtn.classList.toggle("open-btn");
+        navToggleBtn.classList.toggle("close-btn");
       }
 
       //JS for search bar animation
-      document.addEventListener('DOMContentLoaded', function () {
-          const searchIcon = document.getElementById('search-icon');
-          const searchInput = document.getElementById('search-input');
-          const barSearchIcon = document.getElementById('bar-search-icon');
-          const barSearchInput = document.getElementById('bar-search-input');
-          searchIcon.addEventListener('click', function () {
-              searchInput.classList.toggle('expanded');
+      document.addEventListener("DOMContentLoaded", function () {
+        const searchIcon = document.getElementById("search-icon");
+        const searchInput = document.getElementById("search-input");
+        const barSearchIcon = document.getElementById("bar-search-icon");
+        const barSearchInput = document.getElementById("bar-search-input");
+        searchIcon.addEventListener("click", function () {
+          searchInput.classList.toggle("expanded");
+        });
+        barSearchIcon.addEventListener("click", function () {
+          barSearchInput.classList.toggle("expanded");
+        });
 
-          });
-          barSearchIcon.addEventListener('click', function () {
-              barSearchInput.classList.toggle('expanded');
+        searchInput.addEventListener("focus", function () {
+          this.placeholder = "";
+        });
 
-          });
-
-          searchInput.addEventListener('focus', function () {
-              this.placeholder = '';
-          });
-
-          barSearchInput.addEventListener('focus', function () {
-              this.placeholder = '';
-          });
-          searchInput.addEventListener('blur', function () {
-              if (this.value === '') {
-                  this.placeholder = 'Search for movie...';
-              }
-          });
-          barSearchInput.addEventListener('blur', function () {
-              if (this.value === '') {
-                  this.placeholder = 'Search for movie...';
-              }
-          });
+        barSearchInput.addEventListener("focus", function () {
+          this.placeholder = "";
+        });
+        searchInput.addEventListener("blur", function () {
+          if (this.value === "") {
+            this.placeholder = "Search for movie...";
+          }
+        });
+        barSearchInput.addEventListener("blur", function () {
+          if (this.value === "") {
+            this.placeholder = "Search for movie...";
+          }
+        });
       });
-      document.addEventListener('DOMContentLoaded', function () {
-          const textarea = document.querySelector('.gpt-input-textarea');
+      document.addEventListener("DOMContentLoaded", function () {
+        const textarea = document.querySelector(".gpt-input-textarea");
 
-          textarea.addEventListener('input', function () {
-              this.style.height = 'auto';
-              this.style.height = (this.scrollHeight) + 'px';
-          });
+        textarea.addEventListener("input", function () {
+          this.style.height = "auto";
+          this.style.height = this.scrollHeight + "px";
+        });
       });
-  </script>
+    </script>
 
-<script>
-  //JS for search bar animation
-  document.addEventListener("DOMContentLoaded", function () {
-    const searchIcon = document.getElementById("search-icon");
-    const searchInput = document.getElementById("search-input");
-    const barSearchIcon = document.getElementById("bar-search-icon");
-    const barSearchInput = document.getElementById("bar-search-input");
-    searchIcon.addEventListener("click", function () {
-      searchInput.classList.toggle("expanded");
-    });
-    barSearchIcon.addEventListener("click", function () {
-      barSearchInput.classList.toggle("expanded");
-    });
+    <script>
+      //JS for search bar animation
+      document.addEventListener("DOMContentLoaded", function () {
+        const searchIcon = document.getElementById("search-icon");
+        const searchInput = document.getElementById("search-input");
+        const barSearchIcon = document.getElementById("bar-search-icon");
+        const barSearchInput = document.getElementById("bar-search-input");
+        searchIcon.addEventListener("click", function () {
+          searchInput.classList.toggle("expanded");
+        });
+        barSearchIcon.addEventListener("click", function () {
+          barSearchInput.classList.toggle("expanded");
+        });
 
-    searchInput.addEventListener("focus", function () {
-      this.placeholder = "";
-    });
+        searchInput.addEventListener("focus", function () {
+          this.placeholder = "";
+        });
 
-    barSearchInput.addEventListener("focus", function () {
-      this.placeholder = "";
-    });
-    searchInput.addEventListener("blur", function () {
-      if (this.value === "") {
-        this.placeholder = "Search for movie...";
-      }
-    });
-    barSearchInput.addEventListener("blur", function () {
-      if (this.value === "") {
-        this.placeholder = "Search for movie...";
-      }
-    });
-  });
-</script>
+        barSearchInput.addEventListener("focus", function () {
+          this.placeholder = "";
+        });
+        searchInput.addEventListener("blur", function () {
+          if (this.value === "") {
+            this.placeholder = "Search for movie...";
+          }
+        });
+        barSearchInput.addEventListener("blur", function () {
+          if (this.value === "") {
+            this.placeholder = "Search for movie...";
+          }
+        });
+      });
+    </script>
   </body>
-
-  
 </html>

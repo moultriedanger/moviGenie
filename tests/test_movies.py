@@ -16,6 +16,11 @@ def client():
  with app.test_client() as client:
     yield client
 
+#test /landing valid
+def test_landing_route(client):
+ response = client.get('/landing')
+ assert response.status_code == 200
+
 #test /movies valid
 def test_movie_route(client):
  response = client.get('/movies')

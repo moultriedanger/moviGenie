@@ -23,10 +23,7 @@ mail = Mail(app)
 def landing():
     return render_template('landing.html')
 
-@app.route('/lan')
-def lan():
-    return render_template('.html')
-
+#Displays movies onto movie.html
 @app.route('/movies')
 def movies():
     with open('../www/data.json', 'r') as file:
@@ -41,21 +38,20 @@ def make_movie_page(movie_id):
     with open('../www/data.json', 'r') as file:
         movies = json.load(file)
 
+    #Search for movie data associated with desired id
     movie = next((m for m in movies if m["id"] == movie_id), None)
 
+    #throw error if id invalid
     if movie is None:
         return "Movie not found", 404
 
     other_movies = [movie for movie in movies if movie["id"] != movie_id]
-    
-    other_movie_posters = [movie["poster_path"] for movie in movies if movie["id"] != movie_id]
-
 
     movie_title = movie["title"]
     movie_description = movie["overview"]
 
+    #create poster path
     first = 'https://image.tmdb.org/t/p/w1280'
-    
     backdrop_path = first + movie.get("backdrop_path", "")
    
     #render template
@@ -63,9 +59,6 @@ def make_movie_page(movie_id):
                            movie_title = movie_title,
                            movie_description= movie_description,
                            backdrop_path = backdrop_path, other_movies = other_movies)
-
-
-
 
 @app.route('/contact', methods=['POST'])
 def contact_form():
