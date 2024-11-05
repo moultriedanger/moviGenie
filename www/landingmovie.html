@@ -21,7 +21,7 @@
 </head>
 
 <body>
-    y>
+    
     <!-- Nav bar -->
     <nav class="nav-container">
         <div class="nav-miniLogo">
@@ -61,19 +61,22 @@
             </ul>
         </div>
     </nav>
+
+
+    <!-- content section -->
     <div class="movie-info">
         <div class="image-container">
             <img src="" alt="Movie Poster">
             <div class="overlay">
                 <div class="movie-details">
-                    <h1>Movie Title</h1>
+                    <h1>{{movie_title}}</h1>
                     <div class="movie-info-span">
                         <span class="info-item">2024</span> | 
                         <span class="info-item age-res">18+</span> | 
                         <span class="info-item">120 min</span> | 
                         <span class="info-item">Action, Adventure</span>
                     </div>
-                    <p>A gripping tale of adventure and discovery. Follow the journey of the hero as they navigate the trials and triumphs of their world.</p>
+                    <p>{{movie_description}}</p>
                     <div class="button-container">
                         <button class="play-button"><i class="fa-solid fa-play"></i> Play Movie</button>
                         <button class="add-to-my-list"><i class="fa-solid fa-plus"></i></button>
@@ -104,6 +107,8 @@
         </div>
     </div>
     
+    
+
 
     <div class="reviews-section">
         <h2>Reviews:</h2>
@@ -140,7 +145,7 @@
         </div>
     </div>
     <script src="../www/static/js/nav.js"></script>
-    <script src="./static/js/movie.js"></script>
+    <!-- <script src="./static/js/movie.js"></script> -->
 
     <script>
         const scrollContainer = document.getElementById('movie-scroll-area');
@@ -209,41 +214,42 @@
             });
         });
     </script>
+    <script>
+        //JS for search bar animation
+        document.addEventListener('DOMContentLoaded', function () {
+                const searchIcon = document.getElementById('search-icon');
+                const searchInput = document.getElementById('search-input');
+                const barSearchIcon = document.getElementById('bar-search-icon');
+                const barSearchInput = document.getElementById('bar-search-input');
+                searchIcon.addEventListener('click', function () {
+                    searchInput.classList.toggle('expanded');
+    
+                });
+                barSearchIcon.addEventListener('click', function () {
+                    barSearchInput.classList.toggle('expanded');
+    
+                });
+    
+                searchInput.addEventListener('focus', function () {
+                    this.placeholder = '';
+                });
+    
+                barSearchInput.addEventListener('focus', function () {
+                    this.placeholder = '';
+                });
+                searchInput.addEventListener('blur', function () {
+                    if (this.value === '') {
+                        this.placeholder = 'Search for movie...';
+                    }
+                });
+                barSearchInput.addEventListener('blur', function () {
+                    if (this.value === '') {
+                        this.placeholder = 'Search for movie...';
+                    }
+                });
+            });
+    </script>
 
 </body>
-<script>
-    //JS for search bar animation
-    document.addEventListener('DOMContentLoaded', function () {
-            const searchIcon = document.getElementById('search-icon');
-            const searchInput = document.getElementById('search-input');
-            const barSearchIcon = document.getElementById('bar-search-icon');
-            const barSearchInput = document.getElementById('bar-search-input');
-            searchIcon.addEventListener('click', function () {
-                searchInput.classList.toggle('expanded');
 
-            });
-            barSearchIcon.addEventListener('click', function () {
-                barSearchInput.classList.toggle('expanded');
-
-            });
-
-            searchInput.addEventListener('focus', function () {
-                this.placeholder = '';
-            });
-
-            barSearchInput.addEventListener('focus', function () {
-                this.placeholder = '';
-            });
-            searchInput.addEventListener('blur', function () {
-                if (this.value === '') {
-                    this.placeholder = 'Search for movie...';
-                }
-            });
-            barSearchInput.addEventListener('blur', function () {
-                if (this.value === '') {
-                    this.placeholder = 'Search for movie...';
-                }
-            });
-        });
-</script>
 </html>
