@@ -1,4 +1,7 @@
 __pycache__/
 .DS_Store
 .venv/
+.venv-wsl/
 config.py
+venv/
+get-pip.py
