@@ -16,7 +16,29 @@ def client():
  with app.test_client() as client:
     yield client
 
-def test_some_route(client):
+#test /movies valid
+def test_movie_route(client):
  response = client.get('/movies')
- print("Success: Status code is 200.")
  assert response.status_code == 200
+
+#test /trending_movie/<int:movie_id> valid 
+def test_trending_movie_route(client):
+    response = client.get('/trending_movie/933260')
+    assert response.status_code == 200
+
+#test /trending_movie/<int:movie_id> invalid - src chat gpt
+def test_trending_movie_route_not_found(client):
+    response = client.get('/trending_movie/999999999')  # Use a non-existent movie ID
+    assert response.status_code == 404
+
+#test /contact valid - src chat gpt
+def test_contact_form(client):
+
+    data = {
+        "name": "John Doe",
+        "email": "john@example.com",
+        "comment": "This is a test message.",
+        "honeypot": ""
+    }
+    response = client.post('/contact', json=data)
+    assert response.status_code == 200

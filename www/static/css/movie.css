@@ -20,7 +20,7 @@ body::before {
     z-index: -1;
 }
 
-*:not(html, body, input, #search-icon, #bar-search-icon, #lamp, #shadow, #consult-genie-text, #smoke, #gptInput, #gptLogo, #gptHeader) {
+*:not(html, body, input, #search-icon, #bar-search-icon, #lamp, #shadow, #consult-genie-text, #smoke, #gptInput, #gptLogo, #gptHeader,[class^="movie"] ) {
     animation: transitionIn 1.50s;
 }
 

@@ -19,8 +19,6 @@ app.config['MAIL_USE_TLS'] = False
 
 mail = Mail(app)
 
-# http://127.0.0.1/landing
-
 @app.route('/landing')
 def landing():
     return render_template('landing.html')
@@ -44,6 +42,9 @@ def make_movie_page(movie_id):
         movies = json.load(file)
 
     movie = next((m for m in movies if m["id"] == movie_id), None)
+
+    if movie is None:
+        return "Movie not found", 404
 
     other_movies = [movie for movie in movies if movie["id"] != movie_id]
     
