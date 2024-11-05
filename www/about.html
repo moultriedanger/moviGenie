@@ -66,44 +66,45 @@
         <div class="team_members">
             <div class="team_card">
                 <div class="avatar">
-                    <i class="fas fa-user-circle"></i> 
+                    <img src="static/img/aj.png" alt="aj" class="circle-avatar">             
                 </div>
                 <div class="team_info">
                     <h3>AJ Leary</h3>
                     <p>Content</p>
-                    <p class="team_bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p class="team_bio">Furman University class of 26'<br>  <br>
+                        I enjoy both the action and comedy genres the most. My favorite movie is Lord of the Rings: Return of the King.</p>
                 </div>
             </div>
 
             <div class="team_card">
                 <div class="avatar">
-                    <i class="fas fa-user-circle"></i> 
+                    <img src="static/img/moultrie.png" alt="moultrie" class="circle-avatar">             
                 </div>
                 <div class="team_info">
                     <h3>Moultrie Dangerfield</h3>
                     <p>Programmer</p>
-                    <p class="team_bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p class="team_bio">Furman University class of 25'<br>  <br></p>
                 </div>
             </div>
 
             <div class="team_card">
                 <div class="avatar">
-                    <i class="fas fa-user-circle"></i> 
+                    <img src="static/img/matt.png" alt="matt" class="circle-avatar">             
                 </div>
                 <div class="team_info">
                     <h3>Matt Keller</h3>
                     <p>Programmer</p>
-                    <p class="team_bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p class="team_bio">Furman University class of 25'<br> <br>My favorite actor is Ryan Gosling and Bladerunner 2049 is my favorite movie. Thanks for using MovieGenie!</p>
                 </div>
             </div>
             <div class="team_card">
                 <div class="avatar">
-                    <i class="fas fa-user-circle"></i> 
-                </div>
+                    <img src="static/img/khalid.png" alt="Khalid" class="circle-avatar">             
+                   </div>
                 <div class="team_info">
                     <h3>Khalid Ismail</h3>
                     <p>Designer</p>
-                    <p class="team_bio">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                    <p class="team_bio">Furman University class of 25'<br>  <br></p>
                 </div>
             </div>
         </div>
@@ -123,6 +124,7 @@
             <div class="form_group">
                 <label for="email">Email:</label>
                 <input type="email" id="email" name="email" required>
+                <input type="text" name="importantdata" id="importantdata" style="display:none;">
             </div>
             <div class="form_group">
                 <label for="message">Message:</label>
@@ -138,47 +140,69 @@
     <!-- JS Functions -->
         
     <script>
-        document.querySelector('.submit_btn').addEventListener('click', function(event) {
-            event.preventDefault();
+    document.querySelector('.submit_btn').addEventListener('click', function(event) {
+        event.preventDefault();
         
-            const form = document.getElementById('contactForm');
-            const formData = new FormData(form);
-            const data = {
-                name: formData.get('name'),
-                email: formData.get('email'),
-                comment: formData.get('message')  
-            };
-        
-            fetch('http://127.0.0.1:5000/contact', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(data)
-            })
-            .then(response => response.text())
-            .then(data => {
-                alert('Email sent successfully');
-            })
-            .catch(error => {
-                console.error('Error:', error);
-                alert('Failed to send email');
-            });
+        const form = document.getElementById('contactForm');
+        const name = form.querySelector('#name').value.trim();
+        const email = form.querySelector('#email').value.trim();
+        const message = form.querySelector('#message').value.trim();
+        const honeypot = form.querySelector('#importantdata').value.trim();  
+
+        if (!name || !email || !message) {
+            alert('Please fill out all required fields.');
+            return;
+        }
+
+        const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailPattern.test(email)) {
+            alert('Please enter a valid email address.');
+            return;
+        }
+
+        const data = {
+            name: name,
+            email: email,
+            comment: message,
+            honeypot: honeypot
+        };
+
+        const submitButton = event.target;
+      
+
+        fetch('http://127.0.0.1:5000/contact', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (response.ok) {
+                return response.text();
+            } else {
+                throw new Error('Network response was not ok');
+            }
+        })
+        .then(data => {
+            alert('Form submitted successfully');
+            submitButton.disabled = true; 
+            submitButton.style.backgroundColor = 'rgba(126, 8, 27, 0.5)';
+            submitButton.textContent = 'Please wait';
+            submitButton.classList.add('loading');
+        })
+        .catch(error => {
+            alert('Error submitting form');
+        })
+        .finally(() => {
+            setTimeout(() => {
+                submitButton.disabled = false;
+                submitButton.style.backgroundColor = ''; 
+                submitButton.textContent = 'Submit'; 
+                submitButton.classList.remove('loading');
+            }, 10000);
         });
-        // function contactSubmit() {
-        //     const submit = document.getElementsByClassName("submit_btn")[0];
-        //     const email = document.getElementById("email");
-        //     const name = document.getElementById("name");
-        //     const message = document.getElementById("message");
-
-        //     submit.addEventListener('click', function() {
-
-        //         email.value = '';
-        //         name.value = '';
-        //         message.value = '';
-        //     });
-        // }
-        //Trigger function for mobile
+    });
         function toggleNav() {
             const sideNav = document.getElementById("sideNav");
             const navToggleBtn = document.getElementById("navToggleBtn");

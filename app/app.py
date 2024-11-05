@@ -2,6 +2,7 @@ from flask import Flask, render_template, jsonify, request
 import json
 from flask_mail import Mail, Message 
 from flask_cors import CORS
+import config
 
 app = Flask(__name__)
 # app = Flask(__name__, template_folder='../templates')
@@ -12,8 +13,8 @@ mail = Mail(app)
 app.config['MAIL_USE_SSL']=True
 app.config['MAIL_SERVER'] = 'smtp.gmail.com'
 app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'MovieGenie4@gmail.com'
-app.config['MAIL_PASSWORD'] = 'mmes ewxe hueo jtpe'
+app.config['MAIL_USERNAME'] = config.MAIL_USERNAME
+app.config['MAIL_PASSWORD'] = config.MAIL_PASSWORD
 app.config['MAIL_USE_TLS'] = False
 
 mail = Mail(app)
@@ -64,23 +65,26 @@ def make_movie_page(movie_id):
 
 
 
-# @app.route('/contact', methods=['POST'])
-# def contact_form():
-#     try:
-#         data = request.get_json()
-#         name = data.get("name")
-#         email = data.get("email")
-#         message = data.get("comment")
-
-#         msg = Message(subject="Contact Form Submission",
-#                       sender=app.config['MAIL_USERNAME'],
-#                       recipients=['MovieGenie4@gmail.com']) 
-#         msg.body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
-#         mail.send(msg)
-#         return "Email sent successfully", 200
+@app.route('/contact', methods=['POST'])
+def contact_form():
+     try:
+         data = request.get_json()
+         name = data.get("name")
+         email = data.get("email")
+         message = data.get("comment")
+         honeypot = data.get('honeypot')
+         if honeypot:
+            return "error: Bot detected", 400
+        
+         msg = Message(subject="Contact Form Submission",
+                       sender=app.config['MAIL_USERNAME'],
+                       recipients=['MovieGenie4@gmail.com']) 
+         msg.body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
+         mail.send(msg)
+         return "Email sent successfully", 200
     
-#     except Exception as e:
-#         return str(e), 500
+     except Exception as e:
+         return str(e), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
