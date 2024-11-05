@@ -47,23 +47,26 @@ def make_movie_page(movie_id):
                            backdrop_path = backdrop_path)
 
 
-# @app.route('/contact', methods=['POST'])
-# def contact_form():
-#     try:
-#         data = request.get_json()
-#         name = data.get("name")
-#         email = data.get("email")
-#         message = data.get("comment")
-
-#         msg = Message(subject="Contact Form Submission",
-#                       sender=app.config['MAIL_USERNAME'],
-#                       recipients=['MovieGenie4@gmail.com']) 
-#         msg.body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
-#         mail.send(msg)
-#         return "Email sent successfully", 200
+@app.route('/contact', methods=['POST'])
+def contact_form():
+     try:
+         data = request.get_json()
+         name = data.get("name")
+         email = data.get("email")
+         message = data.get("comment")
+         honeypot = data.get('honeypot')
+         if honeypot:
+            return "error: Bot detected", 400
+        
+         msg = Message(subject="Contact Form Submission",
+                       sender=app.config['MAIL_USERNAME'],
+                       recipients=['MovieGenie4@gmail.com']) 
+         msg.body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
+         mail.send(msg)
+         return "Email sent successfully", 200
     
-#     except Exception as e:
-#         return str(e), 500
+     except Exception as e:
+         return str(e), 500
 
 if __name__ == '__main__':
     app.run(debug=True)
