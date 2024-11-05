@@ -208,7 +208,12 @@ hr {
     color: rgba(255, 255, 255, 0.7);
     margin-bottom: 20px;
 }
-
+.circle-avatar{
+        width: 125px; 
+        height: 125px; 
+        border-radius: 50%; 
+        object-fit: cover;
+}
 .team_info h3 {
     font-size: 20px;
     margin-bottom: 10px;
