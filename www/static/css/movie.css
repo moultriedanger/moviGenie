@@ -170,8 +170,8 @@ body::before {
 }
 
 #gptLogo {
-    width: 250px;
-    height: 250px;
+    width: 325px;
+    height: 325px;
     opacity: 0;
     transition: opacity 5s;
 }
@@ -181,7 +181,7 @@ body::before {
 }
 
 #gptInput {
-    width: 60%;
+    width: 40%;
     height: auto;
     min-height: 100px;
     padding: 20px;

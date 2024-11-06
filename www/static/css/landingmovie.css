@@ -2,6 +2,8 @@ html, body {
     height: 100%;
     background-color: black;
     margin: 0;
+    font-family: "Arsenal SC", sans-serif;
+    font-weight: 400;
 }
 body{
     animation:transitionIn 1.50s;

@@ -23,6 +23,15 @@ mail = Mail(app)
 def landing():
     return render_template('landing.html')
 
+@app.route('/about')
+def about():
+    return render_template('about.html')
+
+
+@app.route('/movie')
+def movie():
+    return render_template('movie.html')
+
 #Displays movies onto movie.html
 @app.route('/movies')
 def movies():

@@ -1,4 +1,7 @@
-
+html,body{
+    font-family: "Arsenal SC", sans-serif;
+    font-weight: 400;
+}
 .movie_card {
     cursor: pointer;
     width: 260px;

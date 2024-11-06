@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arsenal+SC:ital,wght@0,400;0,700;1,400;1,700&family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+    <link rel="stylesheet" href="./static/css/about.css" />
+    <link rel="stylesheet" href="./static/css/nav.css" />
+    <title>About Us</title>
+  </head>
+  <body>
+    <!-- Nav bar -->
+    <nav class="nav-container">
+      <div class="nav-miniLogo">
+        <a href="landing.html"
+          ><img src="static/img/navLogo.png" class="nav-miniLogo" alt="logo"
+        /></a>
+      </div>
+      <div class="nav-links">
+        <ul>
+          <li><a href="movie.html">FIND MOVIE</a></li>
+          <li><a href="random.html">RANDOM MOVIE</a></li>
+          <li>
+            <a
+              href="about.html"
+              style="color: gray; background-color: rgb(32, 32, 32)"
+              >ABOUT US</a
+            >
+          </li>
+          <li><a href="#contactID">CONTACT</a></li>
+          <li class="search-container">
+            <i class="fa fa-search" id="search-icon"></i>
+            <input
+              type="text"
+              placeholder="Search for movie..."
+              id="search-input"
+            />
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <button id="navToggleBtn" class="open-btn" onclick="toggleNav()">☰</button>
+
+    <nav id="sideNav" class="side-nav">
+      <div class="side-nav-links">
+        <ul>
+          <a href="landing.html"
+            ><img src="static/img/logo.png" class="logo" alt="logo"
+          /></a>
+          <li><a href="movie.html">FIND MOVIE</a></li>
+          <li><a href="random.html">RANDOM MOVIE</a></li>
+          <li><a href="about.html">ABOUT US</a></li>
+          <li><a href="#contactID">CONTACT</a></li>
+          <li class="bar-search-container">
+            <i class="fa fa-search" id="bar-search-icon"></i>
+            <input
+              type="text"
+              placeholder="Search for movie..."
+              id="bar-search-input"
+            />
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <!-- Team statement -->
+    <div class="about_container">
+      <div class="about_backplate">
+        <h1 class="about_title">About Us</h1>
+        <p>
+          Welcome to our website! Our goal is to bring you exciting content
+          related to random movies and much more. We are a small, dedicated team
+          passionate about creating engaging experiences for our users.
+        </p>
+        <p>
+          Our mission is to make movie discovery fun and interactive. Whether
+          you're here to explore random movies or learn more about us, we strive
+          to give you the best experience possible!
+        </p>
+      </div>
+    </div>
+
+    <!-- Team descriptions and pictures Section -->
+    <div class="team_container">
+      <h2 class="team_title">Meet Our Team</h2>
+      <div class="team_members">
+        <div class="team_card">
+          <div class="avatar">
+            <img src="static/img/aj.png" alt="aj" class="circle-avatar" />
+          </div>
+          <div class="team_info">
+            <h3>AJ Leary</h3>
+            <p>Content</p>
+            <p class="team_bio">
+              Furman University class of 26'<br />
+              <br />
+              I enjoy both the action and comedy genres the most. My favorite
+              movie is Lord of the Rings: Return of the King.
+            </p>
+          </div>
+        </div>
+
+        <div class="team_card">
+          <div class="avatar">
+            <img
+              src="static/img/moultrie.png"
+              alt="moultrie"
+              class="circle-avatar"
+            />
+          </div>
+          <div class="team_info">
+            <h3>Moultrie Dangerfield</h3>
+            <p>Programmer</p>
+            <p class="team_bio">
+              Furman University class of 25'<br />
+              <br />My favorite movie is Shutter Island and my favorite actor is
+              Jonah Hill. If you enjoy using MovieGenie, consider donating!
+            </p>
+          </div>
+        </div>
+
+        <div class="team_card">
+          <div class="avatar">
+            <img src="static/img/matt.png" alt="matt" class="circle-avatar" />
+          </div>
+          <div class="team_info">
+            <h3>Matt Keller</h3>
+            <p>Programmer</p>
+            <p class="team_bio">
+              Furman University class of 25'<br />
+              <br />My favorite actor is Ryan Gosling and Bladerunner 2049 is my
+              favorite movie. Thanks for using MovieGenie!
+            </p>
+          </div>
+        </div>
+        <div class="team_card">
+          <div class="avatar">
+            <img
+              src="static/img/khalid.png"
+              alt="Khalid"
+              class="circle-avatar"
+            />
+          </div>
+          <div class="team_info">
+            <h3>Khalid Ismail</h3>
+            <p>Designer</p>
+            <p class="team_bio">
+              Furman University class of 25'<br />
+              <br />I'm passionate about the web, so I want to become a
+              full-stack developer. My favorite movie is In the Mood for Love.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <hr />
+
+    <!-- Contact Form Section -->
+    <div id="contactID"></div>
+    <div class="contact_container">
+      <h2 class="contact_title">Contact Us</h2>
+      <form
+        id="contactForm"
+        action="http://127.0.0.1:5000/contact"
+        method="POST"
+        class="contact_form"
+      >
+        <div class="form_group">
+          <label for="name">Name:</label>
+          <input type="text" id="name" name="name" required />
+        </div>
+        <div class="form_group">
+          <label for="email">Email:</label>
+          <input type="email" id="email" name="email" required />
+          <input
+            type="text"
+            name="importantdata"
+            id="importantdata"
+            style="display: none"
+          />
+        </div>
+        <div class="form_group">
+          <label for="message">Message:</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="submit_btn">Submit</button>
+      </form>
+    </div>
+    <!-- Footer Section -->
+    <footer class="footer-container">MovieGenie.com · 2024</footer>
+    <!-- JS Functions -->
+
+    <script>
+      document
+        .querySelector(".submit_btn")
+        .addEventListener("click", function (event) {
+          event.preventDefault();
+
+          const form = document.getElementById("contactForm");
+          const name = form.querySelector("#name").value.trim();
+          const email = form.querySelector("#email").value.trim();
+          const message = form.querySelector("#message").value.trim();
+          const honeypot = form.querySelector("#importantdata").value.trim();
+
+          if (!name || !email || !message) {
+            alert("Please fill out all required fields.");
+            return;
+          }
+
+          const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+          if (!emailPattern.test(email)) {
+            alert("Please enter a valid email address.");
+            return;
+          }
+
+          const data = {
+            name: name,
+            email: email,
+            comment: message,
+            honeypot: honeypot,
+          };
+
+          const submitButton = event.target;
+
+          fetch("http://127.0.0.1:5000/contact", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
+          })
+            .then((response) => {
+              if (response.ok) {
+                return response.text();
+              } else {
+                throw new Error("Network response was not ok");
+              }
+            })
+            .then((data) => {
+              alert("Form submitted successfully");
+              submitButton.disabled = true;
+              submitButton.style.backgroundColor = "rgba(126, 8, 27, 0.5)";
+              submitButton.textContent = "Please wait";
+              submitButton.classList.add("loading");
+            })
+            .catch((error) => {
+              alert("Error submitting form");
+            })
+            .finally(() => {
+              setTimeout(() => {
+                submitButton.disabled = false;
+                submitButton.style.backgroundColor = "";
+                submitButton.textContent = "Submit";
+                submitButton.classList.remove("loading");
+              }, 10000);
+            });
+        });
+      function toggleNav() {
+        const sideNav = document.getElementById("sideNav");
+        const navToggleBtn = document.getElementById("navToggleBtn");
+
+        if (sideNav.style.width === "200px") {
+          sideNav.style.width = "0";
+          navToggleBtn.innerHTML = "☰";
+        } else {
+          sideNav.style.width = "200px";
+          navToggleBtn.innerHTML = "x";
+        }
+        navToggleBtn.classList.toggle("open-btn");
+        navToggleBtn.classList.toggle("close-btn");
+      }
+      //Search bar animation
+      document.addEventListener("DOMContentLoaded", function () {
+        const searchIcon = document.getElementById("search-icon");
+        const searchInput = document.getElementById("search-input");
+        const barSearchIcon = document.getElementById("bar-search-icon");
+        const barSearchInput = document.getElementById("bar-search-input");
+        searchIcon.addEventListener("click", function () {
+          searchInput.classList.toggle("expanded");
+        });
+        barSearchIcon.addEventListener("click", function () {
+          barSearchInput.classList.toggle("expanded");
+        });
+
+        searchInput.addEventListener("focus", function () {
+          this.placeholder = "";
+        });
+
+        barSearchInput.addEventListener("focus", function () {
+          this.placeholder = "";
+        });
+        searchInput.addEventListener("blur", function () {
+          if (this.value === "") {
+            this.placeholder = "Search for movie...";
+          }
+        });
+        barSearchInput.addEventListener("blur", function () {
+          if (this.value === "") {
+            this.placeholder = "Search for movie...";
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
