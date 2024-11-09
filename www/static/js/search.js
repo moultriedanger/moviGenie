@@ -7,26 +7,26 @@ search_box = document.getElementById('search-input');
 search_box.addEventListener('change', async function() {
 
     var search_param = search_box.value
+    search_box.value = '';
+    
     console.log(search_param)
     var data_link = SEARCHAPI + search_param
 
     try {
         const response = await fetch(data_link);
         const data = await response.json();
-        console.log(data);
-
+        // console.log(data);
         createPopup(data)
     } catch (error) {
         console.error("Error fetching data:", error);
     }
-
 });
 
 function createPopup(data) {
     
     // Create the overlay
     const overlay = document.createElement('div');
-    overlay.className = 'overlay'; // Add overlay class
+    overlay.className = 'search_overlay';
 
     // Create the square popup container
     const popup = document.createElement('div');
@@ -43,58 +43,47 @@ function createPopup(data) {
     });
 
     // Append the close button to the popup
-    popup.appendChild(closeButton);
+    overlay.appendChild(closeButton);
 
     // Append the popup to the overlay
-    overlay.appendChild(popup);
+    // overlay.appendChild(popup);
     document.body.appendChild(overlay);
 
-    
-    // for(movie of movies){
-    //     // console.log(movie)
+    //Get movies. Show top 5 results
+    let movies = data['results']
+    console.log(movies)
 
-    //     const popup = document.createElement('div');
-    //     popup.classList.add('popup');
+    // let movie_container = document.createElement('div')
+    // movie_container.classList.add('movie_list');
 
-    //     // const title = document.createElement('h2');
-    //     // title.textContent = movie.title;
-    //     // popup.appendChild(title)
-}
-
-
-    //     // let posterLink = movies[i]['poster_path'];
-    //     // let moviePoster = document.createElement('img');
-    //     // moviePoster.src = posterLink;
-    //     // moviePoster.alt = movies[i]['title']; // Add alt text for accessibility
-
-
+    for (let i = 0; i < 5; i++) {
         
-    // }
+        let movieCard = document.createElement('div');
+        movieCard.classList.add('movie_card');
 
-    // for (let i = 0; i < Math.min(movies.length, 3); i++) {
-    //     let movieCard = document.createElement('div');
-    //     movieCard.classList.add('movie_card');
-    
+        //Get poster id and add onclidk to the movieCard
+        let posterId = movies[i]['id']
+        
+        let link = document.createElement('a');
+        link.href = `/trending_movie/${posterId}`;
+        
+        // Poster
+        let poster_base = "https://image.tmdb.org/t/p/w1280"
+        let posterLink = movies[i]['poster_path']
+        let full = poster_base + posterLink
 
-    // }
+        let moviePoster = document.createElement('img');
+        moviePoster.src = full;
+        moviePoster.alt = movies[i]['title']; // Add alt text for accessibility
 
-    // // Populate the popup with data (you can modify this based on your data structure)
-    // const title = document.createElement('h2');
-    // title.textContent = "Search Results";
-    // popup.appendChild(title);
+         // Append poster and overlay to movie card
+        movieCard.appendChild(moviePoster);
 
-    // const content = document.createElement('p');
-    // content.textContent = JSON.stringify(data, null, 2); // Display the data in a readable format
-    // popup.appendChild(content);
+        link.appendChild(movieCard)
 
-    // // Create a close button
-    // const closeButton = document.createElement('button');
-    // closeButton.textContent = "Close";
-    // closeButton.addEventListener('click', function() {
-    //     overlay.remove(); // Remove the popup when clicked
-    // });
-    // popup.appendChild(closeButton);
+        // movie_container.appendChild(link)
+        overlay.appendChild(link)
 
-    // // Append the popup to the body inside the overlay
-    // overlay.appendChild(popup);
-    // document.body.appendChild(overlay);
+        // overlay.appendChild(movie_container)      
+    }
+}
