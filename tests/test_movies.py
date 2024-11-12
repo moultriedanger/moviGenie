@@ -20,6 +20,7 @@ def client():
 def test_movie_route(client):
  response = client.get('/movies')
  assert response.status_code == 200
+ print("working")
 
 #test /trending_movie/<int:movie_id> valid 
 def test_trending_movie_route(client):

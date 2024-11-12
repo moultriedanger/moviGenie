@@ -4,6 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
@@ -65,7 +66,7 @@
 
               <li><a href="movie.html">FIND MOVIE</a></li>
               <li><a href="random.html">RANDOM MOVIE</a></li>
-              <li><a href="about.html">ABOUT US</a></li>
+              <li><a href="{{  url_for('random') }}">ABOUT US</a></li>
               <li><a href="about.html#contactID">CONTACT</a></li>
               <li class="bar-search-container">
                   <i class="fa fa-search" id="bar-search-icon"></i>
@@ -76,10 +77,6 @@
       </div>
   </nav>
 
-
-
-    
-    
     <div class="movie-info">
       <div class="image-container">
         <img src="{{backdrop_path}}" alt="Movie Poster" />
@@ -101,57 +98,82 @@
               </div>
           </div>
       </div>
-  </div>
+    </div>
 
-
-<div class="related-movies">
-  <h2>Related:</h2>
-  <div class="list-container">
+    <div class="related-movies">
+      <h2>Related:</h2>
       <div class="list-container">
           <div class="list-container">
-              <div class="list-related-movies" id="scroll-container">
-                  <button class="scroll-button left" onclick="scrollLeftMovies()">&#10094;</button>
+              <div class="list-container">
+                  <div class="list-related-movies" id="scroll-container">
+                      <button class="scroll-button left" onclick="scrollLeftMovies()">&#10094;</button>
 
-                  <div id="movie-scroll-area" class="movie-cards">
-                    {% for movie in other_movies %}
-                    <div class="movie_card"  onclick="window.location.href='{{ movie.id }}'">
-                      <img src="https://image.tmdb.org/t/p/w1280{{ movie.poster_path }}" alt="Movie Poster" />
-                    
-                      <div class="overlay">
-                        <h1>{{ movie.title }}</h1>
-                        <h2>Rating: {{ movie.vote_average}}</h2>
-                        <div class="rating">
-                          {% set userRating = (movie.vote_average / 2) | round(0, 'floor') %}
-                          {% for star in range(1, 6) %}
-                            <i class="{{ 'fas fa-star' if star <= userRating else 'far fa-star' }}"></i>
+                      <div id="movie-scroll-area" class="movie-cards">
+                        {% for movie in other_movies %}
+                        <div class="movie_card"  onclick="window.location.href='{{ movie.id }}'">
+                          <img src="https://image.tmdb.org/t/p/w1280{{ movie.poster_path }}" alt="Movie Poster" />
+                        
+                          <div class="overlay">
+                            <h1>{{ movie.title }}</h1>
+                            <h2>Rating: {{ movie.vote_average}}</h2>
+                            <div class="rating">
+                              {% set userRating = (movie.vote_average / 2) | round(0, 'floor') %}
+                              {% for star in range(1, 6) %}
+                                <i class="{{ 'fas fa-star' if star <= userRating else 'far fa-star' }}"></i>
+                              {% endfor %}
+                              <span>{{ userRating }}/5</span>
+                            
+                          </div>
+                          <p>Release Date: {{ movie.release_date }}  </p>
+                            <!-- Description -->
+                            <p class="desc">
+                              {% set maxLength = 100 %}
+                              {% if movie.overview and movie.overview | length > maxLength %}
+                                {{ movie.overview[:maxLength] }}...
+                              {% else %}
+                                {{ movie.overview or 'No description available.' }}
+                              {% endif %}
+                            </p>  
+                          </div>
+                        </div>
+                            
                           {% endfor %}
-                          <span>{{ userRating }}/5</span>
-                        
+                          
                       </div>
-                      <p>Release Date: {{ movie.release_date }}  </p>
-                        <!-- Description -->
-                        <p class="desc">
-                          {% set maxLength = 100 %}
-                          {% if movie.overview and movie.overview | length > maxLength %}
-                            {{ movie.overview[:maxLength] }}...
-                          {% else %}
-                            {{ movie.overview or 'No description available.' }}
-                          {% endif %}
-                        </p>  
-                      </div>
-                    </div>
-                        
-                      {% endfor %}
-                      
-                  </div>
 
-                  <button class="scroll-button right" onclick="scrollRightMovies()">&#10095;</button>
+                      <button class="scroll-button right" onclick="scrollRightMovies()">&#10095;</button>
+                  </div>
               </div>
           </div>
       </div>
-  </div>
-</div>
-
+    </div>
+    <div class="review-form">
+      <h3>Leave a Review:</h3>
+      <form id="reviewForm">
+        <label for="name">Your Name:</label>
+        <input type="text" id="name" name="name" required />
+    
+        <label for="rating">Rating:</label>
+        <div class="rating-input">
+          <input type="radio" id="star5" name="rating" value="5" />
+          <label for="star5">★</label>
+          <input type="radio" id="star4" name="rating" value="4" />
+          <label for="star4">★</label>
+          <input type="radio" id="star3" name="rating" value="3" />
+          <label for="star3">★</label>
+          <input type="radio" id="star2" name="rating" value="2" />
+          <label for="star2">★</label>
+          <input type="radio" id="star1" name="rating" value="1" />
+          <label for="star1">★</label>
+        </div>
+    
+        <label for="review">Your Review:</label>
+        <textarea id="review" name="review" rows="4" required></textarea>
+    
+        <button type="submit">Submit Review</button>
+      </form>
+    </div>
+    
 
     <div class="reviews-section">
       <h2>Reviews:</h2>
@@ -184,8 +206,6 @@
         </div>
       </div>
     </div>
-
-
     <script>
       const scrollContainer = document.getElementById('movie-scroll-area');
 
@@ -254,39 +274,84 @@
       });
   </script>
 
-<script>
-  //JS for search bar animation
-  document.addEventListener("DOMContentLoaded", function () {
-    const searchIcon = document.getElementById("search-icon");
-    const searchInput = document.getElementById("search-input");
-    const barSearchIcon = document.getElementById("bar-search-icon");
-    const barSearchInput = document.getElementById("bar-search-input");
-    searchIcon.addEventListener("click", function () {
-      searchInput.classList.toggle("expanded");
-    });
-    barSearchIcon.addEventListener("click", function () {
-      barSearchInput.classList.toggle("expanded");
+  <script>
+    //JS for search bar animation
+    document.addEventListener("DOMContentLoaded", function () {
+      const searchIcon = document.getElementById("search-icon");
+      const searchInput = document.getElementById("search-input");
+      const barSearchIcon = document.getElementById("bar-search-icon");
+      const barSearchInput = document.getElementById("bar-search-input");
+      searchIcon.addEventListener("click", function () {
+        searchInput.classList.toggle("expanded");
+      });
+      barSearchIcon.addEventListener("click", function () {
+        barSearchInput.classList.toggle("expanded");
+      });
+
+      searchInput.addEventListener("focus", function () {
+        this.placeholder = "";
+      });
+
+      barSearchInput.addEventListener("focus", function () {
+        this.placeholder = "";
+      });
+      searchInput.addEventListener("blur", function () {
+        if (this.value === "") {
+          this.placeholder = "Search for movie...";
+        }
+      });
+      barSearchInput.addEventListener("blur", function () {
+        if (this.value === "") {
+          this.placeholder = "Search for movie...";
+        }
+      });
     });
 
-    searchInput.addEventListener("focus", function () {
-      this.placeholder = "";
-    });
 
-    barSearchInput.addEventListener("focus", function () {
-      this.placeholder = "";
-    });
-    searchInput.addEventListener("blur", function () {
-      if (this.value === "") {
-        this.placeholder = "Search for movie...";
-      }
-    });
-    barSearchInput.addEventListener("blur", function () {
-      if (this.value === "") {
-        this.placeholder = "Search for movie...";
-      }
-    });
+
+    // submit form
+
+    document.addEventListener("DOMContentLoaded", function () {
+  document.getElementById("reviewForm").addEventListener("submit", function (e) {
+    e.preventDefault();
+
+    // Fetch values from the form
+    const name = document.getElementById("name").value;
+    const rating = document.querySelector('input[name="rating"]:checked')?.value;
+    const review = document.getElementById("review").value;
+
+    // Check if the rating is selected
+    if (!rating) {
+      alert("Please select a rating before submitting.");
+      return;
+    }
+
+    // Create the review item
+    const reviewItem = document.createElement("div");
+    reviewItem.classList.add("review-item");
+
+    reviewItem.innerHTML = `
+      <div class="user-info">
+        <h3>${name}</h3>
+        <div class="star-rating">${"★".repeat(rating)}${"☆".repeat(5 - rating)}</div>
+      </div>
+      <p>${review}</p>
+    `;
+
+    // Append the review item to the reviews list
+    const reviewsList = document.querySelector(".reviews-list");
+    reviewsList.appendChild(reviewItem);
+
+    // Clear form fields
+    document.getElementById("reviewForm").reset();
+
+    // Confirm in console
+    console.log("Review added:", { name, rating, review });
   });
-</script>
+});
+
+
+  </script>
   </body>
 
   

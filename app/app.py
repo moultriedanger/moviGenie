@@ -3,7 +3,7 @@ import json
 from flask_mail import Mail, Message 
 from flask_cors import CORS
 import config
-
+from random import sample
 app = Flask(__name__)
 # app = Flask(__name__, template_folder='../templates')
 
@@ -23,9 +23,6 @@ mail = Mail(app)
 def landing():
     return render_template('landing.html')
 
-@app.route('/lan')
-def lan():
-    return render_template('.html')
 
 @app.route('/movies')
 def movies():
@@ -48,7 +45,7 @@ def make_movie_page(movie_id):
 
     other_movies = [movie for movie in movies if movie["id"] != movie_id]
     
-    other_movie_posters = [movie["poster_path"] for movie in movies if movie["id"] != movie_id]
+    # other_movie_posters = [movie["poster_path"] for movie in movies if movie["id"] != movie_id]
 
 
     movie_title = movie["title"]
@@ -63,6 +60,39 @@ def make_movie_page(movie_id):
                            movie_title = movie_title,
                            movie_description= movie_description,
                            backdrop_path = backdrop_path, other_movies = other_movies)
+
+\
+
+
+@app.route('/random')
+def random():
+    #open the file
+    with open('../www/data.json', 'r') as file:
+        movies = json.load(file)
+
+    num_random_movies = 10
+    one_random_movie = 1
+
+    # generate one movie
+    one_movie = sample(movies, one_random_movie)
+    
+    movie_title = one_movie[0]['title']
+    movie_description = one_movie[0]["overview"]
+
+    first = 'https://image.tmdb.org/t/p/w1280'
+    
+    backdrop_path = first + one_movie[0].get("backdrop_path", "")
+
+    # generate three rows of random movies
+    other_movies1 = sample(movies, num_random_movies)
+    other_movies2 = sample(movies, num_random_movies)
+    other_movies3 = sample(movies, num_random_movies)
+
+    return render_template('random.html', movie_title = movie_title,
+                           movie_description= movie_description, backdrop_path = backdrop_path,
+                           one_movie = one_movie,
+                           other_movies1 = other_movies1, other_movies2 = other_movies2, 
+                           other_movies3 = other_movies3)
 
 
 
