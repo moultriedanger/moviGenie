@@ -20,9 +20,9 @@
       </div>
       <div class="nav-links">
         <ul>
-          <li><a href="movie.html">FIND MOVIE</a></li>
+          <li><a href="{{  url_for('movie') }}">FIND MOVIE</a></li>
           <li><a href="{{  url_for('random') }}">RANDOM MOVIE</a></li>
-          <li><a href="about.html">ABOUT US</a></li>
+          <li><a href="{{  url_for('about') }}">ABOUT US</a></li>
           <li><a href="about.html#contactID">CONTACT</a></li>
           <li class="search-container">
             <i class="fa fa-search" id="search-icon"></i>
@@ -61,7 +61,7 @@
         <img src="static/img/logo.png" class="logo">
         <h1>Movie Genie</h1>
         <p class="slogan">Your ultimate gpt-powered movie guide</p>
-        <a href="movie.html">FIND MOVIE</a>
+        <a href="{{  url_for('movie') }}">FIND MOVIE</a>
       </div>
     </div>
     

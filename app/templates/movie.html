@@ -24,9 +24,9 @@
         </div>
         <div class="nav-links">
             <ul>
-                <li><a href="movie.html" style="color: gray; background-color: rgb(32, 32, 32);">FIND MOVIE</a></li>
-                <li><a href="random.html">RANDOM MOVIE</a></li>
-                <li><a href="about.html">ABOUT US</a></li>
+                <li><a href="{{  url_for('movie') }}" style="color: gray; background-color: rgb(32, 32, 32);">FIND MOVIE</a></li>
+                <li><a href="{{  url_for('random') }}">RANDOM MOVIE</a></li>
+                <li><a href="{{  url_for('about') }}">ABOUT US</a></li>
                 <li><a href="about.html#contactID">CONTACT</a></li>
                 <li class="search-container">
                     <i class="fa fa-search" id="search-icon"></i>
@@ -44,9 +44,9 @@
             <ul>
                 <a href="landing.html"><img src="static/img/navLogo.png" class="logo" alt="logo"></a>
 
-                <li><a href="movie.html">FIND MOVIE</a></li>
-                <li><a href="random.html">RANDOM MOVIE</a></li>
-                <li><a href="about.html">ABOUT US</a></li>
+                <li><a href="{{  url_for('movie') }}">FIND MOVIE</a></li>
+                <li><a href="{{  url_for('random') }}">RANDOM MOVIE</a></li>
+                <li><a href="{{  url_for('about') }}">ABOUT US</a></li>
                 <li><a href="about.html#contactID">CONTACT</a></li>
                 <li class="bar-search-container">
                     <i class="fa fa-search" id="bar-search-icon"></i>
