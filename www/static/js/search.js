@@ -53,9 +53,6 @@ function createPopup(data) {
     let movies = data['results']
     console.log(movies)
 
-    // let movie_container = document.createElement('div')
-    // movie_container.classList.add('movie_list');
-
     for (let i = 0; i < 5; i++) {
         
         let movieCard = document.createElement('div');
@@ -65,7 +62,7 @@ function createPopup(data) {
         let posterId = movies[i]['id']
         
         let link = document.createElement('a');
-        link.href = `/trending_movie/${posterId}`;
+        link.href = `/search/${posterId}`;
         
         // Poster
         let poster_base = "https://image.tmdb.org/t/p/w1280"
@@ -74,16 +71,12 @@ function createPopup(data) {
 
         let moviePoster = document.createElement('img');
         moviePoster.src = full;
-        moviePoster.alt = movies[i]['title']; // Add alt text for accessibility
+        moviePoster.alt = movies[i]['title'];
 
-         // Append poster and overlay to movie card
         movieCard.appendChild(moviePoster);
 
         link.appendChild(movieCard)
 
-        // movie_container.appendChild(link)
         overlay.appendChild(link)
-
-        // overlay.appendChild(movie_container)      
     }
 }
