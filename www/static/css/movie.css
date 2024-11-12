@@ -15,12 +15,12 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgb(2,0,36);
-    background: linear-gradient(112deg, rgba(2,0,36,1) 0%, rgba(5,4,48,1) 0%, rgba(6,6,55,1) 13%, rgba(0,68,81,1) 100%);
+    background: rgb(0,0,0);
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(28,28,28,1) 100%);    
     z-index: -1;
 }
 
-*:not(html, body, input, #search-icon, #bar-search-icon, #lamp, #shadow, #consult-genie-text, #smoke, #gptInput, #gptLogo, #gptHeader,[class^="movie"] ) {
+*:not(html, body, input, #search-icon, #bar-search-icon, #lamp, #shadow, #consult-genie-text, #smoke, #gptInput, #gptLogo, #gptHeader,.overlay ) {
     animation: transitionIn 1.50s;
 }
 
@@ -68,6 +68,8 @@ body::before {
 
 #consult-genie-text {
     margin-bottom: 30px;
+    font-family: "Arsenal SC", sans-serif;
+
     font-size: 30px;
     color: white;
 }
@@ -137,7 +139,7 @@ body::before {
     }
 
     to {
-        transform: translateY(-20px);
+        transform: translateY(-10px);
     }
 }
 
@@ -168,8 +170,8 @@ body::before {
 }
 
 #gptLogo {
-    width: 250px;
-    height: 250px;
+    width: 325px;
+    height: 325px;
     opacity: 0;
     transition: opacity 5s;
 }
@@ -179,7 +181,7 @@ body::before {
 }
 
 #gptInput {
-    width: 60%;
+    width: 40%;
     height: auto;
     min-height: 100px;
     padding: 20px;

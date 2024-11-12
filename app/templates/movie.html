@@ -13,8 +13,6 @@
     <link rel="stylesheet" href="./static/css/movie.css">
     <link rel="stylesheet" href="./static/css/nav.css">
     <link rel="stylesheet" href="./static/css/overlay.css">
-    <link rel="stylesheet" href="./static/css/search.css">
-
     <title>Document</title>
 </head>
 
@@ -27,7 +25,7 @@
         <div class="nav-links">
             <ul>
                 <li><a href="movie.html" style="color: gray; background-color: rgb(32, 32, 32);">FIND MOVIE</a></li>
-                <li><a href="{{  url_for('random') }}">RANDOM MOVIE</a></li>
+                <li><a href="random.html">RANDOM MOVIE</a></li>
                 <li><a href="about.html">ABOUT US</a></li>
                 <li><a href="about.html#contactID">CONTACT</a></li>
                 <li class="search-container">
@@ -175,7 +173,8 @@
             }, 2000);
         });
     </script>
-    <script src="static/js/search.js"></script>
+
+    <script src="/static/js/popular.js"></script>
 </body>
 
 </html>

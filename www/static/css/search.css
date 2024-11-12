@@ -1,0 +1,40 @@
+/* popup.css */
+.search_overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000; /* Ensures it is above other elements */
+}
+
+.popup {
+    position: relative; /* Set relative positioning to contain the absolute positioned close button */
+    background-color: rgb(111, 111, 111);
+    width: 300px;
+    height: 300px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 20px; /* Adds some space around the content */
+}
+
+.close-button {
+    position: absolute; /* Position close button absolutely within .popup */
+    top: 10px; /* Distance from the top of the popup */
+    right: 10px; /* Distance from the right side of the popup */
+    padding: 5px 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
