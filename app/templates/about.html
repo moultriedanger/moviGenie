@@ -22,17 +22,17 @@
     <!-- Nav bar -->
     <nav class="nav-container">
       <div class="nav-miniLogo">
-        <a href="landing.html"
+        <a href="{{  url_for('landing') }}"
           ><img src="static/img/navLogo.png" class="nav-miniLogo" alt="logo"
         /></a>
       </div>
       <div class="nav-links">
         <ul>
-          <li><a href="movie.html">FIND MOVIE</a></li>
-          <li><a href="random.html">RANDOM MOVIE</a></li>
+          <li><a href="{{  url_for('movie') }}">FIND MOVIE</a></li>
+          <li><a href="{{  url_for('random') }}">RANDOM MOVIE</a></li>
           <li>
             <a
-              href="about.html"
+              href="{{  url_for('about') }}"
               style="color: gray; background-color: rgb(32, 32, 32)"
               >ABOUT US</a
             >
@@ -55,12 +55,12 @@
     <nav id="sideNav" class="side-nav">
       <div class="side-nav-links">
         <ul>
-          <a href="landing.html"
+          <a href="{{  url_for('landing') }}"
             ><img src="static/img/navLogo.png" class="logo" alt="logo"
           /></a>
-          <li><a href="movie.html">FIND MOVIE</a></li>
-          <li><a href="random.html">RANDOM MOVIE</a></li>
-          <li><a href="about.html">ABOUT US</a></li>
+          <li><a href="{{  url_for('movie') }}">FIND MOVIE</a></li>
+          <li><a href="{{  url_for('random') }}">RANDOM MOVIE</a></li>
+          <li><a href="{{  url_for('about') }}">ABOUT US</a></li>
           <li><a href="#contactID">CONTACT</a></li>
           <li class="bar-search-container">
             <i class="fa fa-search" id="bar-search-icon"></i>
