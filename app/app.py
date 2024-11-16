@@ -1,13 +1,14 @@
-from flask import Flask, render_template, jsonify, request
+from flask import Flask, render_template, jsonify, request, redirect
 import json
 from flask_mail import Mail, Message 
 from flask_cors import CORS
 import config
 import requests
 from random import sample
+
 app = Flask(__name__)
 # app = Flask(__name__, template_folder='../templates')
-
+CORS(app)
 cors = CORS(app)
 mail = Mail(app)
 
@@ -68,9 +69,51 @@ def make_movie_page(movie_id):
    
     #render template
     return render_template('trending_movie.html',
-                           movie_title = movie_title,
+                           movie_title = movie_title, movie_id=movie_id,
                            movie_description= movie_description,
                            backdrop_path = backdrop_path, other_movies = other_movies)
+
+@app.route('/trending_movie/<int:movie_id>',methods=["POST"])
+def render_trailer(movie_id):
+    url = f"https://api.themoviedb.org/3/movie/{movie_id}/videos"
+    
+    headers = {
+        "accept": "application/json",
+        "Authorization": f"Bearer {config.API_KEY}"
+    }
+    
+    response = requests.get(url, headers=headers)
+
+    if response.status_code != 200:
+        return "Invalid request", 404
+
+    videos = response.json()
+    
+    trailer = None
+    teaser = None
+    
+    # First look for a trailer
+    for video in videos.get("results", []):
+        if video["type"] == "Trailer":
+            trailer = video
+            break
+    
+    # If no trailer look for a teaser
+    if trailer:
+        key = trailer['key']
+        yurl = f"https://www.youtube.com/watch?v={key}"
+        return jsonify({"url": yurl}) 
+    else:
+        for video in videos.get("results", []):
+            if video["type"] == "Teaser":
+                teaser = video
+                break
+        if teaser:
+            key = teaser['key']
+            yurl = f"https://www.youtube.com/watch?v={key}"
+            return jsonify({"url": yurl})  
+        else:
+            return jsonify({"error": "Trailer not found"}), 400
 
 @app.route('/search/<int:movie_id>')
 def render_search(movie_id):
@@ -79,7 +122,7 @@ def render_search(movie_id):
 
     headers = {
         "accept": "application/json",
-        "Authorization": "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJlNjJkNzBkYTg0MWQyMWQ1ZDc1ZGQ3NGUyYjlkNmNiZiIsIm5iZiI6MTczMDgzNjcyMi4xNjY4MTk2LCJzdWIiOiI2NmQyMGVkYWIyNzBiY2I5ZmNhN2YxODQiLCJzY29wZXMiOlsiYXBpX3JlYWQiXSwidmVyc2lvbiI6MX0.0c4p-RZjSKxI21xOLPoztE0bETGYcLxjtVAySQpNS9E"
+        "Authorization": f"Bearer {config.API_KEY}"
     }
     response = requests.get(url, headers=headers)
 

@@ -111,10 +111,10 @@
               <button class="play-button">
                 <i class="fa-solid fa-play"></i> Play Movie
               </button>
-              <button class="add-to-my-list">
+              <!--  <button class="add-to-my-list">
                 <i class="fa-solid fa-plus"></i>
-              </button>
-              <button class="trailer-btn">
+              </button> -->
+                  <button class="trailer-btn" onclick="render_trailer('{{movie_id}}')">
                 <i class="fa-solid fa-film"></i>
               </button>
             </div>
@@ -232,6 +232,32 @@
     </div>
 
     <script>
+      function render_trailer(movieId) {
+        fetch(`http://127.0.0.1:5000/trending_movie/${movieId}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ movie_id: movieId }),
+        })
+          .then((response) => response.json())  
+            .then((data) => {
+              if (data.url) {
+                window.location.href = data.url;  
+              } else {
+                alert("Trailer not found");
+              }
+            })
+          .catch((error) => {
+            alert("Error fetching trailer: " + error.message);
+          });
+      }
+    
+      document.querySelector(".trailer-btn").addEventListener("click", function (event) {
+        event.preventDefault();
+        const movieId = "{{ movie_id }}";  
+        render_trailer(movieId);
+      });
       const scrollContainer = document.getElementById("movie-scroll-area");
 
       function scrollLeftMovies() {
@@ -287,17 +313,15 @@
           }
         });
       });
-      document.addEventListener('DOMContentLoaded', function () {
+      /*document.addEventListener('DOMContentLoaded', function () {
           const textarea = document.querySelector('.gpt-input-textarea');
 
           textarea.addEventListener('input', function () {
               this.style.height = 'auto';
               this.style.height = (this.scrollHeight) + 'px';
           });
-      });
-  </script>
-
-  <script>
+      }); */
+  
     //JS for search bar animation
     document.addEventListener("DOMContentLoaded", function () {
       const searchIcon = document.getElementById("search-icon");
@@ -374,7 +398,7 @@
 });
 
 
-  </script>
+  
     </script>
   </body>
 </html>
