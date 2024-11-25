@@ -1,22 +1,26 @@
-/* popup.css */
+/* Overlay styles */
 .search_overlay {
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+    background-color: rgba(118, 118, 118, 0.7); /* Semi-transparent background */
     display: flex;
     justify-content: center;
     align-items: center;
     z-index: 1000; /* Ensures it is above other elements */
+    overflow-y: auto; /* Allow scrolling if content overflows */
 }
 
+/* Popup container */
 .popup {
-    position: relative; /* Set relative positioning to contain the absolute positioned close button */
+    position: relative; /* For containing the absolute close button */
     background-color: rgb(111, 111, 111);
-    width: 300px;
-    height: 300px;
+    width: 90%; /* Flexible width for smaller screens */
+    max-width: 400px; /* Limit the maximum width for larger screens */
+    height: auto; /* Adapt height to content */
+    max-height: 80vh; /* Limit height to avoid overflow on smaller screens */
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     display: flex;
@@ -24,11 +28,13 @@
     align-items: center;
     justify-content: center;
     text-align: center;
-    padding: 20px; /* Adds some space around the content */
+    padding: 20px; /* Adds space around the content */
+    overflow-y: auto; /* Scroll content if it exceeds height */
 }
 
+/* Close button */
 .close-button {
-    position: absolute; /* Position close button absolutely within .popup */
+    position: absolute; /* Position close button within the popup */
     top: 10px; /* Distance from the top of the popup */
     right: 10px; /* Distance from the right side of the popup */
     padding: 5px 10px;
@@ -37,4 +43,35 @@
     border: none;
     border-radius: 5px;
     cursor: pointer;
+    font-size: 14px;
+}
+
+/* Ensure the button has hover and active styles */
+.close-button:hover {
+    background-color: #0056b3;
+}
+
+.close-button:active {
+    background-color: #004494;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+    .search_overlay {
+       
+        justify-content: flex-start;
+        flex-direction: column;
+        overflow-x: auto;
+    }
+    
+    .popup {
+        width: 90%; /* Make it take more horizontal space on small screens */
+        padding: 15px; /* Adjust padding for smaller screens */
+    }
+
+    .close-button {
+        font-size: 12px; /* Smaller text size for close button */
+        top: 8px;
+        right: 8px;
+    }
 }

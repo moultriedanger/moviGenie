@@ -2,25 +2,31 @@ const API_KEY = 'https://api.themoviedb.org/3/discover/movie?&sort_by=popularity
 const IMG_PATH = 'https://image.tmdb.org/t/p/w1280'
 const SEARCHAPI = "https://api.themoviedb.org/3/search/movie?&api_key=e62d70da841d21d5d75dd74e2b9d6cbf&query=";
 
-search_box = document.getElementById('search-input');
+const searchBox = document.getElementById('search-input');
+const sideNavSearchBox = document.getElementById('bar-search-input'); // Side nav search input
 
-search_box.addEventListener('change', async function() {
+// Function to handle searches
+async function handleSearch(inputElement) {
+    const searchParam = inputElement.value.trim();
+    inputElement.value = ''; // Clear the input
 
-    var search_param = search_box.value
-    search_box.value = '';
-    
-    console.log(search_param)
-    var data_link = SEARCHAPI + search_param
+    if (searchParam) {
+        const dataLink = SEARCHAPI + searchParam;
 
-    try {
-        const response = await fetch(data_link);
-        const data = await response.json();
-        // console.log(data);
-        createPopup(data)
-    } catch (error) {
-        console.error("Error fetching data:", error);
+        try {
+            const response = await fetch(dataLink);
+            const data = await response.json();
+            createPopup(data); // Reuse the popup function
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
     }
-});
+}
+
+// Attach event listeners to both search inputs
+searchBox.addEventListener('change', () => handleSearch(searchBox));
+sideNavSearchBox.addEventListener('change', () => handleSearch(sideNavSearchBox));
+
 
 function createPopup(data) {
     

@@ -34,6 +34,8 @@ def about():
 def movie():
     return render_template('movie.html')
 
+
+
 #Displays movies onto movie.html
 @app.route('/movies')
 def movies():
@@ -66,12 +68,54 @@ def make_movie_page(movie_id):
     #create poster path
     first = 'https://image.tmdb.org/t/p/w1280'
     backdrop_path = first + movie.get("backdrop_path", "")
+
+     # Fetch streaming platforms (for example, from TMDb API or JustWatch API)
+    streaming_platforms = fetch_streaming_platforms(movie_id)
+    for platform in streaming_platforms:
+        print(platform['name'])
    
     #render template
     return render_template('trending_movie.html',
                            movie_title = movie_title, movie_id=movie_id,
                            movie_description= movie_description,
-                           backdrop_path = backdrop_path, other_movies = other_movies)
+                           backdrop_path = backdrop_path, other_movies = other_movies, 
+                           streaming_platforms=streaming_platforms)
+
+def fetch_streaming_platforms(movie_id):
+
+    url = f'https://api.themoviedb.org/3/movie/{movie_id}/watch/providers'
+    headers = {
+        "accept": "application/json",
+        "Authorization": f"Bearer {config.MY_API_KEY}"
+    }
+
+    response = requests.get(url, headers=headers)
+    data = response.json()
+
+    # Extract streaming platforms from the response
+    platforms = []
+    seen_providers = set()  # Track provider names to avoid duplicates
+
+    if 'results' in data:
+        for country, provider_data in data['results'].items():
+            keys = provider_data.keys()
+            for key in keys:
+                if key == 'flatrate':
+                    provider_info = provider_data.get(key)
+                    for info in provider_info:
+                        provider_name = info['provider_name']
+                        if provider_name not in seen_providers:
+                            platforms.append({
+                                'name': provider_name,
+                                'url': provider_data.get('link'),  # Example: link to the streaming platform
+                                'logo_url': f'https://www.themoviedb.org/t/p/w300{info["logo_path"]}'  # Example logo URL
+                            })
+                            seen_providers.add(provider_name)  # Mark as seen
+
+    return platforms
+
+#('BR', {'link': 'https://www.themoviedb.org/movie/1087822-hellboy-the-crooked-man/watch?locale=BR', 'buy': [{'logo_path': '/9ghgSC0MA082EL6HLCW3GalykFD.jpg', 'provider_id': 2, 'provider_name': 'Apple TV', 'display_priority': 8}, {'logo_path': '/seGSXajazLMCKGB5hnRCidtjay1.jpg', 'provider_id': 10, 'provider_name': 'Amazon Video', 'display_priority': 13}, {'logo_path': '/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg', 'provider_id': 3, 'provider_name': 'Google Play Movies', 'display_priority': 14}], 'rent': [{'logo_path': '/9ghgSC0MA082EL6HLCW3GalykFD.jpg', 'provider_id': 2, 'provider_name': 'Apple TV', 'display_priority': 8}, {'logo_path': '/seGSXajazLMCKGB5hnRCidtjay1.jpg', 'provider_id': 10, 'provider_name': 'Amazon Video', 'display_priority': 13}, {'logo_path': '/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg', 'provider_id': 3, 'provider_name': 'Google Play Movies', 'display_priority': 14}]})
+
 
 @app.route('/trending_movie/<int:movie_id>',methods=["POST"])
 def render_trailer(movie_id):
@@ -88,9 +132,9 @@ def render_trailer(movie_id):
         return "Invalid request", 404
 
     videos = response.json()
-    
     trailer = None
     teaser = None
+
     
     # First look for a trailer
     for video in videos.get("results", []):
@@ -117,7 +161,7 @@ def render_trailer(movie_id):
 
 @app.route('/search/<int:movie_id>')
 def render_search(movie_id):
-
+# make the same end point
     url = f"https://api.themoviedb.org/3/movie/{movie_id}?language=en-US"
 
     headers = {

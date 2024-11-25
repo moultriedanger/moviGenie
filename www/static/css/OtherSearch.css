@@ -1,0 +1,72 @@
+/* this is for the pages that don't have movie cards */
+
+/* search pop up */
+.search_overlay {
+    position: fixed; /* Ensures it covers the entire screen */
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    z-index: 9999; /* Very high z-index to ensure it stays on top */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: auto; /* Enable scrolling if content overflows */
+}
+
+/* Popup styling */
+.popup {
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    max-width: 600px;
+    width: 90%;
+    text-align: center;
+    z-index: 10000; /* Ensure it's above the overlay if needed */
+}
+
+/* Close button styling */
+.close-button {
+    background: #e63946;
+    color: #fff;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 4px;
+    cursor: pointer;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 16px;
+}
+
+.close-button:hover {
+    background: #d62839;
+}
+
+/* Movie card styling */
+.movie_card {
+    display: inline-block;
+    margin: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.movie_card img {
+    max-width: 100px;
+    border-radius: 4px;
+}
+
+.movie_card:hover {
+    transform: scale(1.1); /* Slight zoom effect */
+}
+
+@media (max-width: 480px) {
+    .search_overlay {
+       
+      justify-content: flex-start;
+      flex-direction: column;
+      overflow-x: auto;
+  }
+}
