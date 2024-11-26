@@ -5,6 +5,8 @@ from flask_cors import CORS
 import config
 import requests
 from random import sample
+import sqlite3
+import os
 
 app = Flask(__name__)
 # app = Flask(__name__, template_folder='../templates')
@@ -32,17 +34,39 @@ def about():
 
 @app.route('/movie')
 def movie():
+
     return render_template('movie.html')
 
-
-
-#Displays movies onto movie.html
+#Query movies for popular.js
 @app.route('/movies')
 def movies():
-    with open('../www/data.json', 'r') as file:
-        data = json.load(file) 
-    
-    return jsonify(data)  
+   
+    #open connection
+    conn = sqlite3.connect(os.path.join(os.getcwd(), 'movieGenie.db'))
+    cursor = conn.cursor()
+
+    #create and execute quert
+    query = "SELECT * FROM all_movies LIMIT 10"
+    cursor.execute(query)
+    results = cursor.fetchall()
+
+    conn.close()
+
+    #convert the query returned to json
+    movies = []
+    for row in results:
+        movie = {
+            'id': row[0],
+            'title': row[1],
+            'overview': row[2],
+            'poster_path': row[3],
+            'vote_average': row[4]
+        }
+        movies.append(movie)
+
+    json_object = json.dumps(movies, indent=4)
+    return json_object  
+
 
 @app.route('/trending_movie/<int:movie_id>')
 def make_movie_page(movie_id):
@@ -69,17 +93,17 @@ def make_movie_page(movie_id):
     first = 'https://image.tmdb.org/t/p/w1280'
     backdrop_path = first + movie.get("backdrop_path", "")
 
-     # Fetch streaming platforms (for example, from TMDb API or JustWatch API)
-    streaming_platforms = fetch_streaming_platforms(movie_id)
-    for platform in streaming_platforms:
-        print(platform['name'])
+    # Fetch streaming platforms (for example, from TMDb API or JustWatch API)
+    # streaming_platforms = fetch_streaming_platforms(movie_id)
+    # for platform in streaming_platforms:
+    #     print(platform['name'])
    
     #render template
     return render_template('trending_movie.html',
                            movie_title = movie_title, movie_id=movie_id,
                            movie_description= movie_description,
-                           backdrop_path = backdrop_path, other_movies = other_movies, 
-                           streaming_platforms=streaming_platforms)
+                           backdrop_path = backdrop_path, other_movies = other_movies) 
+                        #    streaming_platforms=streaming_platforms)
 
 def fetch_streaming_platforms(movie_id):
 

@@ -1,43 +1,42 @@
 [
     {
         "adult": false,
-        "backdrop_path": "/jlWk4J1sV1EHgkjhvsN7EdzGvOx.jpg",
+        "backdrop_path": "/3V4kLQg0kSqPLctI5ziYWabAZYF.jpg",
         "genre_ids": [
-            27,
-            18,
-            878
+            878,
+            28,
+            12
         ],
-        "id": 933260,
+        "id": 912649,
         "original_language": "en",
-        "original_title": "The Substance",
-        "overview": "A fading celebrity decides to use a black market drug, a cell-replicating substance that temporarily creates a younger, better version of herself.",
-        "popularity": 4536.856,
-        "poster_path": "https://image.tmdb.org/t/p/w1280/lqoMzCcZYEFK729d6qzt349fB4o.jpg",
-        "release_date": "2024-09-07",
-        "title": "The Substance",
+        "original_title": "Venom: The Last Dance",
+        "overview": "Eddie and Venom are on the run. Hunted by both of their worlds and with the net closing in, the duo are forced into a devastating decision that will bring the curtains down on Venom and Eddie's last dance.",
+        "popularity": 3752.76,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/aosm8NMQ3UyoBVpSxyimorCQykC.jpg",
+        "release_date": "2024-10-22",
+        "title": "Venom: The Last Dance",
         "video": false,
-        "vote_average": 7.356,
-        "vote_count": 541
+        "vote_average": 6.499,
+        "vote_count": 850
     },
     {
         "adult": false,
-        "backdrop_path": "/yDHYTfA3R0jFYba16jBB1ef8oIt.jpg",
+        "backdrop_path": "/iR79ciqhtaZ9BE7YFA1HpCHQgX4.jpg",
         "genre_ids": [
-            28,
-            35,
-            878
+            27,
+            9648
         ],
-        "id": 533535,
+        "id": 1100782,
         "original_language": "en",
-        "original_title": "Deadpool & Wolverine",
-        "overview": "A listless Wade Wilson toils away in civilian life with his days as the morally flexible mercenary, Deadpool, behind him. But when his homeworld faces an existential threat, Wade must reluctantly suit-up again with an even more reluctant Wolverine.",
-        "popularity": 2638.903,
-        "poster_path": "https://image.tmdb.org/t/p/w1280/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg",
-        "release_date": "2024-07-24",
-        "title": "Deadpool & Wolverine",
+        "original_title": "Smile 2",
+        "overview": "About to embark on a new world tour, global pop sensation Skye Riley begins experiencing increasingly terrifying and inexplicable events. Overwhelmed by the escalating horrors and the pressures of fame, Skye is forced to face her dark past to regain control of her life before it spirals out of control.",
+        "popularity": 2711.905,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/ht8Uv9QPv9y7K0RvUyJIaXOZTfd.jpg",
+        "release_date": "2024-10-16",
+        "title": "Smile 2",
         "video": false,
-        "vote_average": 7.7,
-        "vote_count": 4493
+        "vote_average": 6.9,
+        "vote_count": 633
     },
     {
         "adult": false,
@@ -51,78 +50,36 @@
         "original_language": "en",
         "original_title": "The Wild Robot",
         "overview": "After a shipwreck, an intelligent robot called Roz is stranded on an uninhabited island. To survive the harsh environment, Roz bonds with the island's animals and cares for an orphaned baby goose.",
-        "popularity": 3195.501,
+        "popularity": 2542.661,
         "poster_path": "https://image.tmdb.org/t/p/w1280/wTnV3PCVW5O92JMrFvvrRcV39RU.jpg",
         "release_date": "2024-09-12",
         "title": "The Wild Robot",
         "video": false,
-        "vote_average": 8.62,
-        "vote_count": 465
+        "vote_average": 8.5,
+        "vote_count": 3095
     },
     {
         "adult": false,
-        "backdrop_path": "/xi1VSt3DtkevUmzCx2mNlCoDe74.jpg",
+        "backdrop_path": "/euYIwmwkmz95mnXvufEmbL6ovhZ.jpg",
         "genre_ids": [
-            35,
-            14,
-            27
+            28,
+            12
         ],
-        "id": 917496,
+        "id": 558449,
         "original_language": "en",
-        "original_title": "Beetlejuice Beetlejuice",
-        "overview": "After a family tragedy, three generations of the Deetz family return home to Winter River. Still haunted by Betelgeuse, Lydia's life is turned upside down when her teenage daughter, Astrid, accidentally opens the portal to the Afterlife.",
-        "popularity": 1680.963,
-        "poster_path": "https://image.tmdb.org/t/p/w1280/kKgQzkUCnQmeTPkyIwHly2t6ZFI.jpg",
-        "release_date": "2024-09-04",
-        "title": "Beetlejuice Beetlejuice",
+        "original_title": "Gladiator II",
+        "overview": "Years after witnessing the death of the revered hero Maximus at the hands of his uncle, Lucius is forced to enter the Colosseum after his home is conquered by the tyrannical Emperors who now lead Rome with an iron fist. With rage in his heart and the future of the Empire at stake, Lucius must look to his past to find strength and honor to return the glory of Rome to its people.",
+        "popularity": 2139.537,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/2cxhvwyEwRlysAmRH4iodkvo0z5.jpg",
+        "release_date": "2024-11-13",
+        "title": "Gladiator II",
         "video": false,
-        "vote_average": 7.197,
-        "vote_count": 1308
+        "vote_average": 6.799,
+        "vote_count": 687
     },
     {
         "adult": false,
-        "backdrop_path": "/3m0j3hCS8kMAaP9El6Vy5Lqnyft.jpg",
-        "genre_ids": [
-            878,
-            53,
-            18,
-            27
-        ],
-        "id": 1125510,
-        "original_language": "es",
-        "original_title": "El hoyo 2",
-        "overview": "After a mysterious leader imposes his law in a brutal system of vertical cells, a new arrival battles against a dubious food distribution method.",
-        "popularity": 1786.59,
-        "poster_path": "https://image.tmdb.org/t/p/w1280/izuzUb0sDokqp9o8utVfsrSJuy5.jpg",
-        "release_date": "2024-09-27",
-        "title": "The Platform 2",
-        "video": false,
-        "vote_average": 5.661,
-        "vote_count": 566
-    },
-    {
-        "adult": false,
-        "backdrop_path": "/9SSEUrSqhljBMzRe4aBTh17rUaC.jpg",
-        "genre_ids": [
-            878,
-            27,
-            28
-        ],
-        "id": 945961,
-        "original_language": "en",
-        "original_title": "Alien: Romulus",
-        "overview": "While scavenging the deep ends of a derelict space station, a group of young space colonizers come face to face with the most terrifying life form in the universe.",
-        "popularity": 1658.002,
-        "poster_path": "https://image.tmdb.org/t/p/w1280/b33nnKl1GSFbao4l3fZDDqsMx0F.jpg",
-        "release_date": "2024-08-13",
-        "title": "Alien: Romulus",
-        "video": false,
-        "vote_average": 7.2,
-        "vote_count": 1401
-    },
-    {
-        "adult": false,
-        "backdrop_path": "/xlkclSE4aq7r3JsFIJRgs21zUew.jpg",
+        "backdrop_path": "/18TSJF1WLA4CkymvVUcKDBwUJ9F.jpg",
         "genre_ids": [
             27,
             53
@@ -131,33 +88,232 @@
         "original_language": "en",
         "original_title": "Terrifier 3",
         "overview": "Five years after surviving Art the Clown's Halloween massacre, Sienna and Jonathan are still struggling to rebuild their shattered lives. As the holiday season approaches, they try to embrace the Christmas spirit and leave the horrors of the past behind. But just when they think they're safe, Art returns, determined to turn their holiday cheer into a new nightmare. The festive season quickly unravels as Art unleashes his twisted brand of terror, proving that no holiday is safe.",
-        "popularity": 1387.621,
-        "poster_path": "https://image.tmdb.org/t/p/w1280/l1175hgL5DoXnqeZQCcU3eZIdhX.jpg",
+        "popularity": 2051.426,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/chvYRyJI1fnBdf9Gt6RerJNEAav.jpg",
         "release_date": "2024-10-09",
         "title": "Terrifier 3",
         "video": false,
-        "vote_average": 7.1,
-        "vote_count": 62
+        "vote_average": 6.9,
+        "vote_count": 1087
     },
     {
         "adult": false,
-        "backdrop_path": "/g1z1ZvYKcmk9EnVOTYXR6vkNjkZ.jpg",
+        "backdrop_path": "/2fxnTXr8NwyTFkunkimJkGkhqfy.jpg",
         "genre_ids": [
-            14,
-            27,
-            28
+            18,
+            28,
+            27
         ],
-        "id": 1087822,
-        "original_language": "en",
-        "original_title": "Hellboy: The Crooked Man",
-        "overview": "Hellboy and a rookie BPRD agent get stranded in 1950s rural Appalachia. There, they discover a small community haunted by witches, led by a local devil with a troubling connection to Hellboy's past: the Crooked Man.",
-        "popularity": 1410.525,
-        "poster_path": "https://image.tmdb.org/t/p/w1280/iz2GabtToVB05gLTVSH7ZvFtsMM.jpg",
-        "release_date": "2024-08-29",
-        "title": "Hellboy: The Crooked Man",
+        "id": 1118031,
+        "original_language": "es",
+        "original_title": "Apocalipsis Z: el principio del fin",
+        "overview": "When a kind of rabies that transforms people into aggressive creatures spreads across the planet, Manel isolates himself at home with his cat, relying on his wits to survive; but soon they must go out in search of food, by land and by sea, dodging many dangers.",
+        "popularity": 1814.827,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/wIGJnIFQlESkC2rLpfA8EDHqk4g.jpg",
+        "release_date": "2024-10-04",
+        "title": "Apocalypse Z: The Beginning of the End",
         "video": false,
-        "vote_average": 4.8,
-        "vote_count": 115
+        "vote_average": 6.742,
+        "vote_count": 550
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/kwXycPsLA6SV3KUOagn343TtMOf.jpg",
+        "genre_ids": [
+            28,
+            878,
+            53
+        ],
+        "id": 791042,
+        "original_language": "en",
+        "original_title": "Levels",
+        "overview": "After witnessing his girlfriend's murder, a man risks everything - including reality itself - to discover the truth.",
+        "popularity": 1634.969,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/yq39ChrCDlqrurYuaC8WM0vC1cx.jpg",
+        "release_date": "2024-11-01",
+        "title": "Levels",
+        "video": false,
+        "vote_average": 5.976,
+        "vote_count": 21
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/uVlUu174iiKhsUGqnOSy46eIIMU.jpg",
+        "genre_ids": [
+            18,
+            14,
+            10749
+        ],
+        "id": 402431,
+        "original_language": "en",
+        "original_title": "Wicked",
+        "overview": "Elphaba, a young woman misunderstood because of her green skin, and Glinda, a popular aristocrat gilded by privilege, become unlikely friends in the fantastical Land of Oz. As the two women struggle with their opposing personalities, their friendship is tested as both begin to fulfill their destinies as Glinda the Good and the Wicked Witch of the West.",
+        "popularity": 1485.249,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/c5Tqxeo1UpBvnAc3csUm7j3hlQl.jpg",
+        "release_date": "2024-11-20",
+        "title": "Wicked",
+        "video": false,
+        "vote_average": 7.831,
+        "vote_count": 181
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/dvBCdCohwWbsP5qAaglOXagDMtk.jpg",
+        "genre_ids": [
+            28,
+            35,
+            878
+        ],
+        "id": 533535,
+        "original_language": "en",
+        "original_title": "Deadpool & Wolverine",
+        "overview": "A listless Wade Wilson toils away in civilian life with his days as the morally flexible mercenary, Deadpool, behind him. But when his homeworld faces an existential threat, Wade must reluctantly suit-up again with an even more reluctant Wolverine.",
+        "popularity": 1423.522,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/8cdWjvZQUExUUTzyp4t6EDMubfO.jpg",
+        "release_date": "2024-07-24",
+        "title": "Deadpool & Wolverine",
+        "video": false,
+        "vote_average": 7.689,
+        "vote_count": 5590
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/7h6TqPB3ESmjuVbxCxAeB1c9OB1.jpg",
+        "genre_ids": [
+            18,
+            27,
+            878
+        ],
+        "id": 933260,
+        "original_language": "en",
+        "original_title": "The Substance",
+        "overview": "A fading celebrity decides to use a black market drug, a cell-replicating substance that temporarily creates a younger, better version of herself.",
+        "popularity": 1348.076,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/lqoMzCcZYEFK729d6qzt349fB4o.jpg",
+        "release_date": "2024-09-07",
+        "title": "The Substance",
+        "video": false,
+        "vote_average": 7.3,
+        "vote_count": 2193
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/uMXVeVL2v57lMv6pqBmegDHHPqz.jpg",
+        "genre_ids": [
+            16,
+            878,
+            12,
+            10751
+        ],
+        "id": 698687,
+        "original_language": "en",
+        "original_title": "Transformers One",
+        "overview": "The untold origin story of Optimus Prime and Megatron, better known as sworn enemies, but once were friends bonded like brothers who changed the fate of Cybertron forever.",
+        "popularity": 1286.375,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/qbkAqmmEIZfrCO8ZQAuIuVMlWoV.jpg",
+        "release_date": "2024-09-11",
+        "title": "Transformers One",
+        "video": false,
+        "vote_average": 8.087,
+        "vote_count": 772
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/tElnmtQ6yz1PjN1kePNl8yMSb59.jpg",
+        "genre_ids": [
+            16,
+            12,
+            10751,
+            35
+        ],
+        "id": 1241982,
+        "original_language": "en",
+        "original_title": "Moana 2",
+        "overview": "After receiving an unexpected call from her wayfinding ancestors, Moana journeys alongside Maui and a new crew to the far seas of Oceania and into dangerous, long-lost waters for an adventure unlike anything she's ever faced.",
+        "popularity": 1268.378,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/m0SbwFNCa9epW1X60deLqTHiP7x.jpg",
+        "release_date": "2024-11-27",
+        "title": "Moana 2",
+        "video": false,
+        "vote_average": 8.4,
+        "vote_count": 15
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/9SSEUrSqhljBMzRe4aBTh17rUaC.jpg",
+        "genre_ids": [
+            27,
+            878
+        ],
+        "id": 945961,
+        "original_language": "en",
+        "original_title": "Alien: Romulus",
+        "overview": "While scavenging the deep ends of a derelict space station, a group of young space colonizers come face to face with the most terrifying life form in the universe.",
+        "popularity": 1265.317,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/b33nnKl1GSFbao4l3fZDDqsMx0F.jpg",
+        "release_date": "2024-08-13",
+        "title": "Alien: Romulus",
+        "video": false,
+        "vote_average": 7.3,
+        "vote_count": 2414
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/9msuazXGWAyl7vhxVFU7e7Bb5Ik.jpg",
+        "genre_ids": [
+            18,
+            10749
+        ],
+        "id": 179387,
+        "original_language": "tl",
+        "original_title": "Heavenly Touch",
+        "overview": "Jonard is having trouble making ends meet. His mother is suffering from depression, and he and his sister are forced to quit school in order to take care of her. One day, Jonard meets up his friend Rodel, and Rodel introduces him to the world of massage parlors. Rodel teaches him massage, and brings him to Heavenly Touch, a syndicate-run massage parlor that mostly caters to homosexuals.",
+        "popularity": 1090.057,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/ory8WuAqznTE7lfopTSymHpop2t.jpg",
+        "release_date": "2009-05-12",
+        "title": "Heavenly Touch",
+        "video": false,
+        "vote_average": 6.5,
+        "vote_count": 22
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/1FBHAQnq7Bs3djBmaNkfdVbnCUE.jpg",
+        "genre_ids": [
+            28,
+            53
+        ],
+        "id": 1124641,
+        "original_language": "en",
+        "original_title": "Classified",
+        "overview": "Operating alone in the field for more than 20 years, a CIA hitman uses the \"Help Wanted\" section of the newspapers to get his orders from the Agency. His long-lost daughter, now a UK MI6 analyst, tracks him down to deliver shocking news: his CIA boss has been dead for years and the division long since shut down. Together, they set out to discover whose orders he's been executing.",
+        "popularity": 1047.071,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/3k8jv1kSAAc0rCfFGtWDDQL4dfK.jpg",
+        "release_date": "2024-09-19",
+        "title": "Classified",
+        "video": false,
+        "vote_average": 5.667,
+        "vote_count": 69
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/rOmUuQEZfPXglwFs5ELLLUDKodL.jpg",
+        "genre_ids": [
+            28,
+            35,
+            14
+        ],
+        "id": 845781,
+        "original_language": "en",
+        "original_title": "Red One",
+        "overview": "After Santa Claus (codename: Red One) is kidnapped, the North Pole's Head of Security must team up with the world's most infamous bounty hunter in a globe-trotting, action-packed mission to save Christmas.",
+        "popularity": 1046.567,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/cdqLnri3NEGcmfnqwk2TSIYtddg.jpg",
+        "release_date": "2024-10-31",
+        "title": "Red One",
+        "video": false,
+        "vote_average": 6.6,
+        "vote_count": 166
     },
     {
         "adult": false,
@@ -172,17 +328,215 @@
         "original_language": "en",
         "original_title": "Despicable Me 4",
         "overview": "Gru and Lucy and their girls\u2014Margo, Edith and Agnes\u2014welcome a new member to the Gru family, Gru Jr., who is intent on tormenting his dad. Gru also faces a new nemesis in Maxime Le Mal and his femme fatale girlfriend Valentina, forcing the family to go on the run.",
-        "popularity": 1232.398,
+        "popularity": 995.4,
         "poster_path": "https://image.tmdb.org/t/p/w1280/wWba3TaojhK7NdycRhoQpsG0FaH.jpg",
         "release_date": "2024-06-20",
         "title": "Despicable Me 4",
         "video": false,
         "vote_average": 7.1,
-        "vote_count": 1978
+        "vote_count": 2204
     },
     {
         "adult": false,
-        "backdrop_path": "/6n8x85cljOfJkUvPDc7tTmGPv7F.jpg",
+        "backdrop_path": "/2NPhBHfzhEmXl8csQ2dKmoxfj5e.jpg",
+        "genre_ids": [
+            80,
+            53,
+            28
+        ],
+        "id": 972614,
+        "original_language": "en",
+        "original_title": "Knox Goes Away",
+        "overview": "A contract killer, after being diagnosed with a fast-moving form of dementia, is presented with the opportunity to redeem himself by saving the life of his estranged adult son. But to do so, he must race against the police closing in on him as well as the ticking clock of his own rapidly deteriorating mind.",
+        "popularity": 950.284,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/w39qKYjltCix18BwtoZ1e45usdb.jpg",
+        "release_date": "2024-03-15",
+        "title": "Knox Goes Away",
+        "video": false,
+        "vote_average": 6.7,
+        "vote_count": 232
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/9s9o9RT9Yj6nDuRJjnJm78WFoFl.jpg",
+        "genre_ids": [
+            28,
+            27,
+            53,
+            878
+        ],
+        "id": 1051896,
+        "original_language": "en",
+        "original_title": "Arcadian",
+        "overview": "In the near future, on a decimated Earth, Paul and his twin sons face terror at night when ferocious creatures awaken. When Paul is nearly killed, the boys come up with a plan for survival, using everything their father taught them to keep him alive.",
+        "popularity": 931.581,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/spWV1eRzlDxvai8LbxwAWR0Vst4.jpg",
+        "release_date": "2024-04-12",
+        "title": "Arcadian",
+        "video": false,
+        "vote_average": 6.046,
+        "vote_count": 455
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/kyVcNF6GRthdiT4oZn5XgJtl0F7.jpg",
+        "genre_ids": [
+            28,
+            80
+        ],
+        "id": 1233327,
+        "original_language": "te",
+        "original_title": "\u0c2e\u0c1f\u0c4d\u0c15\u0c3e",
+        "overview": "Set between the years 1958 and 1982, Matka tells the story of Vasu, who rises from poverty to create a powerful gambling empire in India, ultimately leading the nation into a battle with the government. Based on real events, the tale explores themes of love, moral choices, and the consequences of ambition.",
+        "popularity": 851.795,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/jrHIKDq9xvKJhYBDvYwmAfs8qvr.jpg",
+        "release_date": "2024-11-14",
+        "title": "Matka",
+        "video": false,
+        "vote_average": 1.0,
+        "vote_count": 1
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/p5ozvmdgsmbWe0H8Xk7Rc8SCwAB.jpg",
+        "genre_ids": [
+            16
+        ],
+        "id": 1022789,
+        "original_language": "en",
+        "original_title": "Inside Out 2",
+        "overview": "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who\u2019ve long been running a successful operation by all accounts, aren\u2019t sure how to feel when Anxiety shows up. And it looks like she\u2019s not alone.",
+        "popularity": 827.042,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg",
+        "release_date": "2024-06-11",
+        "title": "Inside Out 2",
+        "video": false,
+        "vote_average": 7.588,
+        "vote_count": 4821
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/llIXQAndg5kB6SWlp6ouUdO7Zxd.jpg",
+        "genre_ids": [
+            28,
+            12,
+            18,
+            36,
+            10749,
+            53
+        ],
+        "id": 1084736,
+        "original_language": "fr",
+        "original_title": "Le Comte de Monte-Cristo",
+        "overview": "Edmond Dantes becomes the target of a sinister plot and is arrested on his wedding day for a crime he did not commit. After 14 years in the island prison of Ch\u00e2teau d\u2019If, he manages a daring escape. Now rich beyond his dreams, he assumes the identity of the Count of Monte-Cristo and exacts his revenge on the three men who betrayed him.",
+        "popularity": 776.933,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/zw4kV7npGtaqvUxvJE9IdqdFsNc.jpg",
+        "release_date": "2024-06-28",
+        "title": "The Count of Monte-Cristo",
+        "video": false,
+        "vote_average": 8.219,
+        "vote_count": 896
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/6VoxDupaW2VXfLtJyeOoGCgXSjD.jpg",
+        "genre_ids": [
+            28,
+            53
+        ],
+        "id": 1116490,
+        "original_language": "en",
+        "original_title": "Cash Out",
+        "overview": "Criminal mastermind Mason is about to execute the score of a lifetime when his lover and key member of his crew, Decker, takes the team down and reveals she\u2019s an undercover Interpol agent. Heartbroken, Mason escapes and retires from the life of crime until his younger brother Shawn is out of his league taking on a big bank heist all on his own. Mason has no choice left but to come to the rescue, while Interpol brings Decker in hoping to unnerve him. Before the SWAT teams storm the bank, Mason must use every tool in his arsenal to not only escape with the prize, but also the love of his life.",
+        "popularity": 770.34,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/xBJnIvRdL0nDHgvivr6EgBQizes.jpg",
+        "release_date": "2024-04-26",
+        "title": "Cash Out",
+        "video": false,
+        "vote_average": 6.297,
+        "vote_count": 118
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/VuukZLgaCrho2Ar8Scl9HtV3yD.jpg",
+        "genre_ids": [
+            878,
+            28
+        ],
+        "id": 335983,
+        "original_language": "en",
+        "original_title": "Venom",
+        "overview": "Investigative journalist Eddie Brock attempts a comeback following a scandal, but accidentally becomes the host of Venom, a violent, super powerful alien symbiote. Soon, he must rely on his newfound powers to protect the world from a shadowy organization looking for a symbiote of their own.",
+        "popularity": 770.227,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/2uNW4WbgBXL25BAbXGLnLqX71Sw.jpg",
+        "release_date": "2018-09-28",
+        "title": "Venom",
+        "video": false,
+        "vote_average": 6.8,
+        "vote_count": 15996
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/hkJhGayONXn96CqIRM9GhWKnlCf.jpg",
+        "genre_ids": [
+            28,
+            12,
+            16,
+            14
+        ],
+        "id": 1014505,
+        "original_language": "ja",
+        "original_title": "\u5287\u5834\u7248\u300c\u30aa\u30fc\u30d0\u30fc\u30ed\u30fc\u30c9\u300d\u8056\u738b\u56fd\u7de8",
+        "overview": "After twelve years of playing his favorite MMORPG game, Momonga logs in for the last time only to find himself transported into its world playing it indefinitely. Throughout his adventures, his avatar ascends to the title of Sorcerer King Ains Ooal Gown. Once prosperous but now on the brink of ruin, The Sacred Kingdom enjoyed years of peace after construction of an enormous wall protecting them from neighboring invasions. But, one day this comes to an end when the Demon Emperor Jaldabaoth arrives with an army of villainous demi-humans. Fearing invasion of their own lands, the neighboring territory of the Slane Theocracy is forced to beg their enemies at the Sorcerer Kingdom for help. Heeding the call, Momonga, now known as the Sorcerer King Ains Ooal Gown, rallies the Sorcerer Kingdom and its undead army to join the fight alongside the Sacred Kingdom and the Slane Theocracy in hopes to defeat the Demon Emperor.",
+        "popularity": 693.178,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/jEvytxNa5mfW7VAUmDWsZtIdATc.jpg",
+        "release_date": "2024-09-20",
+        "title": "OVERLORD: The Sacred Kingdom",
+        "video": false,
+        "vote_average": 7.85,
+        "vote_count": 20
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/vIgyYkXkg6NC2whRbYjBD7eb3Er.jpg",
+        "genre_ids": [
+            878,
+            28,
+            12
+        ],
+        "id": 580489,
+        "original_language": "en",
+        "original_title": "Venom: Let There Be Carnage",
+        "overview": "After finding a host body in investigative reporter Eddie Brock, the alien symbiote must face a new enemy, Carnage, the alter ego of serial killer Cletus Kasady.",
+        "popularity": 662.173,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/1MJNcPZy46hIy2CmSqOeru0yr5C.jpg",
+        "release_date": "2021-09-30",
+        "title": "Venom: Let There Be Carnage",
+        "video": false,
+        "vote_average": 6.799,
+        "vote_count": 10218
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/2QR0OpYzPFG84EswxENqcPuHmP.jpg",
+        "genre_ids": [
+            10752
+        ],
+        "id": 1041317,
+        "original_language": "en",
+        "original_title": "Battle for the Western Front",
+        "overview": "Inspired by Canuck WWI flying ace Billy Bishop, two young soldiers crash the front lines in August 1918. With the Allies detained, their platoon must desperately hold out alongside legendary Anishinaabe sniper Francis \"Peggy\" Pegahmagabow.",
+        "popularity": 658.175,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/ooHEL3XyLYu3hus5cMnpjeH4e7A.jpg",
+        "release_date": "2022-10-06",
+        "title": "Battle for the Western Front",
+        "video": false,
+        "vote_average": 4.3,
+        "vote_count": 5
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/uLqNGzJwnj8JKkKuRM2dHWJKCtc.jpg",
         "genre_ids": [
             28,
             27,
@@ -192,177 +546,177 @@
         "original_language": "en",
         "original_title": "Azrael",
         "overview": "In a world where no one speaks, a devout female hunts down a young woman who has escaped her imprisonment. Recaptured by its ruthless leaders, Azrael is due to be sacrificed to pacify an ancient evil deep within the surrounding wilderness.",
-        "popularity": 1764.021,
+        "popularity": 645.737,
         "poster_path": "https://image.tmdb.org/t/p/w1280/qpdFKDvJS7oLKTcBLXOaMwUESbs.jpg",
         "release_date": "2024-09-27",
         "title": "Azrael",
         "video": false,
-        "vote_average": 5.755,
-        "vote_count": 47
+        "vote_average": 6.1,
+        "vote_count": 136
     },
     {
         "adult": false,
-        "backdrop_path": "/p5ozvmdgsmbWe0H8Xk7Rc8SCwAB.jpg",
+        "backdrop_path": "/csQSGH0QU8D3Ov5YLEYuHep8ihA.jpg",
         "genre_ids": [
-            16,
-            10751,
-            12,
-            35,
-            18
-        ],
-        "id": 1022789,
-        "original_language": "en",
-        "original_title": "Inside Out 2",
-        "overview": "Teenager Riley's mind headquarters is undergoing a sudden demolition to make room for something entirely unexpected: new Emotions! Joy, Sadness, Anger, Fear and Disgust, who\u2019ve long been running a successful operation by all accounts, aren\u2019t sure how to feel when Anxiety shows up. And it looks like she\u2019s not alone.",
-        "popularity": 1052.799,
-        "poster_path": "https://image.tmdb.org/t/p/w1280/vpnVM9B6NMmQpWeZvzLvDESb2QY.jpg",
-        "release_date": "2024-06-11",
-        "title": "Inside Out 2",
-        "video": false,
-        "vote_average": 7.633,
-        "vote_count": 4326
-    },
-    {
-        "adult": false,
-        "backdrop_path": "/uVWlwJebxX0M3axXAUrryJ6w9cQ.jpg",
-        "genre_ids": [
-            28,
-            35,
-            80
-        ],
-        "id": 507241,
-        "original_language": "en",
-        "original_title": "The Killer's Game",
-        "overview": "When top hitman Joe Flood is diagnosed with a terminal illness, he decides to take matters into his own hands \u2013 by taking a hit out on himself. But when the very hitmen he hired also target his ex-girlfriend, he must fend off an army of assassin colleagues and win back the love of his life before it's too late.",
-        "popularity": 831.963,
-        "poster_path": "https://image.tmdb.org/t/p/w1280/4bKlTeOUr5AKrLky8mwWvlQqyVd.jpg",
-        "release_date": "2024-09-12",
-        "title": "The Killer's Game",
-        "video": false,
-        "vote_average": 6.347,
-        "vote_count": 62
-    },
-    {
-        "adult": false,
-        "backdrop_path": "/hPIWQT70wQK6akqfLXByEvr62u0.jpg",
-        "genre_ids": [
-            28,
             53,
-            27,
-            878
-        ],
-        "id": 726139,
-        "original_language": "ko",
-        "original_title": "\ud0c8\ucd9c: \ud504\ub85c\uc81d\ud2b8 \uc0ac\uc77c\ub7f0\uc2a4",
-        "overview": "Due to sudden deteriorating weather conditions, visibility on the Airport Bridge is severely impaired, leaving people stranded and at risk of the bridge collapsing due to a series of chain collisions and explosions. Amidst the chaos, the canine subjects \"Echo\" from the military experiment \"Project Silence,\" who were being transported in secret, break free, and all human survivors become targets of relentless attacks.",
-        "popularity": 827.171,
-        "poster_path": "https://image.tmdb.org/t/p/w1280/fttoFfKikQMwIoV3UVvlCvBhbUw.jpg",
-        "release_date": "2024-07-11",
-        "title": "Project Silence",
-        "video": false,
-        "vote_average": 7.1,
-        "vote_count": 171
-    },
-    {
-        "adult": false,
-        "backdrop_path": "/tCKWksaQI8XkAQLVou0AlGab5S6.jpg",
-        "genre_ids": [
+            12,
             28,
             878
         ],
-        "id": 1144962,
-        "original_language": "en",
-        "original_title": "Transmorphers: Mech Beasts",
-        "overview": "20 years after the events of Transmorphers, a newer, more advanced species of alien robot descends on a rebuilt Earth, threatening once again to destroy the planet.",
-        "popularity": 805.534,
-        "poster_path": "https://image.tmdb.org/t/p/w1280/oqhaffnQqSzdLrYAQA5W4IdAoCX.jpg",
-        "release_date": "2023-06-09",
-        "title": "Transmorphers: Mech Beasts",
+        "id": 1196470,
+        "original_language": "fr",
+        "original_title": "Survivre",
+        "overview": "A couple celebrates their son\u2019s birthday in the middle of the ocean on their boat. A violent storm hits and it brings up hungry creatures from the depths and they fight for their survival.",
+        "popularity": 645.362,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/7fR3KxswtY8OHHZuOUB9td58CRX.jpg",
+        "release_date": "2024-06-19",
+        "title": "Survive",
         "video": false,
-        "vote_average": 4.9,
-        "vote_count": 23
+        "vote_average": 5.8,
+        "vote_count": 65
     },
     {
         "adult": false,
-        "backdrop_path": "/9msuazXGWAyl7vhxVFU7e7Bb5Ik.jpg",
+        "backdrop_path": "/jhk6D8pim3yaByu1801kMoxXFaX.jpg",
         "genre_ids": [
+            28,
             18,
-            10749
+            12
         ],
-        "id": 179387,
-        "original_language": "tl",
-        "original_title": "Heavenly Touch",
-        "overview": "Jonard is having trouble making ends meet. His mother is suffering from depression, and he and his sister are forced to quit school in order to take care of her. One day, Jonard meets up his friend Rodel, and Rodel introduces him to the world of massage parlors. Rodel teaches him massage, and brings him to Heavenly Touch, a syndicate-run massage parlor that mostly caters to homosexuals.",
-        "popularity": 904.44,
-        "poster_path": "https://image.tmdb.org/t/p/w1280/ory8WuAqznTE7lfopTSymHpop2t.jpg",
-        "release_date": "2009-05-12",
-        "title": "Heavenly Touch",
-        "video": false,
-        "vote_average": 6.0,
-        "vote_count": 19
-    },
-    {
-        "adult": false,
-        "backdrop_path": "/Asg2UUwipAdE87MxtJy7SQo08XI.jpg",
-        "genre_ids": [
-            28,
-            14,
-            27
-        ],
-        "id": 957452,
+        "id": 98,
         "original_language": "en",
-        "original_title": "The Crow",
-        "overview": "Soulmates Eric and Shelly are brutally murdered when the demons of her dark past catch up with them. Given the chance to save his true love by sacrificing himself, Eric sets out to seek merciless revenge on their killers, traversing the worlds of the living and the dead to put the wrong things right.",
-        "popularity": 715.079,
-        "poster_path": "https://image.tmdb.org/t/p/w1280/58QT4cPJ2u2TqWZkterDq9q4yxQ.jpg",
-        "release_date": "2024-08-21",
-        "title": "The Crow",
+        "original_title": "Gladiator",
+        "overview": "In the year 180, the death of Emperor Marcus Aurelius throws the Roman Empire into chaos. Maximus is one of the Roman army's most capable and trusted generals, as well as a key advisor to the emperor. As Marcus' devious son Commodus ascends to the throne, Maximus is sentenced to execution. He escapes but is captured by slave traders. Renamed \"Spaniard\" and forced to become a gladiator, Maximus must battle to the death against other men for the amusement of paying audiences.",
+        "popularity": 627.523,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/ty8TGRuvJLPUmAR1H1nRIsgwvim.jpg",
+        "release_date": "2000-05-04",
+        "title": "Gladiator",
         "video": false,
-        "vote_average": 5.741,
-        "vote_count": 615
+        "vote_average": 8.2,
+        "vote_count": 18701
     },
     {
         "adult": false,
-        "backdrop_path": "/1fL2S8LKxCVE9KoPRBXeagmBtex.jpg",
+        "backdrop_path": "/xPVhaMMUZq1yclf4kCEYwJ1Cqr6.jpg",
         "genre_ids": [
             27,
             53
         ],
-        "id": 1114513,
-        "original_language": "en",
-        "original_title": "Speak No Evil",
-        "overview": "When an American family is invited to spend the weekend at the idyllic country estate of a charming British family they befriended on vacation, what begins as a dream holiday soon warps into a snarled psychological nightmare.",
-        "popularity": 572.316,
-        "poster_path": "https://image.tmdb.org/t/p/w1280/fDtkrO2OAF8LKQTdzYmu1Y7lCLB.jpg",
-        "release_date": "2024-09-11",
-        "title": "Speak No Evil",
+        "id": 1100856,
+        "original_language": "ru",
+        "original_title": "\u0417\u0430\u043a\u043b\u044f\u0442\u044c\u0435. \u0428\u0435\u043f\u043e\u0442 \u0432\u0435\u0434\u044c\u043c",
+        "overview": "Mara, an ancient pagan spirit, hunts a group of teenagers taking their body parts to be reborn. A disillusioned and desperate investigator has to face his deepest fears to save the teenagers.",
+        "popularity": 623.739,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/raDMchyq3dJMqso2TVh75A123Xb.jpg",
+        "release_date": "2024-06-13",
+        "title": "Whisper of the Witch",
         "video": false,
-        "vote_average": 7.3,
-        "vote_count": 665
+        "vote_average": 6.8,
+        "vote_count": 12
     },
     {
         "adult": false,
-        "backdrop_path": "/eXQ8O0ykuEB8dUJhq2WJll4vXmA.jpg",
+        "backdrop_path": "/m1MifWpNjOU1g8UfIyNSI2dMFZf.jpg",
+        "genre_ids": [
+            16,
+            10751,
+            35,
+            27
+        ],
+        "id": 1371727,
+        "original_language": "en",
+        "original_title": "Sing: Thriller",
+        "overview": "Buster Moon dreams up a star-studded spectacle set to Michael Jackson's \"Thriller\" in this animated short featuring characters from the hit \"Sing\" films.",
+        "popularity": 539.439,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/i77OInTKcrnRlAozFOaB6D5mk15.jpg",
+        "release_date": "2024-10-16",
+        "title": "Sing: Thriller",
+        "video": false,
+        "vote_average": 7.388,
+        "vote_count": 103
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/5IIFJxwRzmkhczQidIhpoaolpZY.jpg",
         "genre_ids": [
             28,
-            35,
+            53,
             80
         ],
-        "id": 1210794,
-        "original_language": "sv",
-        "original_title": "Strul",
-        "overview": "Wrongfully convicted of murder, a clumsy electronics salesman faces police corruption and criminal conspiracies in an attempt to prove his innocence.",
-        "popularity": 633.145,
-        "poster_path": "https://image.tmdb.org/t/p/w1280/ildbg7ho14EHbt1fZWAkgqIyPqy.jpg",
-        "release_date": "2024-10-02",
-        "title": "Trouble",
+        "id": 976734,
+        "original_language": "en",
+        "original_title": "Canary Black",
+        "overview": "Top level CIA agent Avery Graves is blackmailed by terrorists into betraying her own country to save her kidnapped husband. Cut off from her team, she turns to her underworld contacts to survive and help locate the coveted intelligence that the kidnappers want.",
+        "popularity": 537.988,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/hhiR6uUbTYYvKoACkdAIQPS5c6f.jpg",
+        "release_date": "2024-10-10",
+        "title": "Canary Black",
         "video": false,
-        "vote_average": 7.1,
-        "vote_count": 83
+        "vote_average": 6.36,
+        "vote_count": 258
     },
     {
         "adult": false,
-        "backdrop_path": "/vGaBqgY8YRzQVUbBMPnd5SmYvL7.jpg",
+        "backdrop_path": "/uGmYqxh8flqkudioyFtD7IJSHxK.jpg",
+        "genre_ids": [
+            18,
+            80,
+            53
+        ],
+        "id": 889737,
+        "original_language": "en",
+        "original_title": "Joker: Folie \u00e0 Deux",
+        "overview": "While struggling with his dual identity, Arthur Fleck not only stumbles upon true love, but also finds the music that's always been inside him.",
+        "popularity": 502.517,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/if8QiqCI7WAGImKcJCfzp6VTyKA.jpg",
+        "release_date": "2024-10-01",
+        "title": "Joker: Folie \u00e0 Deux",
+        "video": false,
+        "vote_average": 5.604,
+        "vote_count": 1668
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/vf7BYmweDLZptuTSjq8Lo044aaj.jpg",
+        "genre_ids": [
+            28,
+            53
+        ],
+        "id": 1094974,
+        "original_language": "en",
+        "original_title": "Take Cover",
+        "overview": "A burned-out professional sniper finds himself trapped in an all-glass penthouse by a lethal competitor and must find a way to survive and escape with little to no cover between him and the killer.",
+        "popularity": 482.018,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/xNLiMNyFzKTL9PVIEulG55Hei8j.jpg",
+        "release_date": "2024-10-04",
+        "title": "Take Cover",
+        "video": false,
+        "vote_average": 7.05,
+        "vote_count": 60
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/n9Do4rv1Hl3QvQLMmT5w6pBadqq.jpg",
+        "genre_ids": [
+            28,
+            10749,
+            18
+        ],
+        "id": 1142518,
+        "original_language": "fr",
+        "original_title": "Libre",
+        "overview": "Inspired by the true events of one of France's most notorious non-violent robbers, Bruno Sulak, in the 1980s. He led multiple heists, then captured public attention for his many daring escapes from police custody...always to reunite with his beloved lover and accomplice Annie, becoming both France's Public Enemy #1 and an icon of Freedom.",
+        "popularity": 467.097,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/b2YL2kncIqlcDcqly78AsOPJi6r.jpg",
+        "release_date": "2024-11-01",
+        "title": "Freedom",
+        "video": false,
+        "vote_average": 6.516,
+        "vote_count": 62
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/rI9Mh0Q0XAtqTiSgKI0M2fflO1X.jpg",
         "genre_ids": [
             16,
             35
@@ -371,31 +725,70 @@
         "original_language": "en",
         "original_title": "The Bad Guys: Haunted Heist",
         "overview": "The crafty Bad Guys crew embarks on a high-stakes Halloween heist to swipe a priceless amulet from a spooky mansion. What could go wrong?",
-        "popularity": 570.78,
+        "popularity": 464.149,
         "poster_path": "https://image.tmdb.org/t/p/w1280/oEJC05CqPugMxC4rFu9r6r6vg6m.jpg",
         "release_date": "2024-10-02",
         "title": "The Bad Guys: Haunted Heist",
         "video": false,
-        "vote_average": 7.4,
-        "vote_count": 51
+        "vote_average": 7.148,
+        "vote_count": 88
     },
     {
         "adult": false,
-        "backdrop_path": "/cRdA9xjHBbobw4LJFsQ3j1CgpVq.jpg",
+        "backdrop_path": "/tncbMvfV0V07UZozXdBEq4Wu9HH.jpg",
         "genre_ids": [
-            27,
-            53
+            28,
+            35
         ],
-        "id": 663712,
+        "id": 573435,
         "original_language": "en",
-        "original_title": "Terrifier 2",
-        "overview": "A year after the Miles County massacre, Art the Clown is resurrected by a sinister entity. Art returns home, where he must hunt down and destroy teenage Sienna and her younger brother Jonathan on Halloween. As the body count rises, the siblings fight to stay alive while uncovering the true nature of Art's evil intent.",
-        "popularity": 627.853,
-        "poster_path": "https://image.tmdb.org/t/p/w1280/8gLhu8UFPZfH2Hv11JhTZkb9CVl.jpg",
-        "release_date": "2022-10-06",
-        "title": "Terrifier 2",
+        "original_title": "Bad Boys: Ride or Die",
+        "overview": "After their late former Captain is framed, Lowrey and Burnett try to clear his name, only to end up on the run themselves.",
+        "popularity": 459.78,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/oGythE98MYleE6mZlGs5oBGkux1.jpg",
+        "release_date": "2024-06-05",
+        "title": "Bad Boys: Ride or Die",
         "video": false,
-        "vote_average": 6.777,
-        "vote_count": 1820
+        "vote_average": 7.5,
+        "vote_count": 2370
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/epQfhIcfqWgrMhRvnxkVm7EeEpE.jpg",
+        "genre_ids": [
+            878,
+            27
+        ],
+        "id": 1125510,
+        "original_language": "es",
+        "original_title": "El hoyo 2",
+        "overview": "After a mysterious leader imposes his law in a brutal system of vertical cells, a new arrival battles against a dubious food distribution method.",
+        "popularity": 455.961,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/hf94ySIzdP3KwHau9VSWh7b7Qu2.jpg",
+        "release_date": "2024-09-27",
+        "title": "The Platform 2",
+        "video": false,
+        "vote_average": 5.636,
+        "vote_count": 883
+    },
+    {
+        "adult": false,
+        "backdrop_path": "/b3mdmjYTEL70j7nuXATUAD9qgu4.jpg",
+        "genre_ids": [
+            16,
+            14,
+            12
+        ],
+        "id": 823219,
+        "original_language": "lv",
+        "original_title": "Straume",
+        "overview": "A solitary cat, displaced by a great flood, finds refuge on a boat with various species and must navigate the challenges of adapting to a transformed world together.",
+        "popularity": 455.784,
+        "poster_path": "https://image.tmdb.org/t/p/w1280/dzDMewC0Hwv01SROiWgKOi4iOc1.jpg",
+        "release_date": "2024-08-29",
+        "title": "Flow",
+        "video": false,
+        "vote_average": 8.5,
+        "vote_count": 266
     }
 ]
