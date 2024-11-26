@@ -94,16 +94,16 @@ def make_movie_page(movie_id):
     backdrop_path = first + movie.get("backdrop_path", "")
 
     # Fetch streaming platforms (for example, from TMDb API or JustWatch API)
-    # streaming_platforms = fetch_streaming_platforms(movie_id)
-    # for platform in streaming_platforms:
-    #     print(platform['name'])
+    streaming_platforms = fetch_streaming_platforms(movie_id)
+    for platform in streaming_platforms:
+        print(platform['name'])
    
     #render template
     return render_template('trending_movie.html',
                            movie_title = movie_title, movie_id=movie_id,
                            movie_description= movie_description,
-                           backdrop_path = backdrop_path, other_movies = other_movies) 
-                        #    streaming_platforms=streaming_platforms)
+                           backdrop_path = backdrop_path, other_movies = other_movies, 
+                           streaming_platforms=streaming_platforms)
 
 def fetch_streaming_platforms(movie_id):
 
