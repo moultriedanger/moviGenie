@@ -10,7 +10,6 @@ xhr.onreadystatechange = function () {
 xhr.open("GET", "/movies", true);
 xhr.send();
 
-
 function display_movies(movies) {
   console.log(movies)
   const movieContainer = document.querySelector('.movie-cards');
