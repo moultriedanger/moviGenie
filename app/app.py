@@ -86,7 +86,7 @@ def fetch_streaming_platforms(movie_id):
     url = f'https://api.themoviedb.org/3/movie/{movie_id}/watch/providers'
     headers = {
         "accept": "application/json",
-        "Authorization": f"Bearer {config.MY_API_KEY}"
+        "Authorization": f"Bearer {config.API_KEY}"
     }
 
     response = requests.get(url, headers=headers)
@@ -118,6 +118,7 @@ def fetch_streaming_platforms(movie_id):
 
 
 @app.route('/trending_movie/<int:movie_id>',methods=["POST"])
+@app.route('/search/<int:movie_id>',methods=["POST"])
 def render_trailer(movie_id):
     url = f"https://api.themoviedb.org/3/movie/{movie_id}/videos"
     
@@ -176,6 +177,8 @@ def render_search(movie_id):
 
     movie = response.json()
 
+    
+
     title = movie.get("title", "Title not found") 
     description = movie.get("overview", "Title not found") 
 
@@ -192,6 +195,7 @@ def render_search(movie_id):
 
     return render_template('trending_movie.html',
                            movie_title = title,
+                           movie_id=movie_id,
                            movie_description= description,
                            backdrop_path = backdrop_path,
                            other_movies = movies)
