@@ -20,7 +20,7 @@ body::before {
     z-index: -1;
 }
 
-*:not(html, body, input, #search-icon, #bar-search-icon, #lamp, #shadow, #consult-genie-text, #smoke, #gptInput, #gptLogo, #gptHeader,.overlay ) {
+*:not(html, body, #genieSubmit, input, #search-icon, #bar-search-icon, #lamp, #shadow, #consult-genie-text, #smoke, #gptInput, #gptLogo, #gptHeader,.overlay ) {
     animation: transitionIn 1.50s;
 }
 
@@ -181,7 +181,7 @@ body::before {
 }
 
 #gptInput {
-    width: 40%;
+    width: 45%;
     height: auto;
     min-height: 100px;
     padding: 20px;
@@ -221,7 +221,7 @@ body::before {
 } */
 
 #gptHeader {
-    font-size: 12px;
+    font-size: 18px;
     color: gray;
     opacity: 0;
     transition: opacity 5s;
@@ -231,8 +231,39 @@ body::before {
 
 #gptHeader.activated {
     opacity: 1;
+
 }
 
+#genieSubmit{
+    opacity: 0;
+    color: gray;
+    background-color: transparent;
+    border: 2px solid gray;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    bottom:20%;
+    left: 85%;
+    opacity: 0;
+    transition: color 0.5s ease, border-color 0.5s ease;
+    z-index: 9999;
+
+}
+#genieSubmit:hover{
+    color: white;
+    border-color: white;
+    cursor: pointer;
+
+
+}
+#genieSubmit.activated{
+    opacity: 1;
+}
 
 
 
@@ -300,13 +331,18 @@ hr {
     .consult-genie-container {
         margin-top: 100px;
     }
-
+    #genieSubmit{
+        bottom:70px;
+    }
     #gptHeader {
         width: 450px;
-        font-size: 9px;
         text-align: center;
+        font-size: 9px;
     }
+    #gptInput{
+        width: 68%;
 
+    }
     #consult-genie-text {
         width: 330px;
         font-size: 24px;

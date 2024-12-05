@@ -7,6 +7,10 @@ import requests
 from random import sample
 import sqlite3
 import os
+import openai
+# AIID = trainingAI.fine_tuned_model_id
+
+
 
 app = Flask(__name__)
 # app = Flask(__name__, template_folder='../templates')
@@ -23,9 +27,40 @@ app.config['MAIL_USE_TLS'] = False
 
 mail = Mail(app)
 
+# Set the API key
+openai.api_key = config.GPT_API
+
 @app.route('/landing')
 def landing():
     return render_template('landing.html')
+
+@app.route('/process_genie_request', methods=['POST'])
+def process_genie_request():
+    client = openai.OpenAI(api_key=config.GPT_API, timeout=40.0)
+    
+    with open("fine_tuned_model_id.json", "r") as f:
+        data = json.load(f)
+        fine_tuned_model_id = data["fine_tuned_model_id"]
+    
+    
+    data = request.get_json()
+    user_input = data.get('user_input')
+
+    # Make a GPT request with the user input
+    response = client.chat.completions.create(
+        model=fine_tuned_model_id,  # Use the appropriate model
+        messages=[
+            {"role": "system", "content": "You are a movie recommendation engine that only responds with relevant lists of movies to valid requests for movies, any irrelevant questions are only to be met with the word INVALID."},
+            {"role": "user", "content": user_input}
+        ],
+        max_tokens=150
+    )
+
+    # Extract the response text
+    gpt_response = response.choices[0].message['content']
+
+    # Return the response to the client
+    return jsonify({'response': gpt_response})
 
 @app.route('/about')
 def about():

@@ -28,6 +28,7 @@
         <div class="post-animation">
             <img id="gptLogo" src="static/img/logo.png" alt="logo">
             <textarea id="gptInput" placeholder="Type your request to the Genie..."></textarea>
+            <button id="genieSubmit"><i class="fas fa-arrow-right"></i></button>
             <h1 id="gptHeader">Our Genie is AI powered, so speak to it as you would a friend and let the Genie do the
                 rest.
         </div>
@@ -55,7 +56,34 @@
     <!-- lamp effects -->
     <script>
             
-            
+            document.getElementById('genieSubmit').addEventListener('click', function() {
+            const gptInputText = document.getElementById('gptInput').value;
+            console.log('User input:', gptInputText);
+
+            fetch('/process_genie_request', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ user_input: gptInputText })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Response from server:', data);
+                
+
+                const gptInput = document.getElementById('gptInput');
+                gptInput.value = '';
+                gptInput.placeholder = 'Type your request to the Genie...';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                const gptHeader = document.getElementById('gptHeader')
+                gptHeader.value = 'Error querying the Genie, please try again later'
+
+            });
+        });
+
         document.addEventListener('DOMContentLoaded', function () {
             const lampIcon = document.getElementById('lamp');
             const shadow = document.getElementById('shadow');
@@ -63,6 +91,9 @@
             const textBox = document.getElementById("gptInput")
             const header = document.getElementById("gptHeader")
             const logo = document.getElementById("gptLogo")
+            const arrow = document.getElementById("genieSubmit")
+
+
 
             lampIcon.addEventListener('click', function () {
                 lampIcon.classList.toggle('activated');
@@ -71,6 +102,7 @@
                 textBox.classList.toggle('activated');
                 header.classList.toggle('activated');
                 logo.classList.toggle('activated');
+                arrow.classList.toggle('activated');
             });
         });
 
