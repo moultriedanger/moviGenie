@@ -247,10 +247,10 @@ body::before {
     justify-content: center;
     cursor: pointer;
     position: absolute;
-    bottom:20%;
-    left: 85%;
+    bottom:15%;
+    left: 73%;
     opacity: 0;
-    transition: color 0.5s ease, border-color 0.5s ease;
+    transition: color 0.5s ease, border-color 0.5s ease, opacity 2s ease;
     z-index: 9999;
 
 }
@@ -262,6 +262,7 @@ body::before {
 
 }
 #genieSubmit.activated{
+    transition: opacity 2s ease;
     opacity: 1;
 }
 
@@ -332,16 +333,17 @@ hr {
         margin-top: 100px;
     }
     #genieSubmit{
-        bottom:70px;
+        left: 87%;
+        bottom:24%;
+
     }
     #gptHeader {
-        width: 450px;
+        width: 370px;
         text-align: center;
-        font-size: 9px;
+        font-size: 17px;
     }
     #gptInput{
         width: 68%;
-
     }
     #consult-genie-text {
         width: 330px;

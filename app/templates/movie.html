@@ -27,7 +27,7 @@
 
         <div class="post-animation">
             <img id="gptLogo" src="static/img/logo.png" alt="logo">
-            <textarea id="gptInput" placeholder="Type your request to the Genie..."></textarea>
+            <textarea id="gptInput" placeholder="Type your wish to the Genie..."></textarea>
             <button id="genieSubmit"><i class="fas fa-arrow-right"></i></button>
             <h1 id="gptHeader">Our Genie is AI powered, so speak to it as you would a friend and let the Genie do the
                 rest.
@@ -56,10 +56,26 @@
     <!-- lamp effects -->
     <script>
             
-            document.getElementById('genieSubmit').addEventListener('click', function() {
+        let canSubmit = true;
+        let isRequestInProgress = false;
+
+        function submitGenieRequest() {
+            if (!canSubmit || isRequestInProgress) {
+                const gptHeader = document.getElementById('gptHeader');
+                gptHeader.textContent = 'Please wait before sending another wish to the Genie';
+                return;
+            }
+
             const gptInputText = document.getElementById('gptInput').value;
             console.log('User input:', gptInputText);
 
+            // Set the request in progress flag
+            isRequestInProgress = true;
+
+            // Change cursor to loading
+            document.body.style.cursor = 'wait';
+
+            // Send the input text to the server using fetch
             fetch('/process_genie_request', {
                 method: 'POST',
                 headers: {
@@ -70,20 +86,46 @@
             .then(response => response.json())
             .then(data => {
                 console.log('Response from server:', data);
-                
+                // Handle the response data as needed
+                alert(data.response);  // Display the response in an alert for demonstration
 
+                // Clear the gptInput textarea and reset its placeholder
                 const gptInput = document.getElementById('gptInput');
                 gptInput.value = '';
                 gptInput.placeholder = 'Type your request to the Genie...';
+                const gptHeader = document.getElementById('gptHeader');
+                gptHeader.textContent = 'Wish sent, please wait twenty seconds before sending another wish';
+
+                // Set the cooldown
+                canSubmit = false;
+                setTimeout(() => {
+                    canSubmit = true;
+                    gptHeader.textContent = 'You can now send another wish';
+                }, 20000); // 20 seconds cooldown
             })
             .catch(error => {
                 console.error('Error:', error);
-                const gptHeader = document.getElementById('gptHeader')
-                gptHeader.value = 'Error querying the Genie, please try again later'
-
+                const gptHeader = document.getElementById('gptHeader');
+                gptHeader.textContent = 'Error contacting the Genie, please try again later';
+            })
+            .finally(() => {
+                // Reset the request in progress flag
+                isRequestInProgress = false;
+                // Reset cursor to default
+                document.body.style.cursor = 'default';
             });
+        }
+
+        document.getElementById('genieSubmit').addEventListener('click', submitGenieRequest);
+
+        document.getElementById('gptInput').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); 
+                submitGenieRequest();
+            }
         });
 
+      
         document.addEventListener('DOMContentLoaded', function () {
             const lampIcon = document.getElementById('lamp');
             const shadow = document.getElementById('shadow');

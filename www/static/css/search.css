@@ -1,11 +1,12 @@
 /* Overlay styles */
 .search_overlay {
+    
     position: fixed;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(118, 118, 118, 0.7); /* Semi-transparent background */
+    background-color: rgba(118, 118, 118, 0.9); /* Semi-transparent background */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -32,27 +33,40 @@
     overflow-y: auto; /* Scroll content if it exceeds height */
 }
 
+
+
 /* Close button */
 .close-button {
     position: absolute; /* Position close button within the popup */
     top: 10px; /* Distance from the top of the popup */
     right: 10px; /* Distance from the right side of the popup */
-    padding: 5px 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 5px;
+    width: 30px; /* Set width to create a circular button */
+    height: 30px; /* Set height to create a circular button */
+    background-color: transparent;
+    color: black;
+    border: 2px solid black; /* Add a border to make the button more visible */
+    border-radius: 50%; /* Make the button circular */
     cursor: pointer;
     font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Add transition for hover effects */
+}
+
+.close-button:hover {
+    background-color: gray;
+    color: white;
+    border-color: rgb(255, 255, 255);
 }
 
 /* Ensure the button has hover and active styles */
 .close-button:hover {
-    background-color: #0056b3;
+    background-color: gray;
 }
 
 .close-button:active {
-    background-color: #004494;
+    background-color: gray;
 }
 
 /* Responsive adjustments */
