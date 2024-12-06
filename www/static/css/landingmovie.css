@@ -135,11 +135,10 @@ body {
     border-radius: 8px; /* Smooth corners */
 
     width: 100%; /* Full width */
-    height: 100%; /* Full height */
+    height: 100vh; /* Full height */
     overflow: auto; /* Enable scroll if needed */
     backdrop-filter: blur(8px); /* Blurred background effect */
     background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-
 }
 
 /* Modal Content */
@@ -222,20 +221,17 @@ body {
     font-weight: bold;
     position: absolute;
     top: 10px;
-    width: 40px; /* Set width to create a circular button */
-    height: 40px;
+    
     right: 25px;
     transition: color 0.3s; /* Smooth hover effect */
     background-color: transparent;
-    border: 2px solid black;
-    border-radius :50%;
+    
 }
 
 .close-button:hover,
 .close-button:focus {
     color: white; /* Darker color for hover */
-    border-color:white;
-    background-color: gray;
+
     text-decoration: none;
     cursor: pointer;
 }
@@ -641,6 +637,7 @@ body {
         margin-top: 450px;
     }
     .related-movies h2 {
+        margin-top: 30px;
         font-size: 24px; /* Adjust heading size */
     }
 
