@@ -1,4 +1,17 @@
 /* Overlay styles */
+@keyframes transitionIn{
+    from{
+        opacity: 0;
+        transform: rotateX(-10deg);
+    }
+    to{
+        opacity: 1;
+        transform: rotateX(0);
+    }
+  }
+  body{
+      animation:transitionIn 1.50s;
+  }
 .search_overlay {
     
     position: fixed;
@@ -11,7 +24,8 @@
     justify-content: center;
     align-items: center;
     z-index: 1000; /* Ensures it is above other elements */
-    overflow-y: auto; /* Allow scrolling if content overflows */
+    animation:transitionIn 1.50s;
+
 }
 
 /* Popup container */
@@ -26,17 +40,16 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
     display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
     padding: 20px; /* Adds space around the content */
-    overflow-y: auto; /* Scroll content if it exceeds height */
+    animation:transitionIn 1.50s;
+
 }
 
 
 
+
 /* Close button */
-.close-button {
+.close-button-search {
     position: absolute; /* Position close button within the popup */
     top: 10px; /* Distance from the top of the popup */
     right: 10px; /* Distance from the right side of the popup */
@@ -52,25 +65,24 @@
     align-items: center;
     justify-content: center;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Add transition for hover effects */
+    animation:transitionIn 1.50s;
+
 }
 
-.close-button:hover {
+.close-button-search:hover {
     background-color: gray;
     color: white;
     border-color: rgb(255, 255, 255);
 }
 
 /* Ensure the button has hover and active styles */
-.close-button:hover {
-    background-color: gray;
-}
 
-.close-button:active {
+.close-button-search:active {
     background-color: gray;
 }
 
 /* Responsive adjustments */
-@media (max-width: 480px) {
+@media (max-width: 1024px) {
     .search_overlay {
        
         justify-content: flex-start;

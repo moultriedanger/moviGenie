@@ -339,7 +339,7 @@ textarea {
 }
 
 /* Responsive for small screens */
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 464px) {
     .nav-container {
         display: none;
     }
@@ -364,12 +364,17 @@ textarea {
     }
 }
 
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
     .team_members {
         flex-direction: column;
         align-items: center;
     }
-
+    .contact_container{
+        width: 100%;
+    }
+    #contactForm{
+        width: 100%;
+    }
     .team_card {
         width: 80%;
         margin-bottom: 20px;
