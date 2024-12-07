@@ -48,6 +48,12 @@ function createPopup(data) {
         document.body.removeChild(overlay); // Remove overlay (and popup) when clicked
     });
 
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            document.body.removeChild(overlay); // Remove overlay (and popup) when clicked
+        }
+    });
+
     // Append the close button to the popup
     overlay.appendChild(closeButton);
 

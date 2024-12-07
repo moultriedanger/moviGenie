@@ -36,6 +36,12 @@
       rel="stylesheet"
       href="{{ url_for('static', filename='css/search.css') }}"
     />
+    <link
+    rel="stylesheet"
+    href="{{ url_for('static', filename='css/footer.css') }}"
+  />
+  
+    
     
     {% block extra_styles %}
     {% endblock %}
@@ -103,9 +109,27 @@
     {% endblock %}
 
      <!-- Footer -->
-     <footer class="footer-container">
-        MovieGenie.com · 2024 · <a href="about.html#contactID"> CONTACT US</a>
-    </footer>
+     <footer>
+      <div class="footerContainer">
+          <div class="socialIcons">
+              
+            <a href="https://www.linkedin.com/groups/13128347/"><i class="fa-brands fa-linkedin"></i></a>
+            <a href="https://github.com/moultriedanger/moviGenie"><i class="fa-brands fa-github"></i></a>
+            <a href="https://drive.google.com/drive/folders/1t84rHis1yKQzb904WBUuk7jl6QlFMjHO?usp=sharing"><i class="fas fa-file-text-o"></i></a>
+          </div>
+          <div class="footerNav">
+              <ul><li><a href="{{ url_for('landing') }}">Home</a></li>
+                  <li><a href="{{ url_for('random') }}">Random Movie</a></li>
+                  <li><a href="{{ url_for('about') }}">About</a></li>
+                  <li><a href="{{ url_for('about') }}#contactID">Contact Us</a></li>
+                  <li><a href="{{ url_for('movie') }}">Find Movie</a></li>
+              </ul>
+          </div>
+          
+      </div>
+      
+  </footer>
+  
     <!-- JS -->
     <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
     <script src="{{ url_for('static', filename='js/search.js') }}"></script>
@@ -129,9 +153,3 @@
     {% endblock %}
   </body>
 </html>
-
-
-
-
-
-
