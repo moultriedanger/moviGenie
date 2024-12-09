@@ -16,14 +16,24 @@ footer{
     justify-content: center;
 }
 .socialIcons a{
+    display: flex;
+    justify-content: center;
+    
+    align-items: center;
     text-decoration: none;
     padding:  10px;
     background-color: white;
+    width: 38px;
+    height: 38px;
     margin: 10px;
     border-radius: 50%;
 }
 .socialIcons a i{
     font-size: 2em;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    
     color: black;
     opacity: 0,9;
 }
