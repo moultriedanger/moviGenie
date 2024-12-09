@@ -52,7 +52,7 @@ def process_genie_request():
     response = client.chat.completions.create(
         model=fine_tuned_model_id,  
         messages=[
-            {"role": "system", "content": "You are a movie recommendation engine that only responds with relevant lists of movies to valid requests for movies, any irrelevant questions are only to be met with the word INVALID."},
+            {"role": "system", "content": "You are a movie recommendation engine that only responds with relevant lists of movies (do NOT answer with TV shows) to valid requests for movies, any irrelevant questions are only to be met with the word INVALID."},
             {"role": "user", "content": user_input}
         ],
         max_tokens=150
