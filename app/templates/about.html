@@ -11,7 +11,10 @@
         rel="stylesheet"
         href="{{ url_for('static', filename='css/OtherSearch.css') }}"
   />
-    
+  <link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/footer.css') }}"
+/>
 
 {% endblock %}
 
@@ -38,7 +41,10 @@
   <div class="team_container">
     <h2 class="team_title">Meet Our Team</h2>
     <div class="team_members">
+
       <div class="team_card">
+        <a href="https://github.com" target="_blank">
+
         <div class="avatar">
           <img src="static/img/aj.png" alt="aj" class="circle-avatar" />
         </div>
@@ -53,9 +59,13 @@
           </p>
         </div>
       </div>
+      </a>
 
       <div class="team_card">
+        <a href="https://github.com/moultriedanger" target="_blank">
+
         <div class="avatar">
+
           <img
             src="static/img/moultrie.png"
             alt="moultrie"
@@ -72,11 +82,15 @@
           </p>
         </div>
       </div>
+    </a>   
+
 
       <div class="team_card">
+        <a href="https://github.com/MatthewJKeller" target="_blank">
+
         <div class="avatar">
-          <img src="static/img/matt.png" alt="matt" class="circle-avatar" />
-        </div>
+            <img src="static/img/matt.png" alt="matt" class="circle-avatar" />
+               </div>
         <div class="team_info">
           <h3>Matt Keller</h3>
           <p>Programmer</p>
@@ -87,14 +101,20 @@
           </p>
         </div>
       </div>
+    </a> 
+
       <div class="team_card">
+        <a href="https://github.com/ismakh9" target="_blank">
+
         <div class="avatar">
+
           <img
             src="static/img/khalid.png"
             alt="Khalid"
             class="circle-avatar"
           />
         </div>
+        
         <div class="team_info">
           <h3>Khalid Ismail</h3>
           <p>Designer</p>
@@ -105,6 +125,8 @@
           </p>
         </div>
       </div>
+    </a>
+
     </div>
   </div>
 
@@ -142,7 +164,8 @@
     </form>
   </div>
   <!-- Footer Section -->
-  <footer class="footer-container">MovieGenie.com · 2024</footer>
+
+
   <!-- JS Functions -->
 
 

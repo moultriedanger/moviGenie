@@ -6,6 +6,8 @@ body {
     scroll-behavior: smooth;
     font-family: "Arsenal SC", sans-serif;
     font-weight: 400;
+    background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(28,28,28,1) 100%);    
+
 }
 
 body::before {
@@ -15,12 +17,11 @@ body::before {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgb(0,0,0);
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(28,28,28,1) 100%);    
     z-index: -1;
 }
 
-*:not(html, body, input, #search-icon, #bar-search-icon, #lamp, #shadow, #consult-genie-text, #smoke, #gptInput, #gptLogo, #gptHeader,.overlay ) {
+*:not(html, body, #genieSubmit, input, #search-icon, #bar-search-icon, #lamp, #shadow, #consult-genie-text, #smoke, #gptInput, #gptLogo, #gptHeader,.overlay ) {
     animation: transitionIn 1.50s;
 }
 
@@ -181,7 +182,7 @@ body::before {
 }
 
 #gptInput {
-    width: 40%;
+    width: 45%;
     height: auto;
     min-height: 100px;
     padding: 20px;
@@ -221,7 +222,7 @@ body::before {
 } */
 
 #gptHeader {
-    font-size: 12px;
+    font-size: 18px;
     color: gray;
     opacity: 0;
     transition: opacity 5s;
@@ -231,8 +232,40 @@ body::before {
 
 #gptHeader.activated {
     opacity: 1;
+
 }
 
+#genieSubmit{
+    opacity: 0;
+    color: gray;
+    background-color: transparent;
+    border: 2px solid gray;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: absolute;
+    bottom:15%;
+    left: 73%;
+    opacity: 0;
+    transition: color 0.5s ease, border-color 0.5s ease, opacity 2s ease;
+    z-index: 9999;
+
+}
+#genieSubmit:hover{
+    color: white;
+    border-color: white;
+    cursor: pointer;
+
+
+}
+#genieSubmit.activated{
+    transition: opacity 2s ease;
+    opacity: 1;
+}
 
 
 
@@ -258,6 +291,7 @@ hr {
 
 .movie-header h1 {
     font-size: 64px;
+    
 }
 
 
@@ -271,7 +305,18 @@ hr {
 }
 
 .movie-sec-trend {
+    font-size: 2.1rem; /* Larger, more prominent size */
     font-weight: bold;
+    color: #ffffff; /* White color for high contrast */
+    background: linear-gradient(45deg, #ff8a00, #e52e71); /* Gradient color */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Fill text with gradient */
+    text-shadow: 0px 4px 10px rgba(229, 46, 113, 0.6); /* Subtle shadow for depth */
+    padding: 22px; /* Space around the text */
+    margin: 0; /* Remove default margin */
+    /*border-bottom: 2px solid rgba(229, 46, 113, 0.6); /* Border for separation */
+    display: inline-block;
+    animation: fadeInGlow 1.5s ease-in-out forwards; /* Fade-in animation */
 }
 
 .movie-cards {
@@ -296,17 +341,23 @@ hr {
 }
 
 /* Correct dimensions for mobile */
-@media (max-width: 480px) {
+@media (max-width: 1024px) {
     .consult-genie-container {
         margin-top: 100px;
     }
+    #genieSubmit{
+        left: 87%;
+        bottom:24%;
 
-    #gptHeader {
-        width: 450px;
-        font-size: 9px;
-        text-align: center;
     }
-
+    #gptHeader {
+        width: 370px;
+        text-align: center;
+        font-size: 17px;
+    }
+    #gptInput{
+        width: 68%;
+    }
     #consult-genie-text {
         width: 330px;
         font-size: 24px;

@@ -5,6 +5,12 @@ from flask_cors import CORS
 import config
 import requests
 from random import sample
+import sqlite3
+import os
+import openai
+# AIID = trainingAI.fine_tuned_model_id
+
+
 
 app = Flask(__name__)
 # app = Flask(__name__, template_folder='../templates')
@@ -21,9 +27,40 @@ app.config['MAIL_USE_TLS'] = False
 
 mail = Mail(app)
 
+
+
+
 @app.route('/landing')
 def landing():
     return render_template('landing.html')
+
+@app.route('/process_genie_request', methods=['POST'])
+def process_genie_request():
+    
+    openai.api_key = config.GPT_API
+    
+    client = openai.OpenAI(api_key=config.GPT_API, timeout=40.0)
+    
+    with open("fine_tuned_model_id.json", "r") as f:
+        data = json.load(f)
+        fine_tuned_model_id = data["fine_tuned_model_id"]
+    
+    
+    data = request.get_json()
+    user_input = data.get('user_input')
+
+    response = client.chat.completions.create(
+        model=fine_tuned_model_id,  
+        messages=[
+            {"role": "system", "content": "You are a movie recommendation engine that only responds with relevant lists of movies (do NOT answer with TV shows) to valid requests for movies, any irrelevant questions are only to be met with the word INVALID."},
+            {"role": "user", "content": user_input}
+        ],
+        max_tokens=150
+    )
+
+    gpt_response = response.choices[0].message.content
+    print(gpt_response)
+    return jsonify(gpt_response)
 
 @app.route('/about')
 def about():
@@ -32,17 +69,39 @@ def about():
 
 @app.route('/movie')
 def movie():
+
     return render_template('movie.html')
 
-
-
-#Displays movies onto movie.html
+#Query movies for popular.js
 @app.route('/movies')
 def movies():
-    with open('../www/data.json', 'r') as file:
-        data = json.load(file) 
-    
-    return jsonify(data)  
+   
+    #open connection
+    conn = sqlite3.connect(os.path.join(os.getcwd(), 'movieGenie.db'))
+    cursor = conn.cursor()
+
+    #create and execute quert
+    query = "SELECT * FROM all_movies LIMIT 10"
+    cursor.execute(query)
+    results = cursor.fetchall()
+
+    conn.close()
+
+    #convert the query returned to json
+    movies = []
+    for row in results:
+        movie = {
+            'id': row[0],
+            'title': row[1],
+            'overview': row[2],
+            'poster_path': row[3],
+            'vote_average': row[4]
+        }
+        movies.append(movie)
+
+    json_object = json.dumps(movies, indent=4)
+    return json_object  
+
 
 @app.route('/trending_movie/<int:movie_id>')
 def make_movie_page(movie_id):
@@ -69,7 +128,7 @@ def make_movie_page(movie_id):
     first = 'https://image.tmdb.org/t/p/w1280'
     backdrop_path = first + movie.get("backdrop_path", "")
 
-     # Fetch streaming platforms (for example, from TMDb API or JustWatch API)
+    # Fetch streaming platforms (for example, from TMDb API or JustWatch API)
     streaming_platforms = fetch_streaming_platforms(movie_id)
     for platform in streaming_platforms:
         print(platform['name'])
@@ -118,6 +177,7 @@ def fetch_streaming_platforms(movie_id):
 
 
 @app.route('/trending_movie/<int:movie_id>',methods=["POST"])
+@app.route('/search/<int:movie_id>', methods=["POST"])
 @app.route('/search/<int:movie_id>',methods=["POST"])
 def render_trailer(movie_id):
     url = f'https://api.themoviedb.org/3/movie/{movie_id}/videos'
@@ -199,7 +259,8 @@ def render_search(movie_id):
                            movie_id=movie_id,
                            movie_description= description,
                            backdrop_path = backdrop_path,
-                           other_movies = movies)
+                           other_movies = movies,
+                           movie_id = movie_id)
 
 @app.route('/random')
 def random():

@@ -40,12 +40,18 @@ function createPopup(data) {
 
     // Create the close button
     const closeButton = document.createElement('button');
-    closeButton.textContent = 'Close'; // Button text
-    closeButton.className = 'close-button'; // Add a class for styling
+    closeButton.textContent = 'X'; // Button text
+    closeButton.className = 'close-button-search'; // Add a class for styling
 
     // Add an event listener to the close button
     closeButton.addEventListener('click', function() {
         document.body.removeChild(overlay); // Remove overlay (and popup) when clicked
+    });
+
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape') {
+            document.body.removeChild(overlay); // Remove overlay (and popup) when clicked
+        }
     });
 
     // Append the close button to the popup

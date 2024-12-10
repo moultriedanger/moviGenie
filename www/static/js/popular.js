@@ -7,15 +7,11 @@ xhr.onreadystatechange = function () {
     display_movies(movies);
   }
 };
-// xhr.open("GET", "http://127.0.0.1/movies", true);
 xhr.open("GET", "/movies", true);
 xhr.send();
 
-// Without gunicorn:
-// xhr.open("GET", "http://127.0.0.1:5000/movies", true);
-// xhr.send();
-
 function display_movies(movies) {
+  console.log(movies)
   const movieContainer = document.querySelector('.movie-cards');
 
   // Clear the container before adding new movies
@@ -28,6 +24,7 @@ function display_movies(movies) {
     //Get poster id and add onclidk to the movieCard
     let posterId = movies[i]['id']
     
+    console.log(posterId)
     let link = document.createElement('a');
     link.href = `/trending_movie/${posterId}`;
     

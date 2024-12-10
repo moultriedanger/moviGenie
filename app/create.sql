@@ -1,0 +1,3 @@
+DROP TABLE IF EXISTS all_movies;
+
+CREATE TABLE all_movies (movie_id INTEGER NOT NULL PRIMARY KEY, title TEXT NOT NULL, overview TEXT NOT NULL, poster TEXT NOT NULL, vote FLOAT NOT NULL);

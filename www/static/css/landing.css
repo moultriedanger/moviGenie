@@ -109,7 +109,7 @@ html,body{
   
   
   /* Correct dimensions for mobile */
-  @media (max-width: 480px) {
+  @media (max-width: 1024px) {
     .content .logo {
         width: 300px; 
         height: 300px; 

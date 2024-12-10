@@ -13,6 +13,10 @@
     rel="stylesheet"
     href="{{ url_for('static', filename='css/movie.css') }}"
 />
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/footer.css') }}"
+/>
 {% endblock %}
 
 {% block content %}
@@ -27,7 +31,8 @@
 
         <div class="post-animation">
             <img id="gptLogo" src="static/img/logo.png" alt="logo">
-            <textarea id="gptInput" placeholder="Type your request to the Genie..."></textarea>
+            <textarea id="gptInput" placeholder="Type your wish to the Genie..."></textarea>
+            <button id="genieSubmit"><i class="fas fa-arrow-right"></i></button>
             <h1 id="gptHeader">Our Genie is AI powered, so speak to it as you would a friend and let the Genie do the
                 rest.
         </div>
@@ -36,7 +41,7 @@
 
     </div>
 
-    <hr>
+    
     <!-- Trending movies -->
     <div class="movie-section">
         <h1 class="movie-sec-trend">TRENDING NOW</h1>
@@ -55,7 +60,76 @@
     <!-- lamp effects -->
     <script>
             
-            
+        let canSubmit = true;
+        let isRequestInProgress = false;
+
+        function submitGenieRequest() {
+            if (!canSubmit || isRequestInProgress) {
+                const gptHeader = document.getElementById('gptHeader');
+                gptHeader.textContent = 'Please wait before sending another wish to the Genie';
+                return;
+            }
+
+            const gptInputText = document.getElementById('gptInput').value;
+            console.log('User input:', gptInputText);
+
+            // Set the request in progress flag
+            isRequestInProgress = true;
+
+            // Change cursor to loading
+            document.body.style.cursor = 'wait';
+
+            // Send the input text to the server using fetch
+            fetch('/process_genie_request', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ user_input: gptInputText })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Response from server:', data);
+                // Handle the response data as needed
+                alert(data.response);  // Display the response in an alert for demonstration
+
+                // Clear the gptInput textarea and reset its placeholder
+                const gptInput = document.getElementById('gptInput');
+                gptInput.value = '';
+                gptInput.placeholder = 'Type your request to the Genie...';
+                const gptHeader = document.getElementById('gptHeader');
+                gptHeader.textContent = 'Wish sent, please wait twenty seconds before sending another wish';
+
+                // Set the cooldown
+                canSubmit = false;
+                setTimeout(() => {
+                    canSubmit = true;
+                    gptHeader.textContent = 'You can now send another wish';
+                }, 20000); // 20 seconds cooldown
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                const gptHeader = document.getElementById('gptHeader');
+                gptHeader.textContent = 'Error contacting the Genie, please try again later';
+            })
+            .finally(() => {
+                // Reset the request in progress flag
+                isRequestInProgress = false;
+                // Reset cursor to default
+                document.body.style.cursor = 'default';
+            });
+        }
+
+        document.getElementById('genieSubmit').addEventListener('click', submitGenieRequest);
+
+        document.getElementById('gptInput').addEventListener('keydown', function(event) {
+            if (event.key === 'Enter') {
+                event.preventDefault(); 
+                submitGenieRequest();
+            }
+        });
+
+      
         document.addEventListener('DOMContentLoaded', function () {
             const lampIcon = document.getElementById('lamp');
             const shadow = document.getElementById('shadow');
@@ -63,6 +137,9 @@
             const textBox = document.getElementById("gptInput")
             const header = document.getElementById("gptHeader")
             const logo = document.getElementById("gptLogo")
+            const arrow = document.getElementById("genieSubmit")
+
+
 
             lampIcon.addEventListener('click', function () {
                 lampIcon.classList.toggle('activated');
@@ -71,6 +148,7 @@
                 textBox.classList.toggle('activated');
                 header.classList.toggle('activated');
                 logo.classList.toggle('activated');
+                arrow.classList.toggle('activated');
             });
         });
 
@@ -83,11 +161,3 @@
         });
     </script>
 {% endblock %}
-
-
-
-
-
-
-
-

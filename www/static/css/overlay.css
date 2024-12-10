@@ -79,7 +79,17 @@ html,body{
 }
 
 .movie_card .overlay h2 {
-    margin: 5px 0;
+    font-weight: bold;
+    color: #ffffff; /* White color for high contrast */
+    background: linear-gradient(45deg, #ff8a00, #e52e71); /* Gradient color */
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; /* Fill text with gradient */
+    text-shadow: 0px 4px 10px rgba(229, 46, 113, 0.6); /* Subtle shadow for depth */
+    padding: 22px; /* Space around the text */
+    margin: 0; /* Remove default margin */
+    /*border-bottom: 2px solid rgba(229, 46, 113, 0.6); /* Border for separation */
+    display: inline-block;
+    animation: fadeInGlow 1.5s ease-in-out forwards; /* Fade-in animation */
     /* Space between rating and release date */
     font-size: 1em;
     /* Rating and date size */

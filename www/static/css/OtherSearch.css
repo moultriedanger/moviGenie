@@ -1,5 +1,17 @@
 /* this is for the pages that don't have movie cards */
-
+@keyframes transitionIn{
+  from{
+      opacity: 0;
+      transform: rotateX(-10deg);
+  }
+  to{
+      opacity: 1;
+      transform: rotateX(0);
+  }
+}
+body{
+    animation:transitionIn 1.50s;
+}
 /* search pop up */
 .search_overlay {
     position: fixed; /* Ensures it covers the entire screen */
@@ -7,16 +19,19 @@
     left: 0;
     width: 100vw;
     height: 100vh;
-    background-color: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
+    background-color: rgba(118, 118, 118, 0.9); /* Semi-transparent background */
     z-index: 9999; /* Very high z-index to ensure it stays on top */
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: auto; /* Enable scrolling if content overflows */
+    animation:transitionIn 1.50s;
 }
 
 /* Popup styling */
 .popup {
+    position: relative;
+    background-color: rgb(111, 111, 111);
     background: #fff;
     padding: 20px;
     border-radius: 8px;
@@ -25,36 +40,58 @@
     width: 90%;
     text-align: center;
     z-index: 10000; /* Ensure it's above the overlay if needed */
+    animation:transitionIn 1.50s;
+
 }
 
 /* Close button styling */
-.close-button {
-    background: #e63946;
-    color: #fff;
-    border: none;
-    padding: 10px 15px;
-    border-radius: 4px;
+/* Close button */
+.close-button-search {
+    position: absolute; /* Position close button within the popup */
+    top: 10px; /* Distance from the top of the popup */
+    right: 24px; /* Distance from the right side of the popup */
+    width: 30px; /* Set width to create a circular button */
+    height: 30px; /* Set height to create a circular button */
+    background-color: transparent;
+    color: black;
+    border: 2px solid black; /* Add a border to make the button more visible */
+    border-radius: 50%; /* Make the button circular */
     cursor: pointer;
-    position: absolute;
-    top: 20px;
-    right: 20px;
-    font-size: 16px;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s; /* Add transition for hover effects */
+    animation: transitionIn 1.50s;
 }
 
-.close-button:hover {
-    background: #d62839;
+.close-button-search:hover {
+    background-color: gray;
+    color: white;
+    border-color: rgb(255, 255, 255);
+}
+
+/* Ensure the button has hover and active styles */
+
+
+.close-button-search:active {
+    background-color: gray;
 }
 
 /* Movie card styling */
 .movie_card {
     display: inline-block;
     margin: 10px;
-    cursor: pointer;
-    transition: transform 0.3s ease;
+    cursor: pointer;   
+    box-shadow: 4px 4px 8px rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border-radius: 10px;
+    margin: 10px 20px    
+    
 }
 
 .movie_card img {
-    max-width: 100px;
+    max-width: 250px;
     border-radius: 4px;
 }
 
@@ -62,7 +99,7 @@
     transform: scale(1.1); /* Slight zoom effect */
 }
 
-@media (max-width: 480px) {
+@media (max-width: 1024px) {
     .search_overlay {
        
       justify-content: flex-start;
