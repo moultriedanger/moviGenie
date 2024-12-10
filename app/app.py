@@ -59,8 +59,46 @@ def process_genie_request():
     )
 
     gpt_response = response.choices[0].message.content
-    print(gpt_response)
-    return jsonify(gpt_response)
+    
+    # Split the GPT response into a list of movie titles
+    movie_titles = gpt_response.split(',')
+    movie_titles = [title.strip() for title in movie_titles]
+    print(movie_titles)
+    # Fetch movie details from TMDb for each movie title
+    movie_details = []
+    for title in movie_titles:
+        movie_detail = fetch_movie_details_from_tmdb(title)
+        if movie_detail:
+            movie_details.append(movie_detail)
+            
+    # Return the movie details as a JSON response
+    return jsonify({"movies": movie_details})
+
+def fetch_movie_details_from_tmdb(title):
+    """Fetch movie details from TMDb API based on the movie title"""
+    url = f'https://api.themoviedb.org/3/search/movie?query={title}&language=en-US'
+    headers = {
+        "accept": "application/json",
+        "Authorization": f"Bearer {config.API_KEY}"
+    }
+    response = requests.get(url, headers=headers)
+    
+    if response.status_code != 200:
+        print(f"Error fetching movie details for {title}: {response.status_code}")
+        return None
+
+    data = response.json()
+
+    if data['results']:
+        movie = data['results'][0]  # Get the first result (most relevant movie)
+        return {
+            "title": movie["title"],
+            "overview": movie.get("overview", "No description available."),
+            "poster_path": f'https://image.tmdb.org/t/p/w300{movie.get("poster_path", "")}',
+            "movie_id": movie["id"]
+        }
+    
+    return None
 
 @app.route('/about')
 def about():
@@ -177,7 +215,6 @@ def fetch_streaming_platforms(movie_id):
 
 
 @app.route('/trending_movie/<int:movie_id>',methods=["POST"])
-@app.route('/search/<int:movie_id>', methods=["POST"])
 @app.route('/search/<int:movie_id>',methods=["POST"])
 def render_trailer(movie_id):
     url = f'https://api.themoviedb.org/3/movie/{movie_id}/videos'
@@ -259,8 +296,7 @@ def render_search(movie_id):
                            movie_id=movie_id,
                            movie_description= description,
                            backdrop_path = backdrop_path,
-                           other_movies = movies,
-                           movie_id = movie_id)
+                           other_movies = movies)
 
 @app.route('/random')
 def random():
