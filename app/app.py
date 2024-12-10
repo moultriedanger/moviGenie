@@ -82,7 +82,7 @@ def make_movie_page(movie_id):
                            streaming_platforms=streaming_platforms)
 
 def fetch_streaming_platforms(movie_id):
-
+    
     url = f'https://api.themoviedb.org/3/movie/{movie_id}/watch/providers'
     headers = {
         "accept": "application/json",
@@ -120,7 +120,7 @@ def fetch_streaming_platforms(movie_id):
 @app.route('/trending_movie/<int:movie_id>',methods=["POST"])
 @app.route('/search/<int:movie_id>',methods=["POST"])
 def render_trailer(movie_id):
-    url = f"https://api.themoviedb.org/3/movie/{movie_id}/videos"
+    url = f'https://api.themoviedb.org/3/movie/{movie_id}/videos'
     
     headers = {
         "accept": "application/json",
@@ -130,6 +130,7 @@ def render_trailer(movie_id):
     response = requests.get(url, headers=headers)
 
     if response.status_code != 200:
+        
         return "Invalid request", 404
 
     videos = response.json()

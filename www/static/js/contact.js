@@ -25,7 +25,7 @@ document.querySelector(".submit_btn").addEventListener("click", function (event)
 
     const submitButton = event.target;
 
-    fetch("http://127.0.0.1:5000/contact", {
+    fetch("/contact", {
     method: "POST",
     headers: {
         "Content-Type": "application/json",
