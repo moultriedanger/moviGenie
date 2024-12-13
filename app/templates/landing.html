@@ -4,27 +4,34 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-  
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-    <link href="https://fonts.googleapis.com/css2?family=Arsenal+SC:ital,wght@0,400;0,700;1,400;1,700&family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap" rel="stylesheet">    <link rel="stylesheet" href="./static/css/landing.css">
-    <!-- <link rel="stylesheet" href="./static/css/nav.css"> -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/nav.css') }}"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
+
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arsenal+SC:ital,wght@0,400;0,700;1,400;1,700&family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./static/css/landing.css" />
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/nav.css')[1:] }}"
+    />
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/OtherSearch.css') }}"
+      href="{{ url_for('static', filename='css/OtherSearch.css')[1:] }}"
     />
   </head>
   <body>
     <!-- Nav Bar -->
     <nav class="nav-container">
-      <div class="nav-miniLogo">
-      </div>
+      <div class="nav-miniLogo"></div>
       <div class="nav-links">
         <ul>
           <li><a href="{{  url_for('movie') }}">FIND MOVIE</a></li>
@@ -33,55 +40,60 @@
           <li><a href="{{ url_for('about') }}#contactID">CONTACT</a></li>
           <li class="search-container">
             <i class="fa fa-search" id="search-icon"></i>
-            <input type="text" placeholder="Search for movie..." id="search-input">
-
-        </li>
+            <input
+              type="text"
+              placeholder="Search for movie..."
+              id="search-input"
+            />
+          </li>
         </ul>
       </div>
-  </nav>
-   <!-- Mobile Nav -->
-   <button id="navToggleBtn" class="open-btn" onclick="toggleNav()">☰</button>
-   <nav id="sideNav" class="side-nav">
-     <div class="side-nav-links">
-       <ul>
-         <a href="{{ url_for('landing') }}"
-           ><img
-             src="{{ url_for('static', filename='img/navLogo.png') }}"
-             class="logo"
-             alt="logo"
-         /></a>
-         <li><a href="{{ url_for('movie') }}">FIND MOVIE</a></li>
-         <li><a href="{{ url_for('random') }}">RANDOM MOVIE</a></li>
-         <li><a href="{{ url_for('about') }}">ABOUT US</a></li>
-         <li><a href="{{ url_for('about') }}#contactID">CONTACT</a></li>
-         <li class="bar-search-container">
-           <i class="fa fa-search" id="bar-search-icon"></i>
-           <input
-             type="text"
-             placeholder="Search for movie..."
-             id="bar-search-input"
-           />
-         </li>
-       </ul>
-     </div>
-   </nav>
+    </nav>
+    <!-- Mobile Nav -->
+    <button id="navToggleBtn" class="open-btn" onclick="toggleNav()">☰</button>
+    <nav id="sideNav" class="side-nav">
+      <div class="side-nav-links">
+        <ul>
+          <a href="{{ url_for('landing') }}"
+            ><img
+              src="{{ url_for('static', filename='img/navLogo.png') }}"
+              class="logo"
+              alt="logo"
+          /></a>
+          <li><a href="{{ url_for('movie') }}">FIND MOVIE</a></li>
+          <li><a href="{{ url_for('random') }}">RANDOM MOVIE</a></li>
+          <li><a href="{{ url_for('about') }}">ABOUT US</a></li>
+          <li><a href="{{ url_for('about') }}#contactID">CONTACT</a></li>
+          <li class="bar-search-container">
+            <i class="fa fa-search" id="bar-search-icon"></i>
+            <input
+              type="text"
+              placeholder="Search for movie..."
+              id="bar-search-input"
+            />
+          </li>
+        </ul>
+      </div>
+    </nav>
     <!-- Background video loop -->
-     
+
     <div class="hero">
       <video autoplay loop muted playsinline id="background-video">
-        <source src="static/vid/backgroundVid.mp4" type="video/mp4">
+        <source src="static/vid/backgroundVid.mp4" type="video/mp4" />
       </video>
       <!-- Logo, title, button -->
       <div class="content">
-        <img src="{{ url_for('static', filename='img/logo.png') }}" class="logo">
+        <img
+          src="{{ url_for('static', filename='img/logo.png') }}"
+          class="logo"
+        />
         <h1>Movie Genie</h1>
         <p class="slogan">Your ultimate AI-powered movie guide</p>
         <a href="{{  url_for('movie') }}">FIND MOVIE</a>
       </div>
     </div>
-    
+
     <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
     <script src="{{ url_for('static', filename='js/search.js') }}"></script>
-    
   </body>
 </html>
