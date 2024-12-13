@@ -31,15 +31,13 @@ def create_app(test_config=False, shared_server=False):
     app.config['SHARED_SERVER'] = shared_server
     prepend = ''
     if app.config['SHARED_SERVER']:
-        prepend = '/matchgame'
+        prepend = '/moviGenie'
 
-
-
-    @app.route('/landing')
+    @app.route(prepend + '/landing')
     def landing():
         return render_template('landing.html')
 
-    @app.route('/process_genie_request', methods=['POST'])
+    @app.route(prepend + '/process_genie_request', methods=['POST'])
     def process_genie_request():
         
         openai.api_key = config.GPT_API
@@ -105,18 +103,18 @@ def create_app(test_config=False, shared_server=False):
         
         return None
 
-    @app.route('/about')
+    @app.route(prepend + '/about')
     def about():
         return render_template('about.html')
 
 
-    @app.route('/movie')
+    @app.route(prepend + '/movie')
     def movie():
 
         return render_template('movie.html')
 
     #Query movies for popular.js
-    @app.route('/movies')
+    @app.route(prepend + '/movies')
     def movies():
     
         #open connection
@@ -146,7 +144,7 @@ def create_app(test_config=False, shared_server=False):
         return json_object  
 
 
-    @app.route('/trending_movie/<int:movie_id>')
+    @app.route(prepend + '/trending_movie/<int:movie_id>')
     def make_movie_page(movie_id):
 
         #open the file
@@ -219,8 +217,8 @@ def create_app(test_config=False, shared_server=False):
     #('BR', {'link': 'https://www.themoviedb.org/movie/1087822-hellboy-the-crooked-man/watch?locale=BR', 'buy': [{'logo_path': '/9ghgSC0MA082EL6HLCW3GalykFD.jpg', 'provider_id': 2, 'provider_name': 'Apple TV', 'display_priority': 8}, {'logo_path': '/seGSXajazLMCKGB5hnRCidtjay1.jpg', 'provider_id': 10, 'provider_name': 'Amazon Video', 'display_priority': 13}, {'logo_path': '/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg', 'provider_id': 3, 'provider_name': 'Google Play Movies', 'display_priority': 14}], 'rent': [{'logo_path': '/9ghgSC0MA082EL6HLCW3GalykFD.jpg', 'provider_id': 2, 'provider_name': 'Apple TV', 'display_priority': 8}, {'logo_path': '/seGSXajazLMCKGB5hnRCidtjay1.jpg', 'provider_id': 10, 'provider_name': 'Amazon Video', 'display_priority': 13}, {'logo_path': '/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg', 'provider_id': 3, 'provider_name': 'Google Play Movies', 'display_priority': 14}]})
 
 
-    @app.route('/trending_movie/<int:movie_id>',methods=["POST"])
-    @app.route('/search/<int:movie_id>',methods=["POST"])
+    @app.route(prepend + '/trending_movie/<int:movie_id>',methods=["POST"])
+    @app.route(prepend +'/search/<int:movie_id>',methods=["POST"])
     def render_trailer(movie_id):
         url = f'https://api.themoviedb.org/3/movie/{movie_id}/videos'
         
@@ -263,7 +261,7 @@ def create_app(test_config=False, shared_server=False):
             else:
                 return jsonify({"error": "Trailer not found"}), 400
 
-    @app.route('/search/<int:movie_id>')
+    @app.route(prepend + '/search/<int:movie_id>')
     def render_search(movie_id):
     # make the same end point
         url = f"https://api.themoviedb.org/3/movie/{movie_id}?language=en-US"
@@ -279,8 +277,6 @@ def create_app(test_config=False, shared_server=False):
             return "Invalid request", 404
 
         movie = response.json()
-
-        
 
         title = movie.get("title", "Title not found") 
         description = movie.get("overview", "Title not found") 
@@ -303,7 +299,7 @@ def create_app(test_config=False, shared_server=False):
                             backdrop_path = backdrop_path,
                             other_movies = movies)
 
-    @app.route('/random')
+    @app.route(prepend + '/random')
     def random():
         #open the file
         with open('../www/data.json', 'r') as file:
@@ -334,7 +330,7 @@ def create_app(test_config=False, shared_server=False):
                             other_movies3 = other_movies3)
     
 
-    @app.route('/contact', methods=['POST'])
+    @app.route(prepend +'/contact', methods=['POST'])
     def contact_form():
         try:
             data = request.get_json()
