@@ -93,7 +93,7 @@
       </div>
     </div>
 
-    <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/search.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/nav.js')[1:] }}"></script>
+    <script src="{{ url_for('static', filename='js/search.js')[1:] }}"></script>
   </body>
 </html>
