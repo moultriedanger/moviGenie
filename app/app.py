@@ -350,3 +350,5 @@ def create_app(test_config=False, shared_server=False):
         
         except Exception as e:
             return str(e), 500
+        
+    return app
