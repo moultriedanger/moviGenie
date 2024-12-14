@@ -69,8 +69,7 @@ def process_genie_request():
     for title in movie_titles:
         movie_detail = fetch_movie_details_from_tmdb(title)
         if movie_detail:
-            movie_details.append(movie_detail)
-            
+            movie_details.append(movie_detail)     
     # Return the movie details as a JSON response
     return jsonify({"movies": movie_details})
 
@@ -95,10 +94,13 @@ def fetch_movie_details_from_tmdb(title):
             "title": movie["title"],
             "overview": movie.get("overview", "No description available."),
             "poster_path": f'https://image.tmdb.org/t/p/w300{movie.get("poster_path", "")}',
-            "movie_id": movie["id"]
+            "movie_id": movie["id"],
+            "rating": movie["vote_average"]
         }
     
     return None
+
+
 
 @app.route('/about')
 def about():
@@ -107,7 +109,6 @@ def about():
 
 @app.route('/movie')
 def movie():
-
     return render_template('movie.html')
 
 #Query movies for popular.js
@@ -168,8 +169,6 @@ def make_movie_page(movie_id):
 
     # Fetch streaming platforms (for example, from TMDb API or JustWatch API)
     streaming_platforms = fetch_streaming_platforms(movie_id)
-    for platform in streaming_platforms:
-        print(platform['name'])
    
     #render template
     return render_template('trending_movie.html',
@@ -282,7 +281,8 @@ def render_search(movie_id):
 
     first = 'https://image.tmdb.org/t/p/w1280'
     backdrop_path = first + movie.get("backdrop_path", "")
-
+    streaming_platforms = fetch_streaming_platforms(movie_id)
+    print(streaming_platforms)
     # load other movies
     with open('../www/data.json', 'r') as file:
         movies = json.load(file)
@@ -290,12 +290,15 @@ def render_search(movie_id):
     #null check movies
     if not movies:
         return jsonify({"error": "Related movies not found"}), 400
+    
+    
 
     return render_template('trending_movie.html',
                            movie_title = title,
                            movie_id=movie_id,
                            movie_description= description,
                            backdrop_path = backdrop_path,
+                           streaming_platforms = streaming_platforms,
                            other_movies = movies)
 
 @app.route('/random')
