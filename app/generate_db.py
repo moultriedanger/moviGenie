@@ -7,11 +7,10 @@ current_directory = os.path.dirname(__file__)
 db_path = os.path.join(current_directory, 'movieGenie.db')
 conn = sqlite3.connect(db_path)
 
-
 # conn = sqlite3.connect(os.path.join(os.getcwd(), 'movieGenie.db'))
 cursor = conn.cursor()
 
-query = "INSERT INTO all_movies (movie_id, title, overview, poster, vote) VALUES (?, ?, ?, ?, ?)"
+query = "INSERT INTO all_movies (movie_id, title, overview, poster, vote, release_date) VALUES (?, ?, ?, ?, ?, ?)"
 data =  []
 
 # Path to the JSON file
@@ -28,8 +27,9 @@ for i in range(0, len(movies)-1):
     description = movies[i]['overview']
     poster = movies[i]["poster_path"]
     vote = movies[i]['vote_average']
+    release_date = movies[i]['release_date']
     
-    d = (id, title, description, poster, vote)
+    d = (id, title, description, poster, vote, release_date)
 
     data.append(d)
 

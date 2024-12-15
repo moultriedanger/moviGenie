@@ -11,8 +11,8 @@ xhr.open("GET", "/movies", true);
 xhr.send();
 
 function display_movies(movies) {
-  console.log(movies)
-  const movieContainer = document.querySelector('.movie-cards');
+
+  const movieContainer = document.querySelector('.trending-cards');
 
   // Clear the container before adding new movies
   movieContainer.innerHTML = '';
@@ -24,7 +24,6 @@ function display_movies(movies) {
     //Get poster id and add onclidk to the movieCard
     let posterId = movies[i]['id']
     
-    console.log(posterId)
     let link = document.createElement('a');
     link.href = `/trending_movie/${posterId}`;
     

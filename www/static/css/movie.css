@@ -319,6 +319,10 @@ hr {
     animation: fadeInGlow 1.5s ease-in-out forwards; /* Fade-in animation */
 }
 
+.movie-sec-genie{
+    display: none;
+}
+
 .movie-cards {
     width: 100%;
     display: flex;

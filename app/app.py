@@ -137,7 +137,8 @@ def create_app(test_config=False, shared_server=False):
                 'title': row[1],
                 'overview': row[2],
                 'poster_path': row[3],
-                'vote_average': row[4]
+                'vote_average': row[4],
+                'release_date': row[5]
             }
             movies.append(movie)
 
@@ -214,9 +215,6 @@ def create_app(test_config=False, shared_server=False):
                                 seen_providers.add(provider_name)  # Mark as seen
 
         return platforms
-
-    #('BR', {'link': 'https://www.themoviedb.org/movie/1087822-hellboy-the-crooked-man/watch?locale=BR', 'buy': [{'logo_path': '/9ghgSC0MA082EL6HLCW3GalykFD.jpg', 'provider_id': 2, 'provider_name': 'Apple TV', 'display_priority': 8}, {'logo_path': '/seGSXajazLMCKGB5hnRCidtjay1.jpg', 'provider_id': 10, 'provider_name': 'Amazon Video', 'display_priority': 13}, {'logo_path': '/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg', 'provider_id': 3, 'provider_name': 'Google Play Movies', 'display_priority': 14}], 'rent': [{'logo_path': '/9ghgSC0MA082EL6HLCW3GalykFD.jpg', 'provider_id': 2, 'provider_name': 'Apple TV', 'display_priority': 8}, {'logo_path': '/seGSXajazLMCKGB5hnRCidtjay1.jpg', 'provider_id': 10, 'provider_name': 'Amazon Video', 'display_priority': 13}, {'logo_path': '/8z7rC8uIDaTM91X0ZfkRf04ydj2.jpg', 'provider_id': 3, 'provider_name': 'Google Play Movies', 'display_priority': 14}]})
-
 
     @app.route(prepend + '/trending_movie/<int:movie_id>',methods=["POST"])
     @app.route(prepend +'/search/<int:movie_id>',methods=["POST"])
@@ -330,6 +328,75 @@ def create_app(test_config=False, shared_server=False):
                             other_movies1 = other_movies1, other_movies2 = other_movies2, 
                             other_movies3 = other_movies3)
     
+
+    #Route that adds a review to sql database
+    @app.route(prepend + '/add_review', methods=['POST'])
+    def add_review():
+
+        try:
+            # Parse the JSON data from the request body
+            review_data = request.get_json()
+
+            # Extract data from the review
+            movie_id = review_data.get('movie_id')
+            name = review_data.get("name")
+            rating = review_data.get("rating")
+            review = review_data.get("review")
+
+            #add to database
+            conn = sqlite3.connect(os.path.join(os.getcwd(), 'movieGenie.db'))
+            cursor = conn.cursor()
+
+            cursor = conn.cursor()
+
+            query = "INSERT INTO all_reviews (movie_id, username, rating, review) VALUES (?, ?, ?, ?)"
+            data = (movie_id, name, rating, review)
+            
+            cursor.execute(query, data)
+
+            # # Commit the transaction
+            conn.commit()
+            conn.close()
+
+            print(f"Received review from {movie_id}: {rating} stars, Review: {review}")
+
+            # Return a success response
+            return jsonify({"message": "Review submitted successfully."}), 200
+
+        except Exception as e:
+            # Return an error response if something goes wrong
+            return jsonify({"message": f"Error: {str(e)}"}), 500
+        
+    @app.route(prepend + '/get_reviews/<int:movie_id>', methods=['GET'])
+    def get_review(movie_id):
+        
+        #recieve movie Id 
+        print(movie_id)
+
+        #open connection
+        conn = sqlite3.connect(os.path.join(os.getcwd(), 'movieGenie.db'))
+        cursor = conn.cursor()
+
+        # #create and execute quert
+        query = f"select * from all_reviews where movie_id == {movie_id};"
+        cursor.execute(query)
+        results = cursor.fetchall()
+
+        conn.close()
+
+        #convert the query returned to json
+        reviews = []
+        for row in results:
+            review = {
+                'movie_id': row[0],
+                'username': row[1],
+                'rating': row[2],
+                'review': row[3]
+            }
+            reviews.append(review)
+
+        json_object = json.dumps(reviews, indent=4)
+        return json_object
 
     @app.route(prepend +'/contact', methods=['POST'])
     def contact_form():
