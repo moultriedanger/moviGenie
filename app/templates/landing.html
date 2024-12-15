@@ -58,7 +58,8 @@
         <ul>
           <a href="{{ url_for('landing') }}"
             ><img
-              src="{{ url_for('static', filename='img/navLogo.png') [1:] }}"
+              src="./static/img/navLogo.png"
+              
               class="logo"
               alt="logo"
           /></a>
@@ -86,7 +87,7 @@
       <!-- Logo, title, button -->
       <div class="content">
         <img
-          src="{{ url_for('static', filename='img/logo.png') }}"
+          src="./static/img/Logo.png"
           class="logo"
         />
         <h1>Movie Genie</h1>
@@ -95,7 +96,10 @@
       </div>
     </div>
 
-    <script src="{{ url_for('static', filename='js/nav.js')[1:] }}"></script>
-    <script src="{{ url_for('static', filename='js/search.js')[1:] }}"></script>
+    <!-- <script src="{{ url_for('static', filename='js/nav.js')[1:] }}"></script>
+    <script src="{{ url_for('static', filename='js/search.js')[1:] }}"></script> -->
+
+    <script src="./static/js/nav.js"></script>
+    <script src="./static/js/search.js"></script>
   </body>
 </html>
