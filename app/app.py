@@ -63,7 +63,6 @@ def process_genie_request():
     # Split the GPT response into a list of movie titles
     movie_titles = gpt_response.split(',')
     movie_titles = [title.strip() for title in movie_titles]
-    print(movie_titles)
     # Fetch movie details from TMDb for each movie title
     movie_details = []
     for title in movie_titles:
@@ -282,7 +281,6 @@ def render_search(movie_id):
     first = 'https://image.tmdb.org/t/p/w1280'
     backdrop_path = first + movie.get("backdrop_path", "")
     streaming_platforms = fetch_streaming_platforms(movie_id)
-    print(streaming_platforms)
     # load other movies
     with open('../www/data.json', 'r') as file:
         movies = json.load(file)
