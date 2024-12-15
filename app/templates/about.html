@@ -5,15 +5,15 @@
 {% block extra_styles %}
   <link
         rel="stylesheet"
-        href="{{ url_for('static', filename='css/about.css') }}"
+        href="{{ url_for('static', filename='css/about.css') [1:]}}"
   />
   <link
         rel="stylesheet"
-        href="{{ url_for('static', filename='css/OtherSearch.css') }}"
+        href="{{ url_for('static', filename='css/OtherSearch.css') [1:]}}"
   />
   <link
   rel="stylesheet"
-  href="{{ url_for('static', filename='css/footer.css') }}"
+  href="{{ url_for('static', filename='css/footer.css') [1:]}}"
 />
 
 {% endblock %}
@@ -173,5 +173,5 @@
 
 
 {% block extra_scripts %}
-<script src="{{ url_for('static', filename='js/contact.js') }}"></script>
+<script src="{{ url_for('static', filename='js/contact.js') [1:]}}"></script>
 {% endblock %}

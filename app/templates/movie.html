@@ -6,16 +6,16 @@
 
 <link
   rel="stylesheet"
-  href="{{ url_for('static', filename='css/overlay.css') }}"
+  href="{{ url_for('static', filename='css/overlay.css') [1:]}}"
 />
 
 <link
     rel="stylesheet"
-    href="{{ url_for('static', filename='css/movie.css') }}"
+    href="{{ url_for('static', filename='css/movie.css') [1:]}}"
 />
 <link
   rel="stylesheet"
-  href="{{ url_for('static', filename='css/footer.css') }}"
+  href="{{ url_for('static', filename='css/footer.css') [1:]}}"
 />
 {% endblock %}
 
@@ -60,7 +60,7 @@
 
 
 {% block extra_scripts %}
-    <script src="{{ url_for('static', filename='js/popular.js') }}"></script>   
+    <script src="{{ url_for('static', filename='js/popular.js') [1:]}}"></script>   
 
     <!-- lamp effects -->
     <script>

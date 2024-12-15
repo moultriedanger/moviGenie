@@ -8,19 +8,19 @@
 
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/overlay.css') }}"
+      href="{{ url_for('static', filename='css/overlay.css')[1:] }}"
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/random.css') }}"
+      href="{{ url_for('static', filename='css/random.css')[1:] }}"
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/landingmovie.css') }}"
+      href="{{ url_for('static', filename='css/landingmovie.css')[1:] }}"
     />
     <link
   rel="stylesheet"
-  href="{{ url_for('static', filename='css/footer.css') }}"
+  href="{{ url_for('static', filename='css/footer.css') [1:]}}"
 />
 {% endblock %}
 
