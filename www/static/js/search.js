@@ -74,7 +74,7 @@ function createPopup(data) {
         let posterId = movies[i]['id']
         
         let link = document.createElement('a');
-        link.href = `/search/${posterId}`;
+        link.href = `search/${posterId}`;
         
         // Poster
         let poster_base = "https://image.tmdb.org/t/p/w1280"
