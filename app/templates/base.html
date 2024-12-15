@@ -30,15 +30,15 @@
     <title>{% block title %}Default Title{% endblock %}</title>
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/nav.css') }}"
+      href="{{ url_for('static', filename='css/nav.css') [1:] }}"
     />
     <link
       rel="stylesheet"
-      href="{{ url_for('static', filename='css/search.css') }}"
+      href="{{ url_for('static', filename='css/search.css') [1:] }}"
     />
     <link
     rel="stylesheet"
-    href="{{ url_for('static', filename='css/footer.css') }}"
+    href="{{ url_for('static', filename='css/footer.css') [1:] }}"
   />
   
     
@@ -52,7 +52,7 @@
       <div class="nav-miniLogo">
         <a href="{{ url_for('landing') }}"
           ><img
-            src="{{ url_for('static', filename='img/navLogo.png') }}"
+            src="{{ url_for('static', filename='img/navLogo.png') [1:] }}"
             class="nav-miniLogo"
             alt="logo"
         /></a>

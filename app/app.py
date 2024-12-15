@@ -66,7 +66,7 @@ def create_app(test_config=False, shared_server=False):
         # Split the GPT response into a list of movie titles
         movie_titles = gpt_response.split(',')
         movie_titles = [title.strip() for title in movie_titles]
-        print(movie_titles)
+
         # Fetch movie details from TMDb for each movie title
         movie_details = []
         for title in movie_titles:
@@ -173,8 +173,6 @@ def create_app(test_config=False, shared_server=False):
 
         # Fetch streaming platforms (for example, from TMDb API or JustWatch API)
         streaming_platforms = fetch_streaming_platforms(movie_id)
-        for platform in streaming_platforms:
-            print(platform['name'])
     
         #render template
         return render_template('trending_movie.html',
@@ -371,7 +369,6 @@ def create_app(test_config=False, shared_server=False):
     def get_review(movie_id):
         
         #recieve movie Id 
-        print(movie_id)
 
         #open connection
         conn = sqlite3.connect(os.path.join(os.getcwd(), 'movieGenie.db'))
