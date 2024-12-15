@@ -98,7 +98,8 @@ def create_app(test_config=False, shared_server=False):
                 "title": movie["title"],
                 "overview": movie.get("overview", "No description available."),
                 "poster_path": f'https://image.tmdb.org/t/p/w300{movie.get("poster_path", "")}',
-                "movie_id": movie["id"]
+                "movie_id": movie["id"],
+                "rating": movie["vote_average"]
             }
         
         return None
