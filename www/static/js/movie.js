@@ -49,7 +49,7 @@ function fetchRelatedMovies(movieId) {
         }
     };
 
-    xhr.open("GET", "http://127.0.0.1/movies", true);
+    xhr.open("GET", "/movies", true);
     xhr.send();
 }
 
