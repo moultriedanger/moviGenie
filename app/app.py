@@ -270,16 +270,24 @@ def create_app(test_config=False, shared_server=False):
         response = requests.get(url, headers=headers)
 
         #Null check movie
-        if not response:
-            return "Invalid request", 404
+        if not response or response.status_code != 200:
+           
+            return jsonify({"error": "Invalid request or movie not found"}), 404
 
         movie = response.json()
 
         title = movie.get("title", "Title not found") 
         description = movie.get("overview", "Title not found") 
+        backdrop_path_raw = movie.get("backdrop_path", "")
 
-        first = 'https://image.tmdb.org/t/p/w1280'
-        backdrop_path = first + movie.get("backdrop_path", "")
+        if backdrop_path_raw is None:
+            print("Invalid request or movie not found")
+            first = 'https://image.tmdb.org/t/p/w1280'
+            backdrop_path = ''
+        else:
+            first = 'https://image.tmdb.org/t/p/w1280'
+            backdrop_path = first + movie.get("backdrop_path", "")
+        
 
         # load other movies
         with open('../www/data.json', 'r') as file:

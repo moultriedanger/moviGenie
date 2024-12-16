@@ -11,6 +11,7 @@
 {% endblock %} 
 
 {% block content %}
+{% if backdrop_path %}
 <div class="movie-info">
   <div class="image-container">
     <img src="{{backdrop_path}}" alt="Movie Poster" />
@@ -157,7 +158,25 @@
       <p>Great visual effects, but the plot could have been stronger.</p>
     </div>
   </div>
-  {% endblock %} {% block extra_scripts %}
+</div>
+
+{% else %}
+<div class="error-message movie-info" style=" color: #fff; padding: 20px; text-align: center; border-radius: 8px; display: flex; flex-direction: column;">
+  <h2 style="margin: 0; font-size: 24px;">Movie Data Unavailable</h2>
+  <p style="margin: 10px 0; font-size: 16px;">
+      Sorry, the movie details cannot be displayed at this time.
+  </p>
+  <button onclick="window.history.back()" 
+          style="background-color: #ff4500; color: #fff; border: none; padding: 10px 20px; font-size: 16px; border-radius: 4px; cursor: pointer;">
+      Go Back
+  </button>
+</div>
+
+{% endif %}
+{% endblock %} 
+
+
+  {% block extra_scripts %}
 
   <!-- review form -->
   <script>
@@ -331,4 +350,4 @@
     });
   </script>
   {% endblock %}
-</div>
+
