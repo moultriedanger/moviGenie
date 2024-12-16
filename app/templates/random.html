@@ -11,7 +11,7 @@
 
 {% block content %}
 <div class="random_movie_container">
-  <div class="movie_card random_movie_card" onclick="window.location.href='/trending_movie/{{ one_movie.0.id }}'">
+  <div class="movie_card random_movie_card" onclick="window.location.href='/moviGenie/trending_movie/{{ one_movie.0.id }}'">
       <img src="{{ backdrop_path }}" alt="Movie Poster" />
       <div class="overlay">
           <h1>{{ movie_title }}</h1>
@@ -45,7 +45,7 @@
               <button class="scroll-button left" onclick="scrollLeftMovies('movie-scroll-area-trending')">&#10094;</button>
               <div id="movie-scroll-area-trending" class="movie-cards movie-scroll-area">
                   {% for movie in other_movies1 %}
-                  <div class="movie_card" onclick="window.location.href='/trending_movie/{{ movie.id }}'">
+                  <div class="movie_card" onclick="window.location.href='/moviGenie/trending_movie/{{ movie.id }}'">
                       <img src="https://image.tmdb.org/t/p/w1280{{ movie.poster_path }}" alt="Movie Poster" />
                       <div class="overlay">
                           <h1>{{ movie.title }}</h1>
@@ -83,7 +83,7 @@
               <button class="scroll-button left" onclick="scrollLeftMovies('movie-scroll-area-hot')">&#10094;</button>
               <div id="movie-scroll-area-hot" class="movie-cards movie-scroll-area">
                   {% for movie in other_movies2 %}
-                  <div class="movie_card" onclick="window.location.href='/trending_movie/{{ movie.id }}'">
+                  <div class="movie_card" onclick="window.location.href='moviGenie/trending_movie/{{ movie.id }}'">
                       <img src="https://image.tmdb.org/t/p/w1280{{ movie.poster_path }}" alt="Movie Poster" />
                       <div class="overlay">
                           <h1>{{ movie.title }}</h1>
@@ -121,7 +121,7 @@
               <button class="scroll-button left" onclick="scrollLeftMovies('movie-scroll-area-top-pick')">&#10094;</button>
               <div id="movie-scroll-area-top-pick" class="movie-cards movie-scroll-area">
                   {% for movie in other_movies3 %}
-                  <div class="movie_card" onclick="window.location.href='/trending_movie/{{ movie.id }}'">
+                  <div class="movie_card" onclick="window.location.href='/moviGenie/trending_movie/{{ movie.id }}'">
                       <img src="https://image.tmdb.org/t/p/w1280{{ movie.poster_path }}" alt="Movie Poster" />
                       <div class="overlay">
                           <h1>{{ movie.title }}</h1>
