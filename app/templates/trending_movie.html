@@ -179,7 +179,7 @@
 
   async function loadReviews(movieId) {
     try {
-      const response = await fetch(`/moviGenie/get_reviews/${movieId}`);
+      const response = await fetch('/moviGenie/get_reviews/${movieId}');
       if (response.ok) {
         const review_list = await response.json();
         if (!review_list || review_list.length === 0) {
@@ -214,7 +214,7 @@
   loadReviews(movieId);
 
   function render_trailer(movieId) {
-    fetch(`/moviGenie/trending_movie/${movieId}`, {
+    fetch('/moviGenie/trending_movie/${movieId}', {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
