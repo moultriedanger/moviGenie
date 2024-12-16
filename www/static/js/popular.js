@@ -7,7 +7,7 @@ xhr.onreadystatechange = function () {
     display_movies(movies);
   }
 };
-xhr.open("GET", prepend + "/movies", true);
+xhr.open("GET",  "./movies", true);
 xhr.send();
 
 function display_movies(movies) {
