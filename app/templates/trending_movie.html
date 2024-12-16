@@ -4,8 +4,12 @@
 
 {% block extra_styles %}
 
-<link rel="stylesheet" href="./static/css/landingmovie.css" />
-<link rel="stylesheet" href="./static/css/overlay.css" />
+<link rel="stylesheet" href="/static/css/landingmovie.css" />
+<link rel="stylesheet" href="/static/css/overlay.css" />
+<link rel="stylesheet" href="/static/css/nav.css" />
+<link rel="stylesheet" href="/static/css/search.css" />
+<link rel="stylesheet" href="/static/css/footer.css" />
+
 
 
 {% endblock %} 
@@ -179,6 +183,8 @@
   {% block extra_scripts %}
 
   <!-- review form -->
+  <script src="/static/js/nav.js"></script>
+  <script src="/static/js/search.js"></script>
   <script>
     const movieId = "{{ movie_id }}";
 
