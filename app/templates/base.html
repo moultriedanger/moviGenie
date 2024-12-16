@@ -8,47 +8,46 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-    <!-- Font Awesome 4 -->
+    <!-- Font Awesome -->
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
     />
-    <!-- Font Awesome 5 -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css"
+    />
 
+    <!-- Google Fonts -->
     <link
       href="https://fonts.googleapis.com/css2?family=Arsenal+SC:ital,wght@0,400;0,700;1,400;1,700&family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap"
       rel="stylesheet"
     />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap"
+      rel="stylesheet"
+    />
+
     <title>{% block title %}Default Title{% endblock %}</title>
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/nav.css') }}"
-    />
-    <link
-      rel="stylesheet"
-      href="{{ url_for('static', filename='css/search.css') }}"
-    />
-    
-    {% block extra_styles %}
-    {% endblock %}
+
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="/static/css/nav.css" />
+    <link rel="stylesheet" href="/static/css/search.css" />
+    <link rel="stylesheet" href="/static/css/footer.css" />
+
+    {% block extra_styles %} {% endblock %}
   </head>
   <body>
     <!-- Nav bar -->
     <nav class="nav-container">
       <div class="nav-miniLogo">
-        <a href="{{ url_for('landing') }}"
-          ><img
-            src="{{ url_for('static', filename='img/navLogo.png') }}"
-            class="nav-miniLogo"
-            alt="logo"
-        /></a>
+        <a href="{{ url_for('landing') }}">
+          <img src="/static/img/navLogo.png" class="nav-miniLogo" alt="logo" />
+        </a>
       </div>
       <div class="nav-links">
         <ul>
-          <li>
-            <a href="{{ url_for('movie') }}">FIND MOVIE</a>
-          </li>
+          <li><a href="{{ url_for('movie') }}">FIND MOVIE</a></li>
           <li><a href="{{ url_for('random') }}">RANDOM MOVIE</a></li>
           <li><a href="{{ url_for('about') }}">ABOUT US</a></li>
           <li><a href="{{ url_for('about') }}#contactID">CONTACT</a></li>
@@ -69,12 +68,9 @@
     <nav id="sideNav" class="side-nav">
       <div class="side-nav-links">
         <ul>
-          <a href="{{ url_for('landing') }}"
-            ><img
-              src="{{ url_for('static', filename='img/navLogo.png') }}"
-              class="logo"
-              alt="logo"
-          /></a>
+          <a href="{{ url_for('landing') }}">
+            <img src="/static/img/navLogo.png" class="logo" alt="logo" />
+          </a>
           <li><a href="{{ url_for('movie') }}">FIND MOVIE</a></li>
           <li><a href="{{ url_for('random') }}">RANDOM MOVIE</a></li>
           <li><a href="{{ url_for('about') }}">ABOUT US</a></li>
@@ -92,16 +88,22 @@
     </nav>
 
     <!-- Page Content -->
-    {% block content %}
-    {% endblock %}
+    {% block content %} {% endblock %}
 
     <!-- Footer -->
     <footer>
       <div class="footerContainer">
         <div class="socialIcons">
-          <a href="https://www.linkedin.com/groups/13128347/"><i class="fa-brands fa-linkedin"></i></a>
-          <a href="https://github.com/moultriedanger/moviGenie"><i class="fa-brands fa-github"></i></a>
-          <a href="https://drive.google.com/drive/folders/1t84rHis1yKQzb904WBUuk7jl6QlFMjHO?usp=sharing"><i class="fas fa-file-alt"></i></a>
+          <a href="https://www.linkedin.com/groups/13128347/"
+            ><i class="fa-brands fa-linkedin"></i
+          ></a>
+          <a href="https://github.com/moultriedanger/moviGenie"
+            ><i class="fa-brands fa-github"></i
+          ></a>
+          <a
+            href="https://drive.google.com/drive/folders/1t84rHis1yKQzb904WBUuk7jl6QlFMjHO?usp=sharing"
+            ><i class="fas fa-file-text-o"></i
+          ></a>
         </div>
         <div class="footerNav">
           <ul>
@@ -115,9 +117,9 @@
       </div>
     </footer>
 
-    <!-- JS -->
-    <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
-    <script src="{{ url_for('static', filename='js/search.js') }}"></script>
+    <!-- JS Files -->
+    <script src="/static/js/nav.js"></script>
+    <script src="/static/js/search.js"></script>
 
     <!-- Scroll function -->
     <script>
@@ -132,7 +134,6 @@
       }
     </script>
 
-    {% block extra_scripts %}
-    {% endblock %}
+    {% block extra_scripts %} {% endblock %}
   </body>
 </html>

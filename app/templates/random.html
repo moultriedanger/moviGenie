@@ -1,4 +1,4 @@
-{% extends "base.html" %}
+{% extends "/base.html" %}
 
 {% block title %}Random Movies{% endblock %}
 
@@ -22,17 +22,17 @@
               <i class="{{ 'fas fa-star' if star <= userRating else 'far fa-star' }}"></i>
             {% endfor %}
             <span>{{ userRating }}/5</span>
-          </div>
-          <p>Release Date: {{ one_movie[0].release_date }}</p>
-          <!-- Description -->
-          <p class="desc">
-            {% set maxLength = 100 %}
-            {% if movie_description and movie_description | length > maxLength %}
-              {{ movie_description[:maxLength] }}...
-            {% else %}
-              {{ movie_description or 'No description available.' }}
-            {% endif %}
-          </p>  
+        </div>
+        <p>Release Date: {{ one_movie[0].release_date }}</p>
+        <!-- Description -->
+        <p class="desc">
+          {% set maxLength = 100 %}
+          {% if movie_description and movie_description | length > maxLength %}
+            {{ movie_description[:maxLength] }}...
+          {% else %}
+            {{ movie_description or 'No description available.' }}
+          {% endif %}
+        </p>  
       </div>
   </div>
 </div>
@@ -152,7 +152,6 @@
       </div>
   </div>
 </div>
-
 {% endblock %}
 
 {% block extra_scripts %}

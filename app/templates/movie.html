@@ -3,145 +3,162 @@
 {% block title %}Movie Search{% endblock %}
 
 {% block extra_styles %}
-<link rel="stylesheet" href="{{ url_for('static', filename='css/movie.css') }}" />
-<link rel="stylesheet" href="{{ url_for('static', filename='css/overlay.css') }}" />
-<link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}" />
+<link rel="stylesheet" href="/static/css/overlay.css" />
+<link rel="stylesheet" href="/static/css/movie.css" />
+<link rel="stylesheet" href="/static/css/footer.css" />
 {% endblock %}
 
 {% block content %}
-<!-- Consult the Genie section -->
+<!-- Consult the Genie Section -->
 <div class="consult-genie-container">
     <div class="pre-animation">
         <div id="consult-genie-text">Click to consult the Genie...</div>
-        <img id="lamp" src="{{ url_for('static', filename='img/lamp.png') }}" alt="lamp">
-        <img id="shadow" src="{{ url_for('static', filename='img/shadow.png') }}" alt="shadow">
+        <img id="lamp" src="/static/img/lamp.png" alt="lamp" />
+        <img id="shadow" src="/static/img/shadow.png" alt="shadow" />
     </div>
 
+    <!-- Post-animation Genie Interaction -->
     <div class="post-animation">
-        <img id="gptLogo" src="{{ url_for('static', filename='img/logo.png') }}" alt="logo">
+        <img id="gptLogo" src="/static/img/logo.png" alt="logo" />
         <textarea id="gptInput" placeholder="Type your wish to the Genie..."></textarea>
         <button id="genieSubmit"><i class="fas fa-arrow-right"></i></button>
-        <h1 id="gptHeader">Our Genie is AI powered, so speak to it as you would a friend and let the Genie do the rest.</h1>
+        <h1 id="gptHeader">
+            Our Genie is AI powered, so speak to it as you would a friend and let the Genie do the rest.
+        </h1>
     </div>
 </div>
 
+<!-- Genie Generated Movies -->
 <div class="movie-section">
     <h1 class="movie-sec-trend movie-sec-genie">Genie Generated</h1>
     <div class="movie-cards genie-cards">
-        <!-- Genie Generated movies created in js-->
+        <!-- Dynamically Generated Movies -->
     </div>
 </div>
 
-<!-- Trending movies -->
+<!-- Trending Movies Section -->
 <div class="movie-section">
     <h1 class="movie-sec-trend">TRENDING NOW</h1>
     <div class="movie-cards trending-cards">
-        <!-- Trending movies created in js-->
+        <!-- Trending Movies Populated via JS -->
     </div>
 </div>
 {% endblock %}
 
 {% block extra_scripts %}
-<script src="{{ url_for('static', filename='js/popular.js') }}"></script>
+<script src="/static/js/popular.js"></script>
 
-<!-- lamp effects -->
 <script>
     let canSubmit = true;
     let isRequestInProgress = false;
 
+    // Function to submit Genie request to the backend
     function submitGenieRequest() {
         if (!canSubmit || isRequestInProgress) {
-            const gptHeader = document.getElementById('gptHeader');
-            gptHeader.textContent = 'Please wait before sending another wish to the Genie';
+            document.getElementById('gptHeader').textContent =
+                'Please wait before sending another wish to the Genie';
             return;
         }
 
-        const gptInputText = document.getElementById('gptInput').value;
-        console.log('User input:', gptInputText);
+        const userInput = document.getElementById('gptInput').value;
 
-        // Set the request in progress flag
+        // Set the request flag and loading cursor
         isRequestInProgress = true;
-
-        // Change cursor to loading
         document.body.style.cursor = 'wait';
 
-        // Send the input text to the server using fetch
-        fetch('{{ url_for("process_genie_request") }}', {
+        fetch('/process_genie_request', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({ user_input: gptInputText })
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ user_input: userInput }),
         })
-        .then(response => response.json())
-        .then(data => {
-            console.log('Response from server:', data);
-            // Handle the response data as needed
-            displayMovies(data.movies);
-            
-            // Clear the gptInput textarea and reset its placeholder
-            const gptInput = document.getElementById('gptInput');
-            gptInput.value = '';
-            gptInput.placeholder = 'Type your request to the Genie...';
-            
-            const gptHeader = document.getElementById('gptHeader');
-            gptHeader.textContent = 'Wish sent, please wait twenty seconds before sending another wish';
+            .then((response) => response.json())
+            .then((data) => {
+                displayMovies(data.movies);
+                document.getElementById('gptInput').value = '';
+                document.getElementById('gptHeader').textContent =
+                    'Wish sent, please wait twenty seconds before sending another wish';
 
-            // Set the cooldown
-            canSubmit = false;
-            setTimeout(() => {
-                canSubmit = true;
-                gptHeader.textContent = 'You can now send another wish';
-            }, 20000); // 20 seconds cooldown
-        })
-        .catch(error => {
-            console.error('Error:', error);
-            const gptHeader = document.getElementById('gptHeader');
-            gptHeader.textContent = 'Error contacting the Genie, please try again later';
-        })
-        .finally(() => {
-            // Reset the request in progress flag
-            isRequestInProgress = false;
-            // Reset cursor to default
-            document.body.style.cursor = 'default';
-        });
+                // Set a cooldown period
+                canSubmit = false;
+                setTimeout(() => {
+                    canSubmit = true;
+                    document.getElementById('gptHeader').textContent =
+                        'You can now send another wish';
+                }, 20000);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+                document.getElementById('gptHeader').textContent =
+                    'Error contacting the Genie, please try again later';
+            })
+            .finally(() => {
+                isRequestInProgress = false;
+                document.body.style.cursor = 'default';
+            });
     }
 
-    document.getElementById('genieSubmit').addEventListener('click', submitGenieRequest);
+    // Function to display Genie-generated movies
+    function displayMovies(movies) {
+        const movieContainer = document.querySelector('.genie-cards');
+        const movieSectionTitle = document.querySelector('.movie-sec-genie');
+        movieContainer.innerHTML = ''; // Clear previous results
 
-    document.getElementById('gptInput').addEventListener('keydown', function(event) {
+        movies.forEach((movie) => {
+            const card = document.createElement('div');
+            card.classList.add('movie_card');
+
+            const link = document.createElement('a');
+            link.href = `/search/${movie.movie_id}`;
+
+            const poster = document.createElement('img');
+            poster.src = movie.poster_path;
+            poster.alt = movie.title;
+
+            const overlay = document.createElement('div');
+            overlay.classList.add('overlay');
+
+            const title = document.createElement('h1');
+            title.textContent = movie.title;
+
+            const rating = document.createElement('h2');
+            rating.textContent = `Rating: ${movie.rating}`;
+
+            const description = document.createElement('p');
+            description.textContent =
+                movie.overview.length > 100
+                    ? movie.overview.slice(0, 100) + '...'
+                    : movie.overview;
+
+            overlay.appendChild(title);
+            overlay.appendChild(rating);
+            overlay.appendChild(description);
+            link.appendChild(poster);
+            link.appendChild(overlay);
+            card.appendChild(link);
+            movieContainer.appendChild(card);
+        });
+
+        movieSectionTitle.style.display = 'block';
+    }
+
+    // Event listeners
+    document.getElementById('genieSubmit').addEventListener('click', submitGenieRequest);
+    document.getElementById('gptInput').addEventListener('keydown', (event) => {
         if (event.key === 'Enter') {
-            event.preventDefault(); 
+            event.preventDefault();
             submitGenieRequest();
         }
     });
 
-    document.addEventListener('DOMContentLoaded', function () {
-        const lampIcon = document.getElementById('lamp');
-        const shadow = document.getElementById('shadow');
-        const genieText = document.getElementById('consult-genie-text');
-        const textBox = document.getElementById("gptInput");
-        const header = document.getElementById("gptHeader");
-        const logo = document.getElementById("gptLogo");
-        const arrow = document.getElementById("genieSubmit");
-
-        lampIcon.addEventListener('click', function () {
-            lampIcon.classList.toggle('activated');
-            shadow.classList.toggle('activated');
-            genieText.classList.toggle('activated');
-            textBox.classList.toggle('activated');
-            header.classList.toggle('activated');
-            logo.classList.toggle('activated');
-            arrow.classList.toggle('activated');
-        });
-    });
-
-    document.getElementById('lamp').addEventListener('click', function () {
-        const smoke = document.getElementById('smoke');
-        smoke.classList.add('active');
-        setTimeout(() => {
-            smoke.classList.remove('active');
-        }, 2000);
+    // Lamp animation
+    document.getElementById('lamp').addEventListener('click', () => {
+        document.getElementById('lamp').classList.toggle('activated');
+        document.getElementById('shadow').classList.toggle('activated');
+        document.getElementById('consult-genie-text').classList.toggle('activated');
+        document.getElementById('gptInput').classList.toggle('activated');
+        document.getElementById('gptHeader').classList.toggle('activated');
+        document.getElementById('gptLogo').classList.toggle('activated');
+        document.getElementById('genieSubmit').classList.toggle('activated');
     });
 </script>
 {% endblock %}

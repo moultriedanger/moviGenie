@@ -1,32 +1,30 @@
-{% extends "base.html" %} 
+{% extends "base.html" %}
 
-{% block title %} Movie Section {% endblock %} 
+{% block title %} Movie Section {% endblock %}
 
 {% block extra_styles %}
-
-<link rel="stylesheet" href="{{ url_for('static', filename='css/landingmovie.css') }}" />
-<link rel="stylesheet" href="{{ url_for('static', filename='css/overlay.css') }}" />
-<link rel="stylesheet" href="{{ url_for('static', filename='css/nav.css') }}" />
-<link rel="stylesheet" href="{{ url_for('static', filename='css/search.css') }}" />
-<link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}" />
-
-{% endblock %} 
+<link rel="stylesheet" href="/static/css/landingmovie.css" />
+<link rel="stylesheet" href="/static/css/overlay.css" />
+<link rel="stylesheet" href="/static/css/nav.css" />
+<link rel="stylesheet" href="/static/css/search.css" />
+<link rel="stylesheet" href="/static/css/footer.css" />
+{% endblock %}
 
 {% block content %}
 {% if backdrop_path %}
 <div class="movie-info">
   <div class="image-container">
-    <img src="{{ backdrop_path }}" alt="Movie Poster" />
+    <img src="{{backdrop_path}}" alt="Movie Poster" />
     <div class="overlay">
       <div class="movie-details">
-        <h1>{{ movie_title }}</h1>
+        <h1>{{movie_title}}</h1>
         <div class="movie-info-span">
           <span class="info-item">2024</span> |
           <span class="info-item age-res">18+</span> |
           <span class="info-item">120 min</span> |
           <span class="info-item">Action, Adventure</span>
         </div>
-        <p>{{ movie_description }}</p>
+        <p>{{movie_description}}</p>
         <div class="button-container">
           <!-- Streaming Modal (Popup) -->
           <div id="streamingModal" class="streaming-modal">
@@ -34,10 +32,8 @@
               <span class="close-button" id="closeModal">&times;</span>
               <div class="streaming-links">
                 <h3>Available on:</h3>
-
                 <div class="platforms">
                   {% for platform in streaming_platforms %}
-
                   <a href="{{ platform['url'] }}" target="_blank">
                     <img
                       src="{{ platform['logo_url'] }}"
@@ -55,10 +51,7 @@
           <button class="play-button">
             <i class="fa-solid fa-play"></i> Play Movie
           </button>
-          <!-- <button class="add-to-my-list">
-            <i class="fa-solid fa-plus"></i>
-          </button> -->
-          <button class="trailer-btn" onclick="render_trailer('{{ movie_id }}')">
+          <button class="trailer-btn" onclick="render_trailer('{{movie_id}}')">
             <i class="fa-solid fa-film"></i>
           </button>
         </div>
@@ -76,7 +69,7 @@
       </button>
       <div id="movie-scroll-area" class="movie-cards">
         {% for movie in other_movies %}
-        <div class="movie_card" onclick="window.location.href='{{ movie.id }}'">
+        <div class="movie_card" onclick="window.location.href='/movie/{{ movie.id }}'">
           <img
             src="https://image.tmdb.org/t/p/w1280{{ movie.poster_path }}"
             alt="Movie Poster"
@@ -87,15 +80,18 @@
             <div class="rating">
               {% set userRating = (movie.vote_average / 2) | round(0, 'floor') %}
               {% for star in range(1, 6) %}
-              <i
-                class="{{ 'fas fa-star' if star <= userRating else 'far fa-star' }}"
-              ></i>
+              <i class="{{ 'fas fa-star' if star <= userRating else 'far fa-star' }}"></i>
               {% endfor %}
               <span>{{ userRating }}/5</span>
             </div>
             <p>Release Date: {{ movie.release_date }}</p>
             <p class="desc">
-              {% set maxLength = 100 %} {% if movie.overview and movie.overview | length > maxLength %} {{ movie.overview[:maxLength] }}... {% else %} {{ movie.overview or 'No description available.' }} {% endif %}
+              {% set maxLength = 100 %}
+              {% if movie.overview and movie.overview | length > maxLength %}
+                {{ movie.overview[:maxLength] }}...
+              {% else %}
+                {{ movie.overview or 'No description available.' }}
+              {% endif %}
             </p>
           </div>
         </div>
@@ -172,34 +168,27 @@
 </div>
 
 {% endif %}
-{% endblock %} 
+{% endblock %}
 
 
 {% block extra_scripts %}
-
-<!-- review form -->
-<script src="{{ url_for('static', filename='js/nav.js') }}"></script>
-<script src="{{ url_for('static', filename='js/search.js') }}"></script>
+<script src="/static/js/nav.js"></script>
+<script src="/static/js/search.js"></script>
 <script>
   const movieId = "{{ movie_id }}";
 
   async function loadReviews(movieId) {
     try {
-      // Fetch the reviews for the specific movie
       const response = await fetch(`/get_reviews/${movieId}`);
       if (response.ok) {
         const review_list = await response.json();
-
-        //Return if empty
         if (!review_list || review_list.length === 0) {
           console.log("No reviews available.");
-          return; // Exit the function early if there are no reviews
+          return;
         }
         console.log(review_list);
 
-        //extract var
         for (rev of review_list) {
-          //create reviews and append to page
           const reviewItem = document.createElement("div");
           reviewItem.classList.add("review-item");
 
@@ -212,8 +201,6 @@
               </div>
               <p>${rev.review}</p>
           `;
-
-          // Append the review item to the reviews list
           const reviewsList = document.querySelector(".reviews-list");
           reviewsList.appendChild(reviewItem);
         }
@@ -255,28 +242,21 @@
       render_trailer(movieId);
     });
 
-  // submit form
   document.addEventListener("DOMContentLoaded", function () {
     document
       .getElementById("reviewForm")
       .addEventListener("submit", function (e) {
         e.preventDefault();
-
-        // Fetch values from the form
         const name = document.getElementById("name").value;
-        const rating = document.querySelector(
-          'input[name="rating"]:checked'
-        )?.value;
+        const rating = document.querySelector('input[name="rating"]:checked')?.value;
         const review = document.getElementById("review").value;
 
-        // Check if the rating is selected
         if (!rating) {
           alert("Please select a rating before submitting.");
           return;
         }
 
         const movieId = "{{ movie_id }}";
-
         const review_data = JSON.stringify({
           movie_id: movieId,
           name: name,
@@ -288,19 +268,16 @@
         myHeaders.append("Content-Type", "application/json");
 
         try {
-          // Send the request without awaiting the response
           fetch("/add_review", {
             method: "POST",
             body: review_data,
             headers: myHeaders,
           });
-
           console.log("Review submitted successfully.");
         } catch (error) {
           console.error("Error submitting review:", error);
         }
 
-        // Create the review item
         const reviewItem = document.createElement("div");
         reviewItem.classList.add("review-item");
 
@@ -313,36 +290,27 @@
             </div>
             <p>${review}</p>
         `;
-
-        // Append the review item to the reviews list
         const reviewsList = document.querySelector(".reviews-list");
         reviewsList.appendChild(reviewItem);
 
-        // Clear form fields
         document.getElementById("reviewForm").reset();
-
-        // Confirm in console
         console.log("Review added:", { movieId, rating, review });
       });
   });
-  // play button showing the streaming page:
 
   document.addEventListener("DOMContentLoaded", function () {
     const playButton = document.querySelector(".play-button");
     const streamingModal = document.getElementById("streamingModal");
     const closeButton = document.getElementById("closeModal");
 
-    // Open the modal when the "Play Movie" button is clicked
     playButton.addEventListener("click", function () {
       streamingModal.style.display = "block";
     });
 
-    // Close the modal when the "close" button is clicked
     closeButton.addEventListener("click", function () {
       streamingModal.style.display = "none";
     });
 
-    // Close the modal if the user clicks outside of the modal content
     window.addEventListener("click", function (event) {
       if (event.target === streamingModal) {
         streamingModal.style.display = "none";
