@@ -3,9 +3,9 @@
 {% block title %}Movie Search{% endblock %}
 
 {% block extra_styles %}
-<link rel="stylesheet" href="/static/css/overlay.css" />
-<link rel="stylesheet" href="/static/css/movie.css" />
-<link rel="stylesheet" href="/static/css/footer.css" />
+<link rel="stylesheet" href="moviGenie/static/css/overlay.css" />
+<link rel="stylesheet" href="moviGenie/static/css/movie.css" />
+<link rel="stylesheet" href="moviGenie/static/css/footer.css" />
 {% endblock %}
 
 {% block content %}
@@ -13,13 +13,13 @@
 <div class="consult-genie-container">
     <div class="pre-animation">
         <div id="consult-genie-text">Click to consult the Genie...</div>
-        <img id="lamp" src="/static/img/lamp.png" alt="lamp" />
-        <img id="shadow" src="/static/img/shadow.png" alt="shadow" />
+        <img id="lamp" src="moviGenie/static/img/lamp.png" alt="lamp" />
+        <img id="shadow" src="moviGenie/static/img/shadow.png" alt="shadow" />
     </div>
 
     <!-- Post-animation Genie Interaction -->
     <div class="post-animation">
-        <img id="gptLogo" src="/static/img/logo.png" alt="logo" />
+        <img id="gptLogo" src="moviGenie/static/img/logo.png" alt="logo" />
         <textarea id="gptInput" placeholder="Type your wish to the Genie..."></textarea>
         <button id="genieSubmit"><i class="fas fa-arrow-right"></i></button>
         <h1 id="gptHeader">
@@ -46,7 +46,7 @@
 {% endblock %}
 
 {% block extra_scripts %}
-<script src="/static/js/popular.js"></script>
+<script src="moviGenie/static/js/popular.js"></script>
 
 <script>
     let canSubmit = true;
