@@ -1,13 +1,13 @@
 //ajax teplate taken from https://medium.com/@JavaScript-World/mastering-ajax-in-javascript-a-beginners-guide-with-examples-6111aa53e690
 const xhr = new XMLHttpRequest();
-
+prepend = '/moviGenie'
 xhr.onreadystatechange = function () {
   if (xhr.readyState === 4 && xhr.status === 200) {
     const movies = JSON.parse(xhr.responseText);
     display_movies(movies);
   }
 };
-xhr.open("GET", "moviGenie/movies", true);
+xhr.open("GET", prepend + "/movies", true);
 xhr.send();
 
 function display_movies(movies) {
