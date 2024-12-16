@@ -49,7 +49,7 @@ function fetchRelatedMovies(movieId) {
         }
     };
 
-    xhr.open("GET", "/movies", true);
+    xhr.open("GET", "/movie", true);
     xhr.send();
 }
 
