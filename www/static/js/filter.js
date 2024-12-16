@@ -27,7 +27,7 @@ function displayMovies(movies) {
 
     movies.forEach(movie => {
         const movieCard = `
-            <div class="movie_card" onclick="window.location.href='moviGenie/trending_movie/${movie.id}'">
+            <div class="movie_card" onclick="window.location.href='/moviGenie/trending_movie/${movie.id}'">
                 <img src="https://image.tmdb.org/t/p/w1280${movie.poster_path}" alt="Movie Poster" />
                 <h1>${movie.title}</h1>
                 <p>Rating: ${movie.vote_average}</p>
