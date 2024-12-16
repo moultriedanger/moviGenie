@@ -1,18 +1,16 @@
-{% extends "base.html" %} {% block title %}Movie Section{% endblock %} {% block
-extra_styles %}
-<link
-  rel="stylesheet"
-  href="{{ url_for('static', filename='css/landingmovie.css') [1:] }}"
-/>
-<link
-  rel="stylesheet"
-  href="{{ url_for('static', filename='css/overlay.css') [1:] }}"
-/>
-<link
-  rel="stylesheet"
-  href="{{ url_for('static', filename='css/footer.css') [1:] }}"
-/>
-{% endblock %} {% block content %}
+{% extends "base.html" %} 
+
+{% block title %} Movie Section {% endblock %} 
+
+{% block extra_styles %}
+
+<link rel="stylesheet" href="/static/css/landingmovie.css" />
+<link rel="stylesheet" href="/static/css/overlay.css" />
+
+
+{% endblock %} 
+
+{% block content %}
 <div class="movie-info">
   <div class="image-container">
     <img src="{{backdrop_path}}" alt="Movie Poster" />

@@ -3,18 +3,10 @@
 {% block title %}About Us{% endblock %}
 
 {% block extra_styles %}
-  <link
-        rel="stylesheet"
-        href="{{ url_for('static', filename='css/about.css') [1:]}}"
-  />
-  <link
-        rel="stylesheet"
-        href="{{ url_for('static', filename='css/OtherSearch.css') [1:]}}"
-  />
-  <link
-  rel="stylesheet"
-  href="{{ url_for('static', filename='css/footer.css') [1:]}}"
-/>
+
+  <link rel="stylesheet" href="/static/css/about.css" />
+  <link rel="stylesheet" href="/static/css/OtherSearch.css" />
+  <link rel="stylesheet" href="/static/css/footer.css" />
 
 {% endblock %}
 
@@ -173,5 +165,5 @@
 
 
 {% block extra_scripts %}
-<script src="{{ url_for('static', filename='js/contact.js') [1:]}}"></script>
+<script src="/static/js/contact.js"></script>
 {% endblock %}
