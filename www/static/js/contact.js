@@ -25,7 +25,7 @@ document.querySelector(".submit_btn").addEventListener("click", function (event)
 
     const submitButton = event.target;
 
-    fetch("/contact", {
+    fetch("moviGenie/contact", {
     method: "POST",
     headers: {
         "Content-Type": "application/json",
