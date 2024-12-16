@@ -1,16 +1,101 @@
-{% extends "base.html" %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-{% block title %}About Us{% endblock %}
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 
-{% block extra_styles %}
+    <!-- Font Awesome 4 -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <!-- Font Awesome 5 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
-  <link rel="stylesheet" href="./static/css/about.css" />
-  <link rel="stylesheet" href="./static/css/OtherSearch.css" />
-  <link rel="stylesheet" href="./static/css/footer.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Arsenal+SC:ital,wght@0,400;0,700;1,400;1,700&family=Bodoni+Moda+SC:ital,opsz,wght@0,6..96,400..900;1,6..96,400..900&display=swap"
+      rel="stylesheet"
+    />
+    <title>{% block title %}About Us{% endblock %}</title>
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/nav.css') }}"
+    />
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/search.css') }}"
+    />
+    
+    {% block extra_styles %}
+      <link rel="stylesheet" href="./static/css/about.css" />
+      <link rel="stylesheet" href="./static/css/OtherSearch.css" />
+      <link rel="stylesheet" href="./static/css/footer.css" />
+    {% endblock %}
+  </head>
+  <body>
+    <!-- Nav bar -->
+    <nav class="nav-container">
+      <div class="nav-miniLogo">
+        <a href="{{ url_for('landing') }}"
+          ><img
+            src="{{ url_for('static', filename='img/navLogo.png') }}"
+            class="nav-miniLogo"
+            alt="logo"
+        /></a>
+      </div>
+      <div class="nav-links">
+        <ul>
+          <li>
+            <a href="{{ url_for('movie') }}">FIND MOVIE</a>
+          </li>
+          <li><a href="{{ url_for('random') }}">RANDOM MOVIE</a></li>
+          <li><a href="{{ url_for('about') }}">ABOUT US</a></li>
+          <li><a href="{{ url_for('about') }}#contactID">CONTACT</a></li>
+          <li class="search-container">
+            <i class="fa fa-search" id="search-icon"></i>
+            <input
+              type="text"
+              placeholder="Search for movie..."
+              id="search-input"
+            />
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-{% endblock %}
+    <!-- Mobile Nav -->
+    <button id="navToggleBtn" class="open-btn" onclick="toggleNav()">☰</button>
+    <nav id="sideNav" class="side-nav">
+      <div class="side-nav-links">
+        <ul>
+          <a href="{{ url_for('landing') }}"
+            ><img
+              src="{{ url_for('static', filename='img/navLogo.png') }}"
+              class="logo"
+              alt="logo"
+          /></a>
+          <li><a href="{{ url_for('movie') }}">FIND MOVIE</a></li>
+          <li><a href="{{ url_for('random') }}">RANDOM MOVIE</a></li>
+          <li><a href="{{ url_for('about') }}">ABOUT US</a></li>
+          <li><a href="{{ url_for('about') }}#contactID">CONTACT</a></li>
+          <li class="bar-search-container">
+            <i class="fa fa-search" id="bar-search-icon"></i>
+            <input
+              type="text"
+              placeholder="Search for movie..."
+              id="bar-search-input"
+            />
+          </li>
+        </ul>
+      </div>
+    </nav>
 
-{% block content %}
+    <!-- Page Content -->
+    {% block content %}
 
    <!-- Team statement -->
    <div class="about_container">
@@ -156,14 +241,45 @@
     </form>
   </div>
   <!-- Footer Section -->
+    <!-- Footer -->
+    <footer>
+      <div class="footerContainer">
+        <div class="socialIcons">
+          <a href="https://www.linkedin.com/groups/13128347/"><i class="fa-brands fa-linkedin"></i></a>
+          <a href="https://github.com/moultriedanger/moviGenie"><i class="fa-brands fa-github"></i></a>
+          <a href="https://drive.google.com/drive/folders/1t84rHis1yKQzb904WBUuk7jl6QlFMjHO?usp=sharing"><i class="fas fa-file-alt"></i></a>
+        </div>
+        <div class="footerNav">
+          <ul>
+            <li><a href="{{ url_for('landing') }}">Home</a></li>
+            <li><a href="{{ url_for('random') }}">Random Movie</a></li>
+            <li><a href="{{ url_for('about') }}">About</a></li>
+            <li><a href="{{ url_for('about') }}#contactID">Contact Us</a></li>
+            <li><a href="{{ url_for('movie') }}">Find Movie</a></li>
+          </ul>
+        </div>
+      </div>
+    </footer>
 
+    <!-- JS -->
+    <script src="{{ url_for('static', filename='js/nav.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/search.js') }}"></script>
 
-  <!-- JS Functions -->
+    <!-- Scroll function -->
+    <script>
+      const scrollContainer = document.getElementById("movie-scroll-area");
 
+      function scrollLeftMovies() {
+        scrollContainer.scrollBy({ left: -300, behavior: "smooth" });
+      }
 
-{% endblock %}
+      function scrollRightMovies() {
+        scrollContainer.scrollBy({ left: 300, behavior: "smooth" });
+      }
+    </script>
 
-
-{% block extra_scripts %}
-<script src="./static/js/contact.js"></script>
-{% endblock %}
+    {% block extra_scripts %}
+    <script src="./static/js/contact.js"></script>
+    {% endblock %}
+  </body>
+</html>
