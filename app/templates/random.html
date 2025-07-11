@@ -1,170 +1,219 @@
-{% extends "/base.html" %}
-
-{% block title %}Random Movies{% endblock %}
-
-{% block extra_styles %}
-    <link rel="stylesheet" href="static/css/overlay.css" />
-    <link rel="stylesheet" href="static/css/random.css" />
-    <link rel="stylesheet" href="static/css/landingmovie.css" />
-    <link rel="stylesheet" href="static/css/footer.css" />
-{% endblock %}
-
-{% block content %}
+{% extends "base.html" %} {% block title %}Random Movies{% endblock %} {% block
+extra_styles %}
+<link rel="stylesheet" href="static/css/overlay.css" />
+<link rel="stylesheet" href="static/css/random.css" />
+<link rel="stylesheet" href="static/css/landingmovie.css" />
+<link rel="stylesheet" href="static/css/footer.css" />
+{% endblock %} {% block content %}
 <div class="random_movie_container">
-  <div class="movie_card random_movie_card" onclick="window.location.href='/moviGenie/trending_movie/{{ one_movie.0.id }}'">
-      <img src="{{ backdrop_path }}" alt="Movie Poster" />
-      <div class="overlay">
-          <h1>{{ movie_title }}</h1>
-          <h2>Rating: {{ one_movie[0].vote_average }}</h2>
-          <div class="rating">
-            {% set userRating = (one_movie[0].vote_average / 2) | round(0, 'floor') %}
-            {% for star in range(1, 6) %}
-              <i class="{{ 'fas fa-star' if star <= userRating else 'far fa-star' }}"></i>
-            {% endfor %}
-            <span>{{ userRating }}/5</span>
-        </div>
-        <p>Release Date: {{ one_movie[0].release_date }}</p>
-        <!-- Description -->
-        <p class="desc">
-          {% set maxLength = 100 %}
-          {% if movie_description and movie_description | length > maxLength %}
-            {{ movie_description[:maxLength] }}...
-          {% else %}
-            {{ movie_description or 'No description available.' }}
-          {% endif %}
-        </p>  
+  <div
+    class="movie_card random_movie_card"
+    onclick="window.location.href='/moviGenie/trending_movie/{{ one_movie.0.id }}'"
+  >
+    <img src="{{ backdrop_path }}" alt="Movie Poster" />
+    <div class="overlay">
+      <h1>{{ movie_title }}</h1>
+      <h2>Rating: {{ one_movie[0].vote_average }}</h2>
+      <div class="rating">
+        {% set userRating = (one_movie[0].vote_average / 2) | round(0, 'floor')
+        %} {% for star in range(1, 6) %}
+        <i
+          class="{{ 'fas fa-star' if star <= userRating else 'far fa-star' }}"
+        ></i>
+        {% endfor %}
+        <span>{{ userRating }}/5</span>
       </div>
+      <p>Release Date: {{ one_movie[0].release_date }}</p>
+      <!-- Description -->
+      <p class="desc">
+        {% set maxLength = 100 %} {% if movie_description and movie_description
+        | length > maxLength %} {{ movie_description[:maxLength] }}... {% else
+        %} {{ movie_description or 'No description available.' }} {% endif %}
+      </p>
+    </div>
   </div>
 </div>
 
 <div class="random-movies">
   <div class="Trending-movies">
-      <h2>Trending</h2>
-      <div class="list-container">
-          <div class="list-related-movies">
-              <button class="scroll-button left" onclick="scrollLeftMovies('movie-scroll-area-trending')">&#10094;</button>
-              <div id="movie-scroll-area-trending" class="movie-cards movie-scroll-area">
-                  {% for movie in other_movies1 %}
-                  <div class="movie_card" onclick="window.location.href='/moviGenie/trending_movie/{{ movie.id }}'">
-                      <img src="https://image.tmdb.org/t/p/w1280{{ movie.poster_path }}" alt="Movie Poster" />
-                      <div class="overlay">
-                          <h1>{{ movie.title }}</h1>
-                          <h2>Rating: {{ movie.vote_average }}</h2>
-                          <div class="rating">
-                            {% set userRating = (movie.vote_average / 2) | round(0, 'floor') %}
-                            {% for star in range(1, 6) %}
-                              <i class="{{ 'fas fa-star' if star <= userRating else 'far fa-star' }}"></i>
-                            {% endfor %}
-                            <span>{{ userRating }}/5</span>
-                          </div>
-                          <p>Release Date: {{ movie.release_date }}</p>
-                          <!-- Description -->
-                          <p class="desc">
-                            {% set maxLength = 100 %}
-                            {% if movie.overview and movie.overview | length > maxLength %}
-                              {{ movie.overview[:maxLength] }}...
-                            {% else %}
-                              {{ movie.overview or 'No description available.' }}
-                            {% endif %}
-                          </p>  
-                      </div>
-                  </div>
-                  {% endfor %}
+    <h2>Trending</h2>
+    <div class="list-container">
+      <div class="list-related-movies">
+        <button
+          class="scroll-button left"
+          onclick="scrollLeftMovies('movie-scroll-area-trending')"
+        >
+          &#10094;
+        </button>
+        <div
+          id="movie-scroll-area-trending"
+          class="movie-cards movie-scroll-area"
+        >
+          {% for movie in other_movies1 %}
+          <div
+            class="movie_card"
+            onclick="window.location.href='/moviGenie/trending_movie/{{ movie.id }}'"
+          >
+            <img
+              src="https://image.tmdb.org/t/p/w1280{{ movie.poster_path }}"
+              alt="Movie Poster"
+            />
+            <div class="overlay">
+              <h1>{{ movie.title }}</h1>
+              <h2>Rating: {{ movie.vote_average }}</h2>
+              <div class="rating">
+                {% set userRating = (movie.vote_average / 2) | round(0, 'floor')
+                %} {% for star in range(1, 6) %}
+                <i
+                  class="{{ 'fas fa-star' if star <= userRating else 'far fa-star' }}"
+                ></i>
+                {% endfor %}
+                <span>{{ userRating }}/5</span>
               </div>
-              <button class="scroll-button right" onclick="scrollRightMovies('movie-scroll-area-trending')">&#10095;</button>
+              <p>Release Date: {{ movie.release_date }}</p>
+              <!-- Description -->
+              <p class="desc">
+                {% set maxLength = 100 %} {% if movie.overview and
+                movie.overview | length > maxLength %} {{
+                movie.overview[:maxLength] }}... {% else %} {{ movie.overview or
+                'No description available.' }} {% endif %}
+              </p>
+            </div>
           </div>
+          {% endfor %}
+        </div>
+        <button
+          class="scroll-button right"
+          onclick="scrollRightMovies('movie-scroll-area-trending')"
+        >
+          &#10095;
+        </button>
       </div>
+    </div>
   </div>
-  
+
   <div class="Hot-movies">
-      <h2>HOT</h2>
-      <div class="list-container">
-          <div class="list-related-movies">
-              <button class="scroll-button left" onclick="scrollLeftMovies('movie-scroll-area-hot')">&#10094;</button>
-              <div id="movie-scroll-area-hot" class="movie-cards movie-scroll-area">
-                  {% for movie in other_movies2 %}
-                  <div class="movie_card" onclick="window.location.href='moviGenie/trending_movie/{{ movie.id }}'">
-                      <img src="https://image.tmdb.org/t/p/w1280{{ movie.poster_path }}" alt="Movie Poster" />
-                      <div class="overlay">
-                          <h1>{{ movie.title }}</h1>
-                          <h2>Rating: {{ movie.vote_average }}</h2>
-                          <div class="rating">
-                            {% set userRating = (movie.vote_average / 2) | round(0, 'floor') %}
-                            {% for star in range(1, 6) %}
-                              <i class="{{ 'fas fa-star' if star <= userRating else 'far fa-star' }}"></i>
-                            {% endfor %}
-                            <span>{{ userRating }}/5</span>
-                          </div>
-                          <p>Release Date: {{ movie.release_date }}</p>
-                          <!-- Description -->
-                          <p class="desc">
-                            {% set maxLength = 100 %}
-                            {% if movie.overview and movie.overview | length > maxLength %}
-                              {{ movie.overview[:maxLength] }}...
-                            {% else %}
-                              {{ movie.overview or 'No description available.' }}
-                            {% endif %}
-                          </p>  
-                      </div>
-                  </div>
-                  {% endfor %}
+    <h2>HOT</h2>
+    <div class="list-container">
+      <div class="list-related-movies">
+        <button
+          class="scroll-button left"
+          onclick="scrollLeftMovies('movie-scroll-area-hot')"
+        >
+          &#10094;
+        </button>
+        <div id="movie-scroll-area-hot" class="movie-cards movie-scroll-area">
+          {% for movie in other_movies2 %}
+          <div
+            class="movie_card"
+            onclick="window.location.href='moviGenie/trending_movie/{{ movie.id }}'"
+          >
+            <img
+              src="https://image.tmdb.org/t/p/w1280{{ movie.poster_path }}"
+              alt="Movie Poster"
+            />
+            <div class="overlay">
+              <h1>{{ movie.title }}</h1>
+              <h2>Rating: {{ movie.vote_average }}</h2>
+              <div class="rating">
+                {% set userRating = (movie.vote_average / 2) | round(0, 'floor')
+                %} {% for star in range(1, 6) %}
+                <i
+                  class="{{ 'fas fa-star' if star <= userRating else 'far fa-star' }}"
+                ></i>
+                {% endfor %}
+                <span>{{ userRating }}/5</span>
               </div>
-              <button class="scroll-button right" onclick="scrollRightMovies('movie-scroll-area-hot')">&#10095;</button>
+              <p>Release Date: {{ movie.release_date }}</p>
+              <!-- Description -->
+              <p class="desc">
+                {% set maxLength = 100 %} {% if movie.overview and
+                movie.overview | length > maxLength %} {{
+                movie.overview[:maxLength] }}... {% else %} {{ movie.overview or
+                'No description available.' }} {% endif %}
+              </p>
+            </div>
           </div>
+          {% endfor %}
+        </div>
+        <button
+          class="scroll-button right"
+          onclick="scrollRightMovies('movie-scroll-area-hot')"
+        >
+          &#10095;
+        </button>
       </div>
+    </div>
   </div>
-  
+
   <div class="TopPick-movies">
-      <h2>Top Pick</h2>
-      <div class="list-container">
-          <div class="list-related-movies">
-              <button class="scroll-button left" onclick="scrollLeftMovies('movie-scroll-area-top-pick')">&#10094;</button>
-              <div id="movie-scroll-area-top-pick" class="movie-cards movie-scroll-area">
-                  {% for movie in other_movies3 %}
-                  <div class="movie_card" onclick="window.location.href='/moviGenie/trending_movie/{{ movie.id }}'">
-                      <img src="https://image.tmdb.org/t/p/w1280{{ movie.poster_path }}" alt="Movie Poster" />
-                      <div class="overlay">
-                          <h1>{{ movie.title }}</h1>
-                          <h2>Rating: {{ movie.vote_average }}</h2>
-                          <div class="rating">
-                            {% set userRating = (movie.vote_average / 2) | round(0, 'floor') %}
-                            {% for star in range(1, 6) %}
-                              <i class="{{ 'fas fa-star' if star <= userRating else 'far fa-star' }}"></i>
-                            {% endfor %}
-                            <span>{{ userRating }}/5</span>
-                          </div>
-                          <p>Release Date: {{ movie.release_date }}</p>
-                          <!-- Description -->
-                          <p class="desc">
-                            {% set maxLength = 100 %}
-                            {% if movie.overview and movie.overview | length > maxLength %}
-                              {{ movie.overview[:maxLength] }}...
-                            {% else %}
-                              {{ movie.overview or 'No description available.' }}
-                            {% endif %}
-                          </p>  
-                      </div>
-                  </div>
-                  {% endfor %}
+    <h2>Top Pick</h2>
+    <div class="list-container">
+      <div class="list-related-movies">
+        <button
+          class="scroll-button left"
+          onclick="scrollLeftMovies('movie-scroll-area-top-pick')"
+        >
+          &#10094;
+        </button>
+        <div
+          id="movie-scroll-area-top-pick"
+          class="movie-cards movie-scroll-area"
+        >
+          {% for movie in other_movies3 %}
+          <div
+            class="movie_card"
+            onclick="window.location.href='/moviGenie/trending_movie/{{ movie.id }}'"
+          >
+            <img
+              src="https://image.tmdb.org/t/p/w1280{{ movie.poster_path }}"
+              alt="Movie Poster"
+            />
+            <div class="overlay">
+              <h1>{{ movie.title }}</h1>
+              <h2>Rating: {{ movie.vote_average }}</h2>
+              <div class="rating">
+                {% set userRating = (movie.vote_average / 2) | round(0, 'floor')
+                %} {% for star in range(1, 6) %}
+                <i
+                  class="{{ 'fas fa-star' if star <= userRating else 'far fa-star' }}"
+                ></i>
+                {% endfor %}
+                <span>{{ userRating }}/5</span>
               </div>
-              <button class="scroll-button right" onclick="scrollRightMovies('movie-scroll-area-top-pick')">&#10095;</button>
+              <p>Release Date: {{ movie.release_date }}</p>
+              <!-- Description -->
+              <p class="desc">
+                {% set maxLength = 100 %} {% if movie.overview and
+                movie.overview | length > maxLength %} {{
+                movie.overview[:maxLength] }}... {% else %} {{ movie.overview or
+                'No description available.' }} {% endif %}
+              </p>
+            </div>
           </div>
+          {% endfor %}
+        </div>
+        <button
+          class="scroll-button right"
+          onclick="scrollRightMovies('movie-scroll-area-top-pick')"
+        >
+          &#10095;
+        </button>
       </div>
+    </div>
   </div>
 </div>
-{% endblock %}
-
-{% block extra_scripts %}
+{% endblock %} {% block extra_scripts %}
 <script>
   // scrolling through the movies horizontally
   function scrollLeftMovies(containerId) {
-      const scrollContainer = document.getElementById(containerId);
-      scrollContainer.scrollBy({ left: -300, behavior: 'smooth' });
+    const scrollContainer = document.getElementById(containerId);
+    scrollContainer.scrollBy({ left: -300, behavior: "smooth" });
   }
 
   function scrollRightMovies(containerId) {
-      const scrollContainer = document.getElementById(containerId);
-      scrollContainer.scrollBy({ left: 300, behavior: 'smooth' });
+    const scrollContainer = document.getElementById(containerId);
+    scrollContainer.scrollBy({ left: 300, behavior: "smooth" });
   }
 </script>
 {% endblock %}

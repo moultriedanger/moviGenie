@@ -14,30 +14,25 @@ app = Flask(__name__)
 # app = Flask(__name__, template_folder='../templates')
 CORS(app)
 cors = CORS(app)
-mail = Mail(app)
 
-app.config['MAIL_USE_SSL']=True
-app.config['MAIL_SERVER'] = 'smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = config.MAIL_USERNAME
-app.config['MAIL_PASSWORD'] = config.MAIL_PASSWORD
-app.config['MAIL_USE_TLS'] = False
+# app.config['MAIL_USE_SSL']=True
+# app.config['MAIL_SERVER'] = 'smtp.gmail.com'
+# app.config['MAIL_PORT'] = 465
+# app.config['MAIL_USERNAME'] = config.MAIL_USERNAME
+# app.config['MAIL_PASSWORD'] = config.MAIL_PASSWORD
+# app.config['MAIL_USE_TLS'] = False
 
-mail = Mail(app)
-
-def create_app(test_config=False, shared_server=False):
-    app = Flask(__name__)
+def create_app(test_config=False):
+    
+    app = Flask(__name__) 
+    CORS(app)
     app.config['TESTING'] = test_config
-    app.config['SHARED_SERVER'] = shared_server
-    prepend = ''
-    if app.config['SHARED_SERVER']:
-        prepend = '/moviGenie'
 
-    @app.route(prepend + '/landing')
+    @app.route('/')
     def landing():
         return render_template('landing.html')
 
-    @app.route(prepend + '/process_genie_request', methods=['POST'])
+    @app.route('/process_genie_request', methods=['POST'])
     def process_genie_request():
         
         openai.api_key = config.GPT_API
@@ -104,22 +99,22 @@ def create_app(test_config=False, shared_server=False):
         
         return None
 
-    @app.route(prepend + '/about')
+    @app.route('/about')
     def about():
         return render_template('about.html')
 
 
-    @app.route(prepend + '/movie')
+    @app.route('/movie')
     def movie():
 
         return render_template('movie.html')
 
     #Query movies for popular.js
-    @app.route(prepend + '/movies')
+    @app.route('/movies')
     def movies():
     
         #open connection
-        conn = sqlite3.connect(os.path.join(os.getcwd(), 'movieGenie.db'))
+        conn = sqlite3.connect(os.path.join(os.getcwd(), 'app/movieGenie.db'))
         cursor = conn.cursor()
 
         #create and execute quert
@@ -146,7 +141,7 @@ def create_app(test_config=False, shared_server=False):
         return json_object  
 
 
-    @app.route(prepend + '/trending_movie/<int:movie_id>')
+    @app.route('/trending_movie/<int:movie_id>')
     def make_movie_page(movie_id):
 
         #open the file
@@ -214,8 +209,8 @@ def create_app(test_config=False, shared_server=False):
 
         return platforms
 
-    @app.route(prepend + '/trending_movie/<int:movie_id>',methods=["POST"])
-    @app.route(prepend +'/search/<int:movie_id>',methods=["POST"])
+    @app.route('/trending_movie/<int:movie_id>',methods=["POST"])
+    @app.route('/search/<int:movie_id>',methods=["POST"])
     def render_trailer(movie_id):
         url = f'https://api.themoviedb.org/3/movie/{movie_id}/videos'
         
@@ -258,7 +253,7 @@ def create_app(test_config=False, shared_server=False):
             else:
                 return jsonify({"error": "Trailer not found"}), 400
 
-    @app.route(prepend + '/search/<int:movie_id>')
+    @app.route('/search/<int:movie_id>')
     def render_search(movie_id):
     # make the same end point
         url = f"https://api.themoviedb.org/3/movie/{movie_id}?language=en-US"
@@ -304,10 +299,10 @@ def create_app(test_config=False, shared_server=False):
                             backdrop_path = backdrop_path,
                             other_movies = movies)
 
-    @app.route(prepend + '/random')
+    @app.route('/random')
     def random():
         #open the file
-        with open('../www/data.json', 'r') as file:
+        with open('static/data.json', 'r') as file:
             movies = json.load(file)
 
         num_random_movies = 10
@@ -336,7 +331,7 @@ def create_app(test_config=False, shared_server=False):
     
 
     #Route that adds a review to sql database
-    @app.route(prepend + '/add_review', methods=['POST'])
+    @app.route('/add_review', methods=['POST'])
     def add_review():
 
         try:
@@ -373,7 +368,7 @@ def create_app(test_config=False, shared_server=False):
             # Return an error response if something goes wrong
             return jsonify({"message": f"Error: {str(e)}"}), 500
         
-    @app.route(prepend + '/get_reviews/<int:movie_id>', methods=['GET'])
+    @app.route('/get_reviews/<int:movie_id>', methods=['GET'])
     def get_review(movie_id):
         
         #recieve movie Id 
@@ -403,25 +398,30 @@ def create_app(test_config=False, shared_server=False):
         json_object = json.dumps(reviews, indent=4)
         return json_object
 
-    @app.route(prepend +'/contact', methods=['POST'])
-    def contact_form():
-        try:
-            data = request.get_json()
-            name = data.get("name")
-            email = data.get("email")
-            message = data.get("comment")
-            honeypot = data.get('honeypot')
-            if honeypot:
-                return "error: Bot detected", 400
+    # @app.route(prepend +'/contact', methods=['POST'])
+    # def contact_form():
+    #     try:
+    #         data = request.get_json()
+    #         name = data.get("name")
+    #         email = data.get("email")
+    #         message = data.get("comment")
+    #         honeypot = data.get('honeypot')
+    #         if honeypot:
+    #             return "error: Bot detected", 400
             
-            msg = Message(subject="Contact Form Submission",
-                        sender=app.config['MAIL_USERNAME'],
-                        recipients=[config.MAIL_USERNAME]) 
-            msg.body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
-            mail.send(msg)
-            return "Email sent successfully", 200
+    #         msg = Message(subject="Contact Form Submission",
+    #                     sender=app.config['MAIL_USERNAME'],
+    #                     recipients=[config.MAIL_USERNAME]) 
+    #         msg.body = f"Name: {name}\nEmail: {email}\nMessage: {message}"
+    #         mail.send(msg)
+    #         return "Email sent successfully", 200
         
-        except Exception as e:
-            return str(e), 500
+    #     except Exception as e:
+    #         return str(e), 500
         
     return app
+
+if __name__ == "__main__":
+    from flask import Flask
+    app = create_app()
+    app.run(debug=True)

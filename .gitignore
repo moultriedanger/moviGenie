@@ -6,3 +6,4 @@ config.py
 venv/
 get-pip.py
 .venv/
+.flaskenv
