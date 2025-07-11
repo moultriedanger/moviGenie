@@ -145,7 +145,7 @@ def create_app(test_config=False):
     def make_movie_page(movie_id):
 
         #open the file
-        with open('../www/data.json', 'r') as file:
+        with open('app/static/data.json', 'r') as file:
             movies = json.load(file)
 
         #Search for movie data associated with desired id
@@ -302,7 +302,8 @@ def create_app(test_config=False):
     @app.route('/random')
     def random():
         #open the file
-        with open('static/data.json', 'r') as file:
+        json_path = os.path.join(app.root_path, 'static', 'data.json')
+        with open(json_path, 'r') as file:
             movies = json.load(file)
 
         num_random_movies = 10

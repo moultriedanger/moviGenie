@@ -1,14 +1,26 @@
 {% extends "base.html" %} {% block title %}Random Movies{% endblock %} {% block
 extra_styles %}
-<link rel="stylesheet" href="static/css/overlay.css" />
-<link rel="stylesheet" href="static/css/random.css" />
-<link rel="stylesheet" href="static/css/landingmovie.css" />
-<link rel="stylesheet" href="static/css/footer.css" />
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/overlay.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/random.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/landingmovie.css') }}"
+/>
+<link
+  rel="stylesheet"
+  href="{{ url_for('static', filename='css/footer.css') }}"
+/>
 {% endblock %} {% block content %}
 <div class="random_movie_container">
   <div
     class="movie_card random_movie_card"
-    onclick="window.location.href='/moviGenie/trending_movie/{{ one_movie.0.id }}'"
+    onclick="window.location.href='{{ url_for('make_movie_page', movie_id=one_movie[0].id) }}'"
   >
     <img src="{{ backdrop_path }}" alt="Movie Poster" />
     <div class="overlay">
@@ -24,7 +36,6 @@ extra_styles %}
         <span>{{ userRating }}/5</span>
       </div>
       <p>Release Date: {{ one_movie[0].release_date }}</p>
-      <!-- Description -->
       <p class="desc">
         {% set maxLength = 100 %} {% if movie_description and movie_description
         | length > maxLength %} {{ movie_description[:maxLength] }}... {% else
@@ -52,7 +63,7 @@ extra_styles %}
           {% for movie in other_movies1 %}
           <div
             class="movie_card"
-            onclick="window.location.href='/moviGenie/trending_movie/{{ movie.id }}'"
+            onclick="window.location.href='{{ url_for('make_movie_page', movie_id=movie.id) }}'"
           >
             <img
               src="https://image.tmdb.org/t/p/w1280{{ movie.poster_path }}"
@@ -71,7 +82,6 @@ extra_styles %}
                 <span>{{ userRating }}/5</span>
               </div>
               <p>Release Date: {{ movie.release_date }}</p>
-              <!-- Description -->
               <p class="desc">
                 {% set maxLength = 100 %} {% if movie.overview and
                 movie.overview | length > maxLength %} {{
@@ -106,7 +116,7 @@ extra_styles %}
           {% for movie in other_movies2 %}
           <div
             class="movie_card"
-            onclick="window.location.href='moviGenie/trending_movie/{{ movie.id }}'"
+            onclick="window.location.href='{{ url_for('make_movie_page', movie_id=movie.id) }}'"
           >
             <img
               src="https://image.tmdb.org/t/p/w1280{{ movie.poster_path }}"
@@ -125,7 +135,6 @@ extra_styles %}
                 <span>{{ userRating }}/5</span>
               </div>
               <p>Release Date: {{ movie.release_date }}</p>
-              <!-- Description -->
               <p class="desc">
                 {% set maxLength = 100 %} {% if movie.overview and
                 movie.overview | length > maxLength %} {{
@@ -163,7 +172,7 @@ extra_styles %}
           {% for movie in other_movies3 %}
           <div
             class="movie_card"
-            onclick="window.location.href='/moviGenie/trending_movie/{{ movie.id }}'"
+            onclick="window.location.href='{{ url_for('make_movie_page', movie_id=movie.id) }}'"
           >
             <img
               src="https://image.tmdb.org/t/p/w1280{{ movie.poster_path }}"
@@ -182,7 +191,6 @@ extra_styles %}
                 <span>{{ userRating }}/5</span>
               </div>
               <p>Release Date: {{ movie.release_date }}</p>
-              <!-- Description -->
               <p class="desc">
                 {% set maxLength = 100 %} {% if movie.overview and
                 movie.overview | length > maxLength %} {{
@@ -205,7 +213,6 @@ extra_styles %}
 </div>
 {% endblock %} {% block extra_scripts %}
 <script>
-  // scrolling through the movies horizontally
   function scrollLeftMovies(containerId) {
     const scrollContainer = document.getElementById(containerId);
     scrollContainer.scrollBy({ left: -300, behavior: "smooth" });
