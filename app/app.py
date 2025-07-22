@@ -144,8 +144,8 @@ def create_app(test_config=False):
     @app.route('/trending_movie/<int:movie_id>')
     def make_movie_page(movie_id):
 
-        #open the file
-        with open('app/static/data.json', 'r') as file:
+        json_path = os.path.join(app.root_path, 'static', 'data.json')
+        with open(json_path, 'r') as file:
             movies = json.load(file)
 
         #Search for movie data associated with desired id
@@ -162,7 +162,7 @@ def create_app(test_config=False):
         movie_title = movie["title"]
         movie_description = movie["overview"]
 
-        #create poster path
+        #create poster pathy
         first = 'https://image.tmdb.org/t/p/w1280'
         backdrop_path = first + movie.get("backdrop_path", "")
 

@@ -10,6 +10,7 @@ xhr.open("GET",  "/movies", true);
 xhr.send();
 
 function display_movies(movies) {
+  console.log("displayed!!!!")
 
   const movieContainer = document.querySelector('.trending-cards');
 
@@ -24,7 +25,7 @@ function display_movies(movies) {
     let posterId = movies[i]['id']
     
     let link = document.createElement('a');
-    link.href = '/moviGenie/trending_movie/${posterId}';
+    link.href = `trending_movie/${posterId}`;
     
     // Poster
     let posterLink = movies[i]['poster_path'];
