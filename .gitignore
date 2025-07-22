@@ -7,3 +7,4 @@ venv/
 get-pip.py
 .venv/
 .flaskenv
+.env

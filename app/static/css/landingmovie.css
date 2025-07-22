@@ -1,6 +1,6 @@
 html, body {
     height: 100%;
-    background-color: black;
+    background: linear-gradient(112deg, rgba(2,0,36,1) 0%, rgba(5,4,48,1) 0%, rgba(6,6,55,1) 13%, rgba(0,68,81,1) 100%);
     margin: 0;
     font-family: "Arsenal SC", sans-serif;
     font-weight: 400;
@@ -414,7 +414,7 @@ body {
     width: 100%;
     margin: 60px auto;
     padding: 40px;
-    background-color: #1a1a1a;
+    background: linear-gradient(112deg, rgba(2,0,36,1) 0%, rgba(5,4,48,1) 0%, rgba(6,6,55,1) 13%, rgba(0,68,81,1) 100%);
     color: #ffffff;
     border-radius: 15px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
@@ -441,7 +441,7 @@ body {
     width: 60%;
     margin-top: 20px;
     padding: 15px;
-    background-color: #333;
+    background: linear-gradient(112deg, rgba(2,0,36,1) 0%, rgba(5,4,48,1) 0%, rgba(6,6,55,1) 13%, rgba(0,68,81,1) 100%);
     border-radius: 10px;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     margin: auto;
@@ -517,7 +517,7 @@ body {
 
 /* Review Item Styling */
 .review-item {
-    background-color: #333;
+    background: linear-gradient(112deg, rgba(2,0,36,1) 0%, rgba(5,4,48,1) 0%, rgba(6,6,55,1) 13%, rgba(0,68,81,1) 100%);
     padding: 25px;
     border-radius: 15px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);

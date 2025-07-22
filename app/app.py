@@ -2,12 +2,12 @@ from flask import Flask, render_template, jsonify, request, redirect
 import json
 from flask_mail import Mail, Message 
 from flask_cors import CORS
-import config
 import requests
 from random import sample
 import sqlite3
 import os
 import openai
+from app.config import Config
 # AIID = trainingAI.fine_tuned_model_id
 
 app = Flask(__name__)
@@ -35,9 +35,9 @@ def create_app(test_config=False):
     @app.route('/process_genie_request', methods=['POST'])
     def process_genie_request():
         
-        openai.api_key = config.GPT_API
+        openai.api_key = Config.GPT_API
         
-        client = openai.OpenAI(api_key=config.GPT_API, timeout=40.0)
+        client = openai.OpenAI(api_key=Config.GPT_API, timeout=40.0)
         
         with open("fine_tuned_model_id.json", "r") as f:
             data = json.load(f)
@@ -77,7 +77,7 @@ def create_app(test_config=False):
         url = f'https://api.themoviedb.org/3/search/movie?query={title}&language=en-US'
         headers = {
             "accept": "application/json",
-            "Authorization": f"Bearer {config.API_KEY}"
+            "Authorization": f"Bearer {Config.API_KEY}"
         }
         response = requests.get(url, headers=headers)
         
@@ -181,7 +181,7 @@ def create_app(test_config=False):
         url = f'https://api.themoviedb.org/3/movie/{movie_id}/watch/providers'
         headers = {
             "accept": "application/json",
-            "Authorization": f"Bearer {config.API_KEY}"
+            "Authorization": f"Bearer {Config.API_KEY}"
         }
 
         response = requests.get(url, headers=headers)
@@ -216,7 +216,7 @@ def create_app(test_config=False):
         
         headers = {
             "accept": "application/json",
-            "Authorization": f"Bearer {config.API_KEY}"
+            "Authorization": f"Bearer {Config.API_KEY}"
         }
         
         response = requests.get(url, headers=headers)
@@ -260,7 +260,7 @@ def create_app(test_config=False):
 
         headers = {
             "accept": "application/json",
-            "Authorization": f"Bearer {config.API_KEY}"
+            "Authorization": f"Bearer {Config.API_KEY}"
         }
         response = requests.get(url, headers=headers)
 
