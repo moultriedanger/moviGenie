@@ -11,7 +11,6 @@ from app.config import Config
 # AIID = trainingAI.fine_tuned_model_id
 
 app = Flask(__name__)
-# app = Flask(__name__, template_folder='../templates')
 CORS(app)
 cors = CORS(app)
 
@@ -39,7 +38,7 @@ def create_app(test_config=False):
         
         client = openai.OpenAI(api_key=Config.GPT_API, timeout=40.0)
         
-        with open("fine_tuned_model_id.json", "r") as f:
+        with open("app/fine_tuned_model_id.json", "r") as f:
             data = json.load(f)
             fine_tuned_model_id = data["fine_tuned_model_id"]
         
@@ -346,7 +345,7 @@ def create_app(test_config=False):
             review = review_data.get("review")
 
             #add to database
-            conn = sqlite3.connect(os.path.join(os.getcwd(), 'movieGenie.db'))
+            conn = sqlite3.connect(os.path.join(app.root_path, 'movieGenie.db'))
             cursor = conn.cursor()
 
             cursor = conn.cursor()
@@ -372,10 +371,8 @@ def create_app(test_config=False):
     @app.route('/get_reviews/<int:movie_id>', methods=['GET'])
     def get_review(movie_id):
         
-        #recieve movie Id 
-
         #open connection
-        conn = sqlite3.connect(os.path.join(os.getcwd(), 'movieGenie.db'))
+        conn = sqlite3.connect(os.path.join(app.root_path, 'movieGenie.db'))
         cursor = conn.cursor()
 
         # #create and execute quert

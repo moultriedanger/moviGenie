@@ -1,20 +1,23 @@
-import config
 import openai
 from openai import OpenAI
 import json
 import os
 import time
+import sys
 
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from app.config import Config
+
+print("Loaded GPT API key:", Config.GPT_API)
 
 # Set the API key
-openai.api_key = config.GPT_API
+openai.api_key = Config.GPT_API
 
 # Initialize the OpenAI client
-client = openai.OpenAI(api_key=config.GPT_API, timeout=40.0)
-
+client = openai.OpenAI(api_key=Config.GPT_API, timeout=40.0)
 
 # Get the model for fine-tuning
-fine_tuning_model = "gpt-4o-mini-2024-07-18"
+fine_tuning_model = "gpt-3.5-turbo-0125"
 print(f"Using model: {fine_tuning_model}")
 
 # Upload the training file
