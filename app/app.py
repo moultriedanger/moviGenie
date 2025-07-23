@@ -284,7 +284,8 @@ def create_app(test_config=False):
         
 
         # load other movies
-        with open('../www/data.json', 'r') as file:
+        json_path = os.path.join(app.root_path, 'static', 'data.json')
+        with open(json_path, 'r') as file:
             movies = json.load(file)
 
         #null check movies
