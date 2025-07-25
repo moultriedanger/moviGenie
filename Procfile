@@ -1,1 +1,1 @@
-web: gunicorn app.app:create_app
+web: PYTHONPATH=. gunicorn app.app:create_app
