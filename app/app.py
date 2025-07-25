@@ -22,7 +22,12 @@ cors = CORS(app)
 
 def create_app(test_config=False):
     
-    app = Flask(__name__) 
+    app = Flask(
+        __name__,
+        template_folder=os.path.join(os.path.dirname(__file__), 'templates'),
+        static_folder=os.path.join(os.path.dirname(__file__), 'static')
+    )
+
     CORS(app)
     app.config['TESTING'] = test_config
     print("⚡ create_app() was called")
