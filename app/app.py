@@ -4,11 +4,10 @@ from flask_mail import Mail, Message
 from flask_cors import CORS
 import requests
 from random import sample
-import sqlite3
 import os
 import openai
 from app.config import Config
-# AIID = trainingAI.fine_tuned_model_id
+import psycopg2
 
 app = Flask(__name__)
 CORS(app)
@@ -26,6 +25,7 @@ def create_app(test_config=False):
     app = Flask(__name__) 
     CORS(app)
     app.config['TESTING'] = test_config
+    print("⚡ create_app() was called")
 
     @app.route('/')
     def landing():
@@ -111,17 +111,18 @@ def create_app(test_config=False):
     #Query movies for popular.js
     @app.route('/movies')
     def movies():
-    
-        #open connection
-        conn = sqlite3.connect(os.path.join(os.getcwd(), 'app/movieGenie.db'))
-        cursor = conn.cursor()
+
+        connection = psycopg2.connect(database=Config.DB_NAME, user=Config.DB_USER, password=Config.DB_PASSWORD, host=Config.DB_HOST, port=5432)
+
+        cursor = connection.cursor()
 
         #create and execute quert
         query = "SELECT * FROM all_movies LIMIT 10"
         cursor.execute(query)
         results = cursor.fetchall()
 
-        conn.close()
+        connection.close()
+        print("connected to postgres!!!")
 
         #convert the query returned to json
         movies = []
@@ -136,7 +137,7 @@ def create_app(test_config=False):
             }
             movies.append(movie)
 
-        json_object = json.dumps(movies, indent=4)
+        json_object = json.dumps(movies, indent=4, default=str)
         return json_object  
 
 
@@ -346,19 +347,17 @@ def create_app(test_config=False):
             review = review_data.get("review")
 
             #add to database
-            conn = sqlite3.connect(os.path.join(app.root_path, 'movieGenie.db'))
-            cursor = conn.cursor()
+            connection = psycopg2.connect(database=Config.DB_NAME, user=Config.DB_USER, password=Config.DB_PASSWORD, host=Config.DB_HOST, port=5432)
+            cursor = connection.cursor()
 
-            cursor = conn.cursor()
-
-            query = "INSERT INTO all_reviews (movie_id, username, rating, review) VALUES (?, ?, ?, ?)"
+            query = "INSERT INTO all_reviews (movie_id, username, rating, review) VALUES (%s, %s, %s, %s)"
             data = (movie_id, name, rating, review)
             
             cursor.execute(query, data)
 
             # # Commit the transaction
-            conn.commit()
-            conn.close()
+            connection.commit()
+            connection.close()
 
             print(f"Received review from {movie_id}: {rating} stars, Review: {review}")
 
@@ -373,15 +372,15 @@ def create_app(test_config=False):
     def get_review(movie_id):
         
         #open connection
-        conn = sqlite3.connect(os.path.join(app.root_path, 'movieGenie.db'))
-        cursor = conn.cursor()
+        connection = psycopg2.connect(database=Config.DB_NAME, user=Config.DB_USER, password=Config.DB_PASSWORD, host=Config.DB_HOST, port=5432)
+        cursor = connection.cursor()
 
         # #create and execute quert
-        query = f"select * from all_reviews where movie_id == {movie_id};"
+        query = f"select * from all_reviews where movie_id = {movie_id};"
         cursor.execute(query)
         results = cursor.fetchall()
 
-        conn.close()
+        connection.close()
 
         #convert the query returned to json
         reviews = []
@@ -394,7 +393,7 @@ def create_app(test_config=False):
             }
             reviews.append(review)
 
-        json_object = json.dumps(reviews, indent=4)
+        json_object = json.dumps(reviews, indent=4, default=str)
         return json_object
 
     # @app.route(prepend +'/contact', methods=['POST'])
