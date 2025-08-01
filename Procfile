@@ -1,1 +1,1 @@
-web: PYTHONPATH=. gunicorn app.app:create_app
+web: gunicorn wsgi:app --log-file -
