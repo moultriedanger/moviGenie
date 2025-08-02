@@ -6,12 +6,16 @@ import requests
 from random import sample
 import os
 import openai
+from dotenv import load_dotenv
+load_dotenv()
 from app.config import Config
 import psycopg2
+from dotenv import load_dotenv
 
 app = Flask(__name__)
 CORS(app)
 cors = CORS(app)
+
 
 # app.config['MAIL_USE_SSL']=True
 # app.config['MAIL_SERVER'] = 'smtp.gmail.com'
@@ -19,6 +23,7 @@ cors = CORS(app)
 # app.config['MAIL_USERNAME'] = config.MAIL_USERNAME
 # app.config['MAIL_PASSWORD'] = config.MAIL_PASSWORD
 # app.config['MAIL_USE_TLS'] = False
+
 
 def create_app(test_config=False):
     
@@ -117,7 +122,7 @@ def create_app(test_config=False):
     @app.route('/movies')
     def movies():
 
-        connection = psycopg2.connect(database=Config.DB_NAME, user=Config.DB_USER, password=Config.DB_PASSWORD, host=Config.DB_HOST, port=5432)
+        connection = psycopg2.connect(Config.DATABASE_URL, sslmode="require")
 
         cursor = connection.cursor()
 
@@ -352,7 +357,7 @@ def create_app(test_config=False):
             review = review_data.get("review")
 
             #add to database
-            connection = psycopg2.connect(database=Config.DB_NAME, user=Config.DB_USER, password=Config.DB_PASSWORD, host=Config.DB_HOST, port=5432)
+            connection = psycopg2.connect(Config.DATABASE_URL, sslmode="require")
             cursor = connection.cursor()
 
             query = "INSERT INTO all_reviews (movie_id, username, rating, review) VALUES (%s, %s, %s, %s)"
@@ -377,7 +382,7 @@ def create_app(test_config=False):
     def get_review(movie_id):
         
         #open connection
-        connection = psycopg2.connect(database=Config.DB_NAME, user=Config.DB_USER, password=Config.DB_PASSWORD, host=Config.DB_HOST, port=5432)
+        connection = psycopg2.connect(Config.DATABASE_URL, sslmode="require")
         cursor = connection.cursor()
 
         # #create and execute quert

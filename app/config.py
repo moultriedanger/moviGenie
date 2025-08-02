@@ -15,3 +15,4 @@ class Config:
     DB_PASSWORD = os.getenv("DB_PASSWORD")
     DB_HOST = os.getenv("DB_HOST")
     DB_PORT = os.getenv("DB_PORT")
+    DATABASE_URL=os.getenv("DATABASE_URL")
